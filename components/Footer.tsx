@@ -11,6 +11,14 @@ const links = {
     { href: "/loan-calculator", label: "Loan Calculator" },
     { href: "/dsr-calculator-malaysia", label: "DSR Calculator" },
   ],
+  Guides: [
+    { href: "/guides", label: "All Guides" },
+    { href: "/guides/epf-contribution-guide-malaysia", label: "EPF Contribution Guide" },
+    { href: "/guides/how-to-calculate-salary-after-epf", label: "Salary After EPF" },
+    { href: "/guides/pcb-vs-income-tax-malaysia", label: "PCB vs Income Tax" },
+    { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR?" },
+    { href: "/guides/how-to-calculate-bmi-malaysia", label: "BMI in Malaysia" },
+  ],
   Company: [
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
@@ -23,7 +31,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-400">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 text-white font-bold text-xl mb-3">
