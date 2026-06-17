@@ -88,6 +88,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   category: "technology",
+  verification: {
+    google: "3Prg_wgitm3K1u_UdSSVHS-ZJCxE9cIWut5QUbt619Q",
+  },
 };
 
 export default function RootLayout({
