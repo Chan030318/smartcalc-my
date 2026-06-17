@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { trackCalculatorUse } from "@/lib/gtag";
+import { trackLoanCalculated } from "@/lib/gtag";
 
 function fmt(n: number) {
   return n.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -113,10 +113,7 @@ export default function LoanCalculator() {
   const handleCalculate = () => {
     if (isValid) {
       setSubmitted(true);
-      trackCalculatorUse("loan", {
-        loan_amount: parseFloat(amount),
-        loan_years: parseFloat(years),
-      });
+      trackLoanCalculated(parseFloat(amount), parseFloat(years));
     }
   };
 

@@ -22,9 +22,14 @@ export function event(action: string, params?: Record<string, unknown>) {
   window.gtag("event", action, params);
 }
 
-export function trackCalculatorUse(
-  calculator: "bmi" | "salary" | "loan",
-  params?: Record<string, string | number>
-) {
-  event("calculator_use", { event_category: calculator, ...params });
+export function trackBmiCalculated(bmi: number) {
+  event("bmi_calculated", { bmi_value: bmi });
+}
+
+export function trackSalaryCalculated(grossSalary: number) {
+  event("salary_calculated", { gross_salary: grossSalary });
+}
+
+export function trackLoanCalculated(loanAmount: number, loanYears: number) {
+  event("loan_calculated", { loan_amount: loanAmount, loan_years: loanYears });
 }
