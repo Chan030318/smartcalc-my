@@ -37,3 +37,7 @@ export function trackLoanCalculated(loanAmount: number, loanYears: number) {
 export function trackIncomeTaxCalculated(annualIncome: number, taxPayable: number) {
   event("income_tax_calculated", { annual_income: annualIncome, tax_payable: taxPayable });
 }
+
+export function trackEpfCalculated(monthlySalary: number, projectedBalance: number) {
+  event("epf_calculated", { monthly_salary: monthlySalary, projected_balance: projectedBalance });
+}

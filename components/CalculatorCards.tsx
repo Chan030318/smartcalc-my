@@ -31,6 +31,20 @@ const calculators = [
     popular: true,
   },
   {
+    href: "/epf-calculator-malaysia",
+    emoji: "🏦",
+    title: "EPF Calculator",
+    description:
+      "Project your KWSP retirement savings with employer contributions and annual dividend compounding. See a full year-by-year breakdown and check against EPF's Basic Savings benchmarks.",
+    badge: "Retirement",
+    badgeColor: "bg-teal-100 text-teal-700",
+    features: ["Year-by-year projection", "Dividend compounding", "Basic Savings benchmarks"],
+    cta: "Calculate EPF",
+    gradient: "from-teal-50 to-cyan-50",
+    border: "border-teal-100",
+    ctaStyle: "bg-teal-600 hover:bg-teal-700",
+  },
+  {
     href: "/income-tax-calculator-malaysia",
     emoji: "🧾",
     title: "Income Tax Calculator",
