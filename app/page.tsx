@@ -5,8 +5,7 @@ import CalculatorCards from "@/components/CalculatorCards";
 import Benefits from "@/components/Benefits";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-
-const BASE_URL = "https://smartcalc.my";
+import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "SmartCalc MY — Free BMI, Salary & Loan Calculators for Malaysians",

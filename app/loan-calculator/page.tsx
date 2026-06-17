@@ -3,8 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoanCalculator from "./LoanCalculator";
 import JsonLd from "@/components/JsonLd";
-
-const BASE_URL = "https://smartcalc.my";
+import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Loan Calculator Malaysia — Monthly Repayment & Amortisation",
