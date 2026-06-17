@@ -31,6 +31,20 @@ const calculators = [
     popular: true,
   },
   {
+    href: "/income-tax-calculator-malaysia",
+    emoji: "🧾",
+    title: "Income Tax Calculator",
+    description:
+      "Estimate your annual income tax payable under LHDN YA 2024 rates. Enter your income and reliefs — EPF, medical, education, spouse, children — to get your chargeable income and effective tax rate.",
+    badge: "Finance",
+    badgeColor: "bg-orange-100 text-orange-700",
+    features: ["YA 2024 LHDN rates", "Relief deductions", "Monthly PCB estimate"],
+    cta: "Calculate Tax",
+    gradient: "from-orange-50 to-amber-50",
+    border: "border-orange-100",
+    ctaStyle: "bg-orange-500 hover:bg-orange-600",
+  },
+  {
     href: "/loan-calculator",
     emoji: "🏦",
     title: "Loan Calculator",
