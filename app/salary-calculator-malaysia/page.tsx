@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SalaryCalculator from "./SalaryCalculator";
@@ -82,6 +83,7 @@ export default function SalaryCalculatorPage() {
           </div>
         </section>
         <SalaryCalculator />
+        <FinancialDisclaimer />
       </main>
       <Footer />
     </>

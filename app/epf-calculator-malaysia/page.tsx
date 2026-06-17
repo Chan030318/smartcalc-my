@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EpfCalculator from "./EpfCalculator";
@@ -116,6 +117,7 @@ export default function EpfCalculatorPage() {
         </section>
 
         <EpfCalculator />
+        <FinancialDisclaimer />
       </main>
       <Footer />
     </>

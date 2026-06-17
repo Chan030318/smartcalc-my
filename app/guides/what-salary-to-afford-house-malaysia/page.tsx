@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 
 const PAGE_URL = `${BASE_URL}/guides/what-salary-to-afford-house-malaysia`;
@@ -185,6 +186,7 @@ export default function HouseAffordabilityPage() {
           </ul>
         </article>
 
+        <FinancialDisclaimer />
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">

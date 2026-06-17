@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PcbCalculator from "./PcbCalculator";
@@ -124,6 +125,7 @@ export default function PcbCalculatorPage() {
         </section>
 
         <PcbCalculator />
+        <FinancialDisclaimer />
       </main>
       <Footer />
     </>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import IncomeTaxCalculator from "./IncomeTaxCalculator";
@@ -121,6 +122,7 @@ export default function IncomeTaxPage() {
         </section>
 
         <IncomeTaxCalculator />
+        <FinancialDisclaimer />
       </main>
       <Footer />
     </>

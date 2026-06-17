@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DsrCalculator from "./DsrCalculator";
@@ -124,6 +125,7 @@ export default function DsrCalculatorPage() {
         </section>
 
         <DsrCalculator />
+        <FinancialDisclaimer />
       </main>
       <Footer />
     </>
