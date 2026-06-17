@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/salary-calculator-malaysia", label: "Salary Calculator" },
   { href: "/loan-calculator", label: "Loan Calculator" },
   { href: "/calculators", label: "All Tools" },
+  { href: "/guides", label: "Guides" },
 ];
 
 export default function Navbar() {

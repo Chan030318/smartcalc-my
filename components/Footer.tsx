@@ -14,8 +14,17 @@ const links = {
   Guides: [
     { href: "/guides", label: "All Guides" },
     { href: "/guides/epf-contribution-guide-malaysia", label: "EPF Contribution Guide" },
+    { href: "/guides/epf-withdrawal-guide-malaysia", label: "EPF Withdrawal Guide" },
+    { href: "/guides/how-much-epf-at-30-malaysia", label: "How Much EPF at 30?" },
     { href: "/guides/how-to-calculate-salary-after-epf", label: "Salary After EPF" },
+    { href: "/guides/salary-deductions-explained-malaysia", label: "Salary Deductions Explained" },
     { href: "/guides/pcb-vs-income-tax-malaysia", label: "PCB vs Income Tax" },
+    { href: "/guides/how-pcb-tax-works-malaysia", label: "How PCB Tax Works" },
+    { href: "/guides/how-to-reduce-income-tax-malaysia", label: "Reduce Income Tax" },
+    { href: "/guides/what-salary-to-afford-house-malaysia", label: "Salary to Afford a House" },
+    { href: "/guides/housing-loan-eligibility-malaysia", label: "Housing Loan Eligibility" },
+    { href: "/guides/how-to-improve-loan-approval-malaysia", label: "Improve Loan Approval" },
+    { href: "/guides/personal-loan-vs-housing-loan-malaysia", label: "Personal vs Housing Loan" },
     { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR?" },
     { href: "/guides/how-to-calculate-bmi-malaysia", label: "BMI in Malaysia" },
   ],
@@ -39,7 +48,7 @@ export default function Footer() {
               SmartCalc MY
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Free, accurate calculators built for Malaysians. Calculate your BMI, salary, and loan repayments instantly.
+              Free, accurate calculators and guides built for Malaysians. 7 calculators and 15 guides — no sign-up, no fees.
             </p>
           </div>
 

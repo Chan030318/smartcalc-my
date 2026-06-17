@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Us — SmartCalc MY",
   description:
-    "SmartCalc MY provides free, accurate calculators built specifically for Malaysians — BMI, salary, and loan calculators using Malaysian standards and regulations.",
+    "SmartCalc MY provides 7 free calculators and 15 guides built specifically for Malaysians — BMI, salary, income tax, EPF, PCB, loan, and DSR calculators using Malaysian standards.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,11 +24,52 @@ const calculators = [
     desc: "Computes EPF (11%), SOCSO, EIS, and estimated PCB income tax using 2024 statutory rates.",
   },
   {
-    href: "/loan-calculator",
+    href: "/income-tax-calculator-malaysia",
+    emoji: "🧾",
+    title: "Income Tax Calculator",
+    desc: "Estimates annual tax payable under LHDN YA 2024 progressive rates with full relief deductions.",
+  },
+  {
+    href: "/epf-calculator-malaysia",
     emoji: "🏦",
+    title: "EPF Calculator",
+    desc: "Projects your KWSP retirement savings year-by-year with employer matching and dividend compounding.",
+  },
+  {
+    href: "/pcb-calculator-malaysia",
+    emoji: "📋",
+    title: "PCB Calculator",
+    desc: "Estimates your monthly Potongan Cukai Berjadual (MTD) with TP1 declarations and Zakat rebate.",
+  },
+  {
+    href: "/loan-calculator",
+    emoji: "🏠",
     title: "Loan Calculator",
     desc: "Reducing-balance amortisation with annual schedule — suitable for personal, home, and car loans.",
   },
+  {
+    href: "/dsr-calculator-malaysia",
+    emoji: "📊",
+    title: "DSR Calculator",
+    desc: "Checks your Debt Service Ratio against bank thresholds before you apply for any loan.",
+  },
+];
+
+const guides = [
+  { href: "/guides/epf-contribution-guide-malaysia", label: "EPF Contribution Guide Malaysia 2024" },
+  { href: "/guides/epf-withdrawal-guide-malaysia", label: "EPF Withdrawal Guide Malaysia 2024" },
+  { href: "/guides/how-much-epf-at-30-malaysia", label: "How Much EPF Should I Have at 30?" },
+  { href: "/guides/how-to-calculate-salary-after-epf", label: "How to Calculate Take-Home Salary After EPF" },
+  { href: "/guides/salary-deductions-explained-malaysia", label: "Malaysian Salary Deductions Explained" },
+  { href: "/guides/pcb-vs-income-tax-malaysia", label: "PCB vs Income Tax — What's the Difference?" },
+  { href: "/guides/how-pcb-tax-works-malaysia", label: "How PCB Tax Works in Malaysia" },
+  { href: "/guides/how-to-reduce-income-tax-malaysia", label: "How to Reduce Income Tax Legally (YA 2024)" },
+  { href: "/guides/what-salary-to-afford-house-malaysia", label: "What Salary Do You Need to Afford a House?" },
+  { href: "/guides/housing-loan-eligibility-malaysia", label: "Housing Loan Eligibility — What Banks Check" },
+  { href: "/guides/how-to-improve-loan-approval-malaysia", label: "How to Improve Loan Approval Chances" },
+  { href: "/guides/personal-loan-vs-housing-loan-malaysia", label: "Personal Loan vs Housing Loan Malaysia" },
+  { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR in Malaysia?" },
+  { href: "/guides/how-to-calculate-bmi-malaysia", label: "How to Calculate BMI in Malaysia" },
 ];
 
 const values = [
@@ -72,17 +113,40 @@ export default function AboutPage() {
 
         {/* Calculators */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Calculators</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Our Calculators</h2>
+            <Link href="/calculators" className="text-sm font-medium text-blue-600 hover:underline">View all →</Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {calculators.map((c) => (
               <Link
                 key={c.href}
                 href={c.href}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:border-blue-100 transition-all group"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-blue-100 transition-all group"
               >
                 <div className="text-3xl mb-3">{c.emoji}</div>
-                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{c.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{c.desc}</p>
+                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors text-sm">{c.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{c.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Guides */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Our Guides</h2>
+            <Link href="/guides" className="text-sm font-medium text-blue-600 hover:underline">View all →</Link>
+          </div>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 divide-y divide-gray-50">
+            {guides.map((g) => (
+              <Link
+                key={g.href}
+                href={g.href}
+                className="flex items-center justify-between px-5 py-3.5 hover:bg-blue-50 transition-colors group first:rounded-t-2xl last:rounded-b-2xl"
+              >
+                <span className="text-sm text-gray-700 group-hover:text-blue-700 font-medium">{g.label}</span>
+                <svg className="w-4 h-4 text-gray-300 group-hover:text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </Link>
             ))}
           </div>
