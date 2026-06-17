@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { trackCalculatorUse } from "@/lib/gtag";
 
 // ─── Tax brackets (YA 2024, resident individual) ─────────────────────────────
 const TAX_BRACKETS = [
@@ -121,7 +122,10 @@ export default function SalaryCalculator() {
   const result = useMemo(() => (submitted && gross > 0 ? calculate(gross) : null), [submitted, gross]);
 
   const handleCalculate = () => {
-    if (gross > 0) setSubmitted(true);
+    if (gross > 0) {
+      setSubmitted(true);
+      trackCalculatorUse("salary", { gross_salary: gross });
+    }
   };
 
   const handleReset = () => {

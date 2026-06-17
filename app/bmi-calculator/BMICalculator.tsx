@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { trackCalculatorUse } from "@/lib/gtag";
 
 type BMICategory = {
   label: string;
@@ -90,7 +91,9 @@ export default function BMICalculator() {
     const w = parseFloat(weight);
     if (!h || !w || h <= 0 || w <= 0) return;
     const heightM = h / 100;
-    setBmi(Math.round((w / (heightM * heightM)) * 10) / 10);
+    const result = Math.round((w / (heightM * heightM)) * 10) / 10;
+    setBmi(result);
+    trackCalculatorUse("bmi", { bmi: result });
   }, [height, weight]);
 
   const reset = () => {
