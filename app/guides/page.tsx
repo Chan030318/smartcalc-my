@@ -8,105 +8,195 @@ import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 const PAGE_URL = `${BASE_URL}/guides`;
 
 export const metadata: Metadata = {
-  title: "Malaysian Finance & Health Guides — SmartCalc MY",
+  title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
   description:
-    "Free guides on Malaysian personal finance and health — EPF contributions, salary deductions, income tax, PCB, DSR loan eligibility, and BMI. Written for Malaysians.",
+    "15 free guides on Malaysian personal finance and health — EPF, salary, income tax, DSR, housing loans, BMI, and more. Plain English, written for Malaysians.",
   keywords: [
     "Malaysia finance guide",
-    "EPF contribution guide Malaysia",
-    "DSR guide Malaysia",
-    "PCB income tax guide Malaysia",
+    "EPF guide Malaysia",
     "salary deduction guide Malaysia",
-    "BMI guide Malaysia",
+    "income tax guide Malaysia",
+    "DSR guide Malaysia",
+    "housing loan guide Malaysia",
     "personal finance Malaysia",
+    "panduan kewangan Malaysia",
   ],
   alternates: { canonical: "/guides" },
   openGraph: {
-    title: "Malaysian Finance & Health Guides — SmartCalc MY",
-    description:
-      "Free guides on EPF, salary deductions, income tax, DSR, PCB, and BMI — written for Malaysians.",
+    title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
+    description: "15 free guides on EPF, salary, income tax, DSR, housing loans, and more — written for Malaysians.",
     url: PAGE_URL,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "SmartCalc MY Guides" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Malaysian Finance & Health Guides — SmartCalc MY",
-    description: "Free guides on EPF, salary, income tax, DSR, PCB, and BMI for Malaysians.",
+    title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
+    description: "15 free guides on EPF, salary, income tax, DSR, housing loans, and more for Malaysians.",
     images: ["/og-image.png"],
   },
 };
 
-const guides = [
+type Guide = {
+  href: string;
+  emoji: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryColor: string;
+  readTime: string;
+  gradient: string;
+  border: string;
+};
+
+const categories: { id: string; label: string; guides: Guide[] }[] = [
   {
-    href: "/guides/epf-contribution-guide-malaysia",
-    emoji: "🏦",
-    title: "EPF Contribution Guide Malaysia 2024",
-    description: "Contribution rates, the new 3-account structure (Akaun Persaraan, Sejahtera, Fleksibel), Basic Savings benchmarks, dividend history, and withdrawal rules.",
-    category: "Retirement",
-    categoryColor: "bg-teal-100 text-teal-700",
-    readTime: "8 min",
-    relatedCalc: { href: "/epf-calculator-malaysia", label: "EPF Calculator" },
-    gradient: "from-teal-50 to-cyan-50",
-    border: "border-teal-100",
+    id: "retirement",
+    label: "Retirement & EPF",
+    guides: [
+      {
+        href: "/guides/epf-contribution-guide-malaysia",
+        emoji: "🏦",
+        title: "EPF Contribution Guide Malaysia 2024",
+        description: "Contribution rates, the 3-account structure (Akaun Persaraan, Sejahtera, Fleksibel), Basic Savings benchmarks, dividend history, and withdrawal rules.",
+        category: "Retirement", categoryColor: "bg-teal-100 text-teal-700", readTime: "8 min",
+        gradient: "from-teal-50 to-cyan-50", border: "border-teal-100",
+      },
+      {
+        href: "/guides/how-much-epf-at-30-malaysia",
+        emoji: "📈",
+        title: "How Much EPF Should I Have at 30?",
+        description: "Official benchmarks vs what you actually need, the compounding math, and 6 ways to grow your EPF balance faster if you're behind.",
+        category: "Retirement", categoryColor: "bg-teal-100 text-teal-700", readTime: "8 min",
+        gradient: "from-teal-50 to-emerald-50", border: "border-teal-100",
+      },
+      {
+        href: "/guides/epf-withdrawal-guide-malaysia",
+        emoji: "💳",
+        title: "EPF Withdrawal Guide Malaysia 2024",
+        description: "Every withdrawal type — Akaun Fleksibel (any time), Akaun Sejahtera (housing/education/medical), and retirement at age 55. When, how, and what to consider.",
+        category: "Retirement", categoryColor: "bg-teal-100 text-teal-700", readTime: "9 min",
+        gradient: "from-teal-50 to-cyan-50", border: "border-teal-100",
+      },
+    ],
   },
   {
-    href: "/guides/how-to-calculate-salary-after-epf",
-    emoji: "💰",
-    title: "How to Calculate Take-Home Salary After EPF",
-    description: "Step-by-step guide to EPF (11%), SOCSO, EIS, and PCB deductions with a worked example for a RM5,000 salary. Know what arrives in your bank account.",
-    category: "Salary",
-    categoryColor: "bg-sky-100 text-sky-700",
-    readTime: "6 min",
-    relatedCalc: { href: "/salary-calculator-malaysia", label: "Salary Calculator" },
-    gradient: "from-sky-50 to-blue-50",
-    border: "border-sky-100",
+    id: "salary-tax",
+    label: "Salary & Tax",
+    guides: [
+      {
+        href: "/guides/how-to-calculate-salary-after-epf",
+        emoji: "💰",
+        title: "How to Calculate Take-Home Salary After EPF",
+        description: "Step-by-step guide to EPF (11%), SOCSO, EIS, and PCB deductions with a worked example for a RM5,000 salary.",
+        category: "Salary", categoryColor: "bg-sky-100 text-sky-700", readTime: "6 min",
+        gradient: "from-sky-50 to-blue-50", border: "border-sky-100",
+      },
+      {
+        href: "/guides/salary-deductions-explained-malaysia",
+        emoji: "🧮",
+        title: "Malaysian Salary Deductions Explained — EPF, SOCSO, EIS, PCB",
+        description: "What each deduction is for, who benefits, how rates are calculated, and how to verify your employer is contributing correctly.",
+        category: "Salary", categoryColor: "bg-sky-100 text-sky-700", readTime: "7 min",
+        gradient: "from-sky-50 to-blue-50", border: "border-sky-100",
+      },
+      {
+        href: "/guides/pcb-vs-income-tax-malaysia",
+        emoji: "🧾",
+        title: "PCB vs Income Tax Malaysia — What's the Difference?",
+        description: "PCB is prepaid income tax. Learn how monthly MTD deductions relate to your annual LHDN liability, why you get refunds, and how TP1 saves you money.",
+        category: "Tax", categoryColor: "bg-orange-100 text-orange-700", readTime: "7 min",
+        gradient: "from-orange-50 to-amber-50", border: "border-orange-100",
+      },
+      {
+        href: "/guides/how-pcb-tax-works-malaysia",
+        emoji: "📋",
+        title: "How PCB Tax Works in Malaysia",
+        description: "The PCB calculation formula, what factors affect your monthly amount, TP1 declarations, CP38 notices, and Zakat rebate explained step by step.",
+        category: "Tax", categoryColor: "bg-indigo-100 text-indigo-700", readTime: "8 min",
+        gradient: "from-indigo-50 to-violet-50", border: "border-indigo-100",
+      },
+      {
+        href: "/guides/how-to-reduce-income-tax-malaysia",
+        emoji: "📉",
+        title: "How to Reduce Income Tax Legally in Malaysia (YA 2024)",
+        description: "Every LHDN tax relief for 2024 — EPF, PRS, medical, lifestyle, family, donations, Zakat. Reference table with amounts, eligibility, and tips.",
+        category: "Tax", categoryColor: "bg-orange-100 text-orange-700", readTime: "10 min",
+        gradient: "from-orange-50 to-amber-50", border: "border-orange-100",
+      },
+    ],
   },
   {
-    href: "/guides/pcb-vs-income-tax-malaysia",
-    emoji: "🧾",
-    title: "PCB vs Income Tax Malaysia — What's the Difference?",
-    description: "Confused about PCB and income tax? Learn how monthly MTD deductions relate to your annual LHDN liability, why you get refunds, and how TP1 declarations save you money.",
-    category: "Tax",
-    categoryColor: "bg-orange-100 text-orange-700",
-    readTime: "7 min",
-    relatedCalc: { href: "/pcb-calculator-malaysia", label: "PCB Calculator" },
-    gradient: "from-orange-50 to-amber-50",
-    border: "border-orange-100",
+    id: "loans-housing",
+    label: "Loans & Housing",
+    guides: [
+      {
+        href: "/guides/what-salary-to-afford-house-malaysia",
+        emoji: "🏠",
+        title: "What Salary Do You Need to Afford a House in Malaysia?",
+        description: "The 3× rule, bank DSR limits, income-to-property price table, hidden upfront costs, and first-home buyer schemes like My First Home and PR1MA.",
+        category: "Housing", categoryColor: "bg-purple-100 text-purple-700", readTime: "9 min",
+        gradient: "from-purple-50 to-violet-50", border: "border-purple-100",
+      },
+      {
+        href: "/guides/housing-loan-eligibility-malaysia",
+        emoji: "🏦",
+        title: "Housing Loan Eligibility Malaysia — What Banks Check",
+        description: "The 8 eligibility criteria banks assess — DSR, CCRIS, CTOS, income documentation, LTV, tenure, and more. Includes a worked DSR example.",
+        category: "Housing", categoryColor: "bg-emerald-100 text-emerald-700", readTime: "9 min",
+        gradient: "from-emerald-50 to-green-50", border: "border-emerald-100",
+      },
+      {
+        href: "/guides/how-to-improve-loan-approval-malaysia",
+        emoji: "✅",
+        title: "How to Improve Loan Approval Chances in Malaysia",
+        description: "12 concrete steps — DSR reduction, CCRIS clean-up, CTOS check, income documentation, timing your application, and bank selection strategies.",
+        category: "Loans", categoryColor: "bg-blue-100 text-blue-700", readTime: "9 min",
+        gradient: "from-blue-50 to-sky-50", border: "border-blue-100",
+      },
+      {
+        href: "/guides/personal-loan-vs-housing-loan-malaysia",
+        emoji: "⚖️",
+        title: "Personal Loan vs Housing Loan Malaysia",
+        description: "Interest rates, tenure, collateral, total cost, and DSR impact compared. Includes flat vs reducing balance explained and when to use each loan type.",
+        category: "Loans", categoryColor: "bg-violet-100 text-violet-700", readTime: "8 min",
+        gradient: "from-violet-50 to-purple-50", border: "border-violet-100",
+      },
+      {
+        href: "/guides/what-is-dsr-malaysia",
+        emoji: "📊",
+        title: "What Is DSR in Malaysia? Debt Service Ratio Explained",
+        description: "DSR formula, 60%/70% bank thresholds, what counts as a commitment, gross vs net income, and 6 ways to improve your ratio before applying.",
+        category: "Loans", categoryColor: "bg-blue-100 text-blue-700", readTime: "5 min",
+        gradient: "from-blue-50 to-sky-50", border: "border-blue-100",
+      },
+    ],
   },
   {
-    href: "/guides/what-is-dsr-malaysia",
-    emoji: "📊",
-    title: "What Is DSR in Malaysia? Debt Service Ratio Explained",
-    description: "DSR is the number banks look at before approving any loan. Learn how it's calculated, what the 60% and 70% thresholds mean, and 6 ways to improve your ratio.",
-    category: "Loans",
-    categoryColor: "bg-blue-100 text-blue-700",
-    readTime: "5 min",
-    relatedCalc: { href: "/dsr-calculator-malaysia", label: "DSR Calculator" },
-    gradient: "from-blue-50 to-sky-50",
-    border: "border-blue-100",
-  },
-  {
-    href: "/guides/how-to-calculate-bmi-malaysia",
-    emoji: "⚖️",
-    title: "How to Calculate BMI in Malaysia — Asian Categories Explained",
-    description: "Malaysia uses Asian-specific BMI cutoffs lower than the WHO standard. Learn the formula, what each category means, and the important limitations of BMI as a health metric.",
-    category: "Health",
-    categoryColor: "bg-green-100 text-green-700",
-    readTime: "5 min",
-    relatedCalc: { href: "/bmi-calculator", label: "BMI Calculator" },
-    gradient: "from-green-50 to-emerald-50",
-    border: "border-green-100",
+    id: "health",
+    label: "Health",
+    guides: [
+      {
+        href: "/guides/how-to-calculate-bmi-malaysia",
+        emoji: "⚖️",
+        title: "How to Calculate BMI in Malaysia — Asian Categories Explained",
+        description: "The BMI formula, why Malaysia uses lower Asian thresholds vs the WHO standard, what each category means, and the limitations of BMI as a health metric.",
+        category: "Health", categoryColor: "bg-green-100 text-green-700", readTime: "5 min",
+        gradient: "from-green-50 to-emerald-50", border: "border-green-100",
+      },
+    ],
   },
 ];
+
+const allGuides = categories.flatMap(c => c.guides);
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Malaysian Finance & Health Guides",
-  description: "Free guides on personal finance and health for Malaysians — EPF, salary, income tax, PCB, DSR, and BMI.",
+  name: "Free Malaysian Finance & Health Guides",
+  description: "15 free guides on personal finance and health for Malaysians — EPF, salary, income tax, DSR, housing loans, BMI, and more.",
   url: PAGE_URL,
   publisher: { "@type": "Organization", name: "SmartCalc MY", url: BASE_URL },
-  hasPart: guides.map((g) => ({
+  hasPart: allGuides.map(g => ({
     "@type": "Article",
     headline: g.title,
     url: `${BASE_URL}${g.href}`,
@@ -131,70 +221,67 @@ export default function GuidesIndexPage() {
         <section className="bg-white border-b border-gray-100">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
             <span className="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              {guides.length} Free Guides · Written for Malaysians
+              {allGuides.length} Free Guides · Written for Malaysians · No sign-up
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              Guides
-            </h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Guides</h1>
             <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-              Plain-English explanations of Malaysian personal finance and health topics — EPF, salary deductions, income tax, loan eligibility, and more.
+              Plain-English explanations of Malaysian personal finance and health — EPF, salary deductions, income tax, loan eligibility, and more.
             </p>
+            {/* Category jump links */}
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              {categories.map(cat => (
+                <a key={cat.id} href={`#${cat.id}`} className="text-xs font-medium px-3 py-1.5 bg-gray-100 hover:bg-blue-50 hover:text-blue-700 rounded-full text-gray-600 transition-colors">
+                  {cat.label} ({cat.guides.length})
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Guide cards */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {guides.map((guide) => (
-              <Link
-                key={guide.href}
-                href={guide.href}
-                className={`group bg-gradient-to-br ${guide.gradient} rounded-2xl border ${guide.border} p-6 flex flex-col shadow-sm hover:shadow-md transition-all`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{guide.emoji}</span>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${guide.categoryColor}`}>
-                      {guide.category}
-                    </span>
-                    <span className="text-xs text-gray-400 bg-white/70 px-2.5 py-1 rounded-full">
-                      {guide.readTime}
-                    </span>
-                  </div>
-                </div>
+        {/* Category sections */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-14">
+          {categories.map(cat => (
+            <section key={cat.id} id={cat.id}>
+              <div className="flex items-center gap-3 mb-6">
+                <h2 className="text-xl font-bold text-gray-900">{cat.label}</h2>
+                <span className="text-xs text-gray-400 font-medium bg-gray-100 px-2.5 py-1 rounded-full">{cat.guides.length} guides</span>
+                <div className="flex-1 h-px bg-gray-100" />
+              </div>
 
-                <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors leading-snug">
-                  {guide.title}
-                </h2>
-
-                <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
-                  {guide.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-blue-600 group-hover:underline">
-                    Read guide →
-                  </span>
-                  <span className="text-xs text-gray-400 bg-white/60 px-2.5 py-1 rounded-lg">
-                    → {guide.relatedCalc.label}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {cat.guides.map(guide => (
+                  <Link
+                    key={guide.href}
+                    href={guide.href}
+                    className={`group bg-gradient-to-br ${guide.gradient} rounded-2xl border ${guide.border} p-6 flex flex-col shadow-sm hover:shadow-md transition-all`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <span className="text-2xl">{guide.emoji}</span>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${guide.categoryColor}`}>{guide.category}</span>
+                        <span className="text-xs text-gray-400 bg-white/70 px-2.5 py-1 rounded-full">{guide.readTime}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors leading-snug">
+                      {guide.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">{guide.description}</p>
+                    <span className="text-sm font-semibold text-blue-600 group-hover:underline">Read guide →</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
 
-        {/* Footer nav */}
+        {/* CTA to calculators */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <h2 className="text-base font-semibold text-gray-700 mb-1">Looking for a calculator?</h2>
-              <p className="text-sm text-gray-500">All guides link to the relevant free calculator for instant results.</p>
+              <p className="text-sm text-gray-500">Every guide links to the relevant free calculator for instant results.</p>
             </div>
-            <Link
-              href="/calculators"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors flex-shrink-0"
-            >
+            <Link href="/calculators" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors flex-shrink-0">
               Browse All Calculators →
             </Link>
           </div>
