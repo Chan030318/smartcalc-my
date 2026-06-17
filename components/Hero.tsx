@@ -36,6 +36,12 @@ export default function Hero() {
           >
             Calculate My Salary
           </Link>
+          <Link
+            href="/calculators"
+            className="inline-flex items-center justify-center px-8 py-3.5 bg-yellow-400 text-blue-900 font-semibold rounded-xl hover:bg-yellow-300 transition-colors"
+          >
+            Browse All Tools →
+          </Link>
         </div>
 
         <div className="mt-14 flex flex-wrap justify-center gap-8 text-blue-200 text-sm">

@@ -2,9 +2,14 @@ import Link from "next/link";
 
 const links = {
   Calculators: [
+    { href: "/calculators", label: "All Calculators" },
     { href: "/bmi-calculator", label: "BMI Calculator" },
     { href: "/salary-calculator-malaysia", label: "Salary Calculator" },
+    { href: "/income-tax-calculator-malaysia", label: "Income Tax Calculator" },
+    { href: "/epf-calculator-malaysia", label: "EPF Calculator" },
+    { href: "/pcb-calculator-malaysia", label: "PCB Calculator" },
     { href: "/loan-calculator", label: "Loan Calculator" },
+    { href: "/dsr-calculator-malaysia", label: "DSR Calculator" },
   ],
   Company: [
     { href: "/about", label: "About Us" },
