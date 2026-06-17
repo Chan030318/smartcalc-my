@@ -45,3 +45,7 @@ export function trackEpfCalculated(monthlySalary: number, projectedBalance: numb
 export function trackPcbCalculated(monthlySalary: number, monthlyPcb: number) {
   event("pcb_calculated", { monthly_salary: monthlySalary, monthly_pcb: monthlyPcb });
 }
+
+export function trackDsrCalculated(monthlyIncome: number, dsr: number) {
+  event("dsr_calculated", { monthly_income: monthlyIncome, dsr_percent: dsr });
+}

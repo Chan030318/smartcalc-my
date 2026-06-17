@@ -73,6 +73,20 @@ const calculators = [
     ctaStyle: "bg-orange-500 hover:bg-orange-600",
   },
   {
+    href: "/dsr-calculator-malaysia",
+    emoji: "📊",
+    title: "DSR Calculator",
+    description:
+      "Check your Debt Service Ratio before applying for a loan. Enter your income, existing commitments, and new repayment to see your DSR category and remaining borrowing capacity at 60% and 70% bank thresholds.",
+    badge: "Finance",
+    badgeColor: "bg-blue-100 text-blue-700",
+    features: ["60% / 70% thresholds", "Borrowing capacity", "Tips to improve DSR"],
+    cta: "Calculate DSR",
+    gradient: "from-blue-50 to-sky-50",
+    border: "border-blue-100",
+    ctaStyle: "bg-blue-600 hover:bg-blue-700",
+  },
+  {
     href: "/loan-calculator",
     emoji: "🏦",
     title: "Loan Calculator",
