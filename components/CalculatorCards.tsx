@@ -45,6 +45,20 @@ const calculators = [
     ctaStyle: "bg-teal-600 hover:bg-teal-700",
   },
   {
+    href: "/pcb-calculator-malaysia",
+    emoji: "📋",
+    title: "PCB Calculator",
+    description:
+      "Estimate your monthly Potongan Cukai Berjadual (MTD) deduction. Supports resident and non-resident rates, TP1 declarations, Zakat rebate, spouse and child reliefs, and shows a payslip breakdown.",
+    badge: "Finance",
+    badgeColor: "bg-indigo-100 text-indigo-700",
+    features: ["TP1 & Zakat support", "Resident & non-resident", "Monthly payslip view"],
+    cta: "Calculate PCB",
+    gradient: "from-indigo-50 to-violet-50",
+    border: "border-indigo-100",
+    ctaStyle: "bg-indigo-600 hover:bg-indigo-700",
+  },
+  {
     href: "/income-tax-calculator-malaysia",
     emoji: "🧾",
     title: "Income Tax Calculator",

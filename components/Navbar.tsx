@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/salary-calculator-malaysia", label: "Salary Calculator" },
   { href: "/income-tax-calculator-malaysia", label: "Income Tax" },
   { href: "/epf-calculator-malaysia", label: "EPF Calculator" },
+  { href: "/pcb-calculator-malaysia", label: "PCB Calculator" },
   { href: "/loan-calculator", label: "Loan Calculator" },
 ];
 

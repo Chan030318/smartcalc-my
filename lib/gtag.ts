@@ -41,3 +41,7 @@ export function trackIncomeTaxCalculated(annualIncome: number, taxPayable: numbe
 export function trackEpfCalculated(monthlySalary: number, projectedBalance: number) {
   event("epf_calculated", { monthly_salary: monthlySalary, projected_balance: projectedBalance });
 }
+
+export function trackPcbCalculated(monthlySalary: number, monthlyPcb: number) {
+  event("pcb_calculated", { monthly_salary: monthlySalary, monthly_pcb: monthlyPcb });
+}
