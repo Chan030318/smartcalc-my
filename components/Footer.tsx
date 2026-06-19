@@ -11,6 +11,7 @@ const links = {
     { href: "/loan-calculator", label: "Loan Calculator" },
     { href: "/dsr-calculator-malaysia", label: "DSR Calculator" },
     { href: "/socso-calculator-malaysia", label: "SOCSO Calculator" },
+    { href: "/eis-calculator-malaysia", label: "EIS Calculator" },
   ],
   Guides: [
     { href: "/guides", label: "All Guides" },

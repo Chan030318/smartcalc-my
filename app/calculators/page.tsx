@@ -10,7 +10,7 @@ const PAGE_URL = `${BASE_URL}/calculators`;
 export const metadata: Metadata = {
   title: "All Free Malaysian Calculators — SmartCalc MY",
   description:
-    "Browse all free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, Loan, and DSR Calculator. Instant results, no sign-up required.",
+    "Browse all free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, EIS, Loan, and DSR. Instant results, no sign-up required.",
   keywords: [
     "free calculators Malaysia",
     "Malaysian calculator tools",
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "All Free Malaysian Calculators — SmartCalc MY",
     description:
-      "8 free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, Loan, and DSR. Instant results, no sign-up.",
+      "9 free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, Loan, and DSR. Instant results, no sign-up.",
     url: PAGE_URL,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "SmartCalc MY — All Calculators" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "All Free Malaysian Calculators — SmartCalc MY",
-    description: "8 free calculators for Malaysians. BMI, Salary, Tax, EPF, PCB, SOCSO, Loan, DSR. Instant results.",
+    description: "9 free calculators for Malaysians. BMI, Salary, Tax, EPF, PCB, SOCSO, Loan, DSR. Instant results.",
     images: ["/og-image.png"],
   },
 };
@@ -130,6 +130,19 @@ const categories = [
         border: "border-rose-100",
         cta: "Calculate SOCSO",
         ctaStyle: "bg-rose-600 hover:bg-rose-700",
+      },
+      {
+        href: "/eis-calculator-malaysia",
+        emoji: "🛟",
+        title: "EIS / SIP Calculator",
+        description: "Calculate your Employment Insurance System (EIS/SIP) contributions. 0.2% employee + 0.2% employer, capped at RM4,000 insured wage. See net salary after EIS deduction.",
+        features: ["0.2% + 0.2% rate", "Wage ceiling RM4,000", "EIS vs SOCSO vs EPF table"],
+        badge: "EIS / SIP",
+        badgeColor: "bg-amber-100 text-amber-700",
+        gradient: "from-amber-50 to-yellow-50",
+        border: "border-amber-100",
+        cta: "Calculate EIS",
+        ctaStyle: "bg-amber-500 hover:bg-amber-600",
       },
     ],
   },

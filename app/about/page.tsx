@@ -59,6 +59,12 @@ const calculators = [
     title: "SOCSO Calculator",
     desc: "Calculate PERKESO employee and employer contributions for First and Second Category based on 2024 rates.",
   },
+  {
+    href: "/eis-calculator-malaysia",
+    emoji: "🛟",
+    title: "EIS Calculator",
+    desc: "Calculate EIS (SIP) employment insurance contributions — 0.2% each side, wage ceiling RM4,000.",
+  },
 ];
 
 const guides = [

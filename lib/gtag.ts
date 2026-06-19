@@ -53,3 +53,7 @@ export function trackDsrCalculated(monthlyIncome: number, dsr: number) {
 export function trackSocsoCalculated(monthlySalary: number, employeeSocso: number, employerSocso: number) {
   event("socso_calculated", { monthly_salary: monthlySalary, employee_socso: employeeSocso, employer_socso: employerSocso });
 }
+
+export function trackEisCalculated(monthlySalary: number, employeeEis: number, employerEis: number) {
+  event("eis_calculated", { monthly_salary: monthlySalary, employee_eis: employeeEis, employer_eis: employerEis });
+}
