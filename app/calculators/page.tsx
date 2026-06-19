@@ -10,7 +10,7 @@ const PAGE_URL = `${BASE_URL}/calculators`;
 export const metadata: Metadata = {
   title: "All Free Malaysian Calculators — SmartCalc MY",
   description:
-    "Browse all free calculators for Malaysians: BMI Calculator, Salary Calculator, Income Tax, EPF, PCB, Loan, and DSR Calculator. Instant results, no sign-up required.",
+    "Browse all free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, Loan, and DSR Calculator. Instant results, no sign-up required.",
   keywords: [
     "free calculators Malaysia",
     "Malaysian calculator tools",
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "All Free Malaysian Calculators — SmartCalc MY",
     description:
-      "7 free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, Loan, and DSR. Instant results, no sign-up.",
+      "8 free calculators for Malaysians: BMI, Salary, Income Tax, EPF, PCB, SOCSO, Loan, and DSR. Instant results, no sign-up.",
     url: PAGE_URL,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "SmartCalc MY — All Calculators" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "All Free Malaysian Calculators — SmartCalc MY",
-    description: "7 free calculators for Malaysians. BMI, Salary, Tax, EPF, PCB, Loan, DSR. Instant results.",
+    description: "8 free calculators for Malaysians. BMI, Salary, Tax, EPF, PCB, SOCSO, Loan, DSR. Instant results.",
     images: ["/og-image.png"],
   },
 };
@@ -117,6 +117,19 @@ const categories = [
         border: "border-indigo-100",
         cta: "Calculate PCB",
         ctaStyle: "bg-indigo-600 hover:bg-indigo-700",
+      },
+      {
+        href: "/socso-calculator-malaysia",
+        emoji: "🛡️",
+        title: "SOCSO Calculator",
+        description: "Calculate your SOCSO (PERKESO) employee and employer contributions. Supports First Category (below 60) and Second Category (60 and above) with RM5,000 wage ceiling.",
+        features: ["First & Second Category", "Employee & employer split", "Wage ceiling RM5,000"],
+        badge: "SOCSO",
+        badgeColor: "bg-rose-100 text-rose-700",
+        gradient: "from-rose-50 to-pink-50",
+        border: "border-rose-100",
+        cta: "Calculate SOCSO",
+        ctaStyle: "bg-rose-600 hover:bg-rose-700",
       },
     ],
   },

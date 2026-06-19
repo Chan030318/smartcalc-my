@@ -53,6 +53,12 @@ const calculators = [
     title: "DSR Calculator",
     desc: "Checks your Debt Service Ratio against bank thresholds before you apply for any loan.",
   },
+  {
+    href: "/socso-calculator-malaysia",
+    emoji: "🛡️",
+    title: "SOCSO Calculator",
+    desc: "Calculate PERKESO employee and employer contributions for First and Second Category based on 2024 rates.",
+  },
 ];
 
 const guides = [

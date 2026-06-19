@@ -10,6 +10,7 @@ const links = {
     { href: "/pcb-calculator-malaysia", label: "PCB Calculator" },
     { href: "/loan-calculator", label: "Loan Calculator" },
     { href: "/dsr-calculator-malaysia", label: "DSR Calculator" },
+    { href: "/socso-calculator-malaysia", label: "SOCSO Calculator" },
   ],
   Guides: [
     { href: "/guides", label: "All Guides" },

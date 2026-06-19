@@ -6,7 +6,7 @@ import { useState } from "react";
 const navLinks = [
   { href: "/bmi-calculator", label: "BMI Calculator" },
   { href: "/salary-calculator-malaysia", label: "Salary Calculator" },
-  { href: "/loan-calculator", label: "Loan Calculator" },
+  { href: "/socso-calculator-malaysia", label: "SOCSO Calculator" },
   { href: "/calculators", label: "All Tools" },
   { href: "/guides", label: "Guides" },
 ];
