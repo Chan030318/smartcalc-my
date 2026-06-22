@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Us — SmartCalc MY",
   description:
-    "SmartCalc MY provides 9 free calculators and 25 guides built specifically for Malaysians — BMI, salary, income tax, EPF, PCB, loan, DSR, SOCSO, and EIS calculators using Malaysian standards.",
+    "SmartCalc MY provides 9 free calculators and 24 guides built specifically for Malaysians — BMI, salary, income tax, EPF, PCB, loan, DSR, SOCSO, and EIS calculators using Malaysian standards.",
   alternates: { canonical: "/about" },
 };
 
@@ -112,7 +112,7 @@ export default function AboutPage() {
             <div className="text-5xl mb-5">🧮</div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About SmartCalc MY</h1>
             <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Free, accurate, and built for Malaysians. SmartCalc MY gives you 9 calculators and 25 guides — without sign-ups, fees, or data collection.
+              Free, accurate, and built for Malaysians. SmartCalc MY gives you 9 calculators and 24 guides — without sign-ups, fees, or data collection.
             </p>
           </div>
         </section>

@@ -14,29 +14,16 @@ const links = {
     { href: "/eis-calculator-malaysia", label: "EIS Calculator" },
   ],
   Guides: [
-    { href: "/guides", label: "All Guides" },
+    { href: "/guides", label: "All Guides →" },
     { href: "/guides/epf-contribution-guide-malaysia", label: "EPF Contribution Guide" },
-    { href: "/guides/epf-withdrawal-guide-malaysia", label: "EPF Withdrawal Guide" },
-    { href: "/guides/how-much-epf-at-30-malaysia", label: "How Much EPF at 30?" },
     { href: "/guides/how-to-calculate-salary-after-epf", label: "Salary After EPF" },
     { href: "/guides/salary-deductions-explained-malaysia", label: "Salary Deductions Explained" },
-    { href: "/guides/pcb-vs-income-tax-malaysia", label: "PCB vs Income Tax" },
-    { href: "/guides/how-pcb-tax-works-malaysia", label: "How PCB Tax Works" },
     { href: "/guides/how-to-reduce-income-tax-malaysia", label: "Reduce Income Tax" },
-    { href: "/guides/what-salary-to-afford-house-malaysia", label: "Salary to Afford a House" },
-    { href: "/guides/housing-loan-eligibility-malaysia", label: "Housing Loan Eligibility" },
-    { href: "/guides/how-to-improve-loan-approval-malaysia", label: "Improve Loan Approval" },
-    { href: "/guides/personal-loan-vs-housing-loan-malaysia", label: "Personal vs Housing Loan" },
     { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR?" },
-    { href: "/guides/how-to-calculate-bmi-malaysia", label: "BMI in Malaysia" },
-    { href: "/guides/socso-contribution-table-malaysia", label: "SOCSO Contribution Table" },
-    { href: "/guides/eis-contribution-table-malaysia", label: "EIS Contribution Table" },
-    { href: "/guides/epf-dividend-history-malaysia", label: "EPF Dividend History" },
+    { href: "/guides/first-home-buyer-guide-malaysia", label: "First Home Buyer Guide" },
     { href: "/guides/how-to-check-ccris-malaysia", label: "How to Check CCRIS" },
     { href: "/guides/how-to-improve-ctos-score-malaysia", label: "Improve CTOS Score" },
-    { href: "/guides/first-home-buyer-guide-malaysia", label: "First Home Buyer Guide" },
-    { href: "/guides/car-loan-eligibility-malaysia", label: "Car Loan Eligibility" },
-    { href: "/guides/personal-loan-guide-malaysia", label: "Personal Loan Guide" },
+    { href: "/guides/socso-contribution-table-malaysia", label: "SOCSO Contribution Table" },
     { href: "/guides/emergency-fund-malaysia", label: "Emergency Fund Guide" },
     { href: "/guides/rm3000-salary-budget-plan-malaysia", label: "RM3,000 Budget Plan" },
   ],
@@ -60,7 +47,7 @@ export default function Footer() {
               SmartCalc MY
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Free, accurate calculators and guides built for Malaysians. 9 calculators and 25 guides — no sign-up, no fees.
+              Free, accurate calculators and guides built for Malaysians. 9 calculators and 24 guides — no sign-up, no fees.
             </p>
           </div>
 

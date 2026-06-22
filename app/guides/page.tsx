@@ -10,7 +10,7 @@ const PAGE_URL = `${BASE_URL}/guides`;
 export const metadata: Metadata = {
   title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
   description:
-    "25 free guides on Malaysian personal finance and health — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, personal loans, emergency fund, and more. Plain English, written for Malaysians.",
+    "24 free guides on Malaysian personal finance and health — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, personal loans, emergency fund, and more. Plain English, written for Malaysians.",
   keywords: [
     "Malaysia finance guide",
     "EPF guide Malaysia",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
-    description: "25 free guides on EPF, salary, income tax, DSR, housing loans, credit scores, car loans, and more for Malaysians.",
+    description: "24 free guides on EPF, salary, income tax, DSR, housing loans, credit scores, car loans, and more for Malaysians.",
     images: ["/og-image.png"],
   },
 };
@@ -303,7 +303,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Free Malaysian Finance & Health Guides",
-  description: "25 free guides on personal finance and health for Malaysians — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, emergency fund, budgeting, and more.",
+  description: "24 free guides on personal finance and health for Malaysians — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, emergency fund, budgeting, and more.",
   url: PAGE_URL,
   publisher: { "@type": "Organization", name: "SmartCalc MY", url: BASE_URL },
   hasPart: allGuides.map(g => ({

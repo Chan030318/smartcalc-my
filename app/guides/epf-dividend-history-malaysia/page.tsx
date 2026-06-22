@@ -12,7 +12,7 @@ const PAGE_URL = `${BASE_URL}/guides/epf-dividend-history-malaysia`;
 export const metadata: Metadata = {
   title: "EPF Dividend History Malaysia 2026 — KWSP Rates Since 1983",
   description:
-    "Complete EPF (KWSP) dividend history from 1983 to 2025. Conventional and Syariah rates, how dividends are calculated, why they vary each year, and what historical returns mean for your retirement savings.",
+    "Complete EPF (KWSP) dividend history from 1983 to 2024. Conventional and Syariah rates, how dividends are calculated, why they vary each year, and what historical returns mean for your retirement savings.",
   keywords: [
     "EPF dividend history Malaysia",
     "KWSP dividend history",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides/epf-dividend-history-malaysia" },
   openGraph: {
     title: "EPF Dividend History Malaysia 2026 — KWSP Rates Since 1983",
-    description: "Complete EPF dividend history from 1983 to 2025. Conventional and Syariah rates and what they mean for retirement.",
+    description: "Complete EPF dividend history from 1983 to 2024. Conventional and Syariah rates and what they mean for retirement.",
     url: PAGE_URL,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "EPF Dividend History Malaysia" }],
   },
@@ -66,7 +66,7 @@ const jsonLd: Record<string, unknown> = {
     {
       "@type": "Article",
       headline: "EPF Dividend History Malaysia 2026 — KWSP Rates Since 1983",
-      description: "Complete EPF (KWSP) dividend history for Malaysia, covering conventional and Syariah rates from 1983 to 2025, with analysis of trends and how dividends compound retirement savings.",
+      description: "Complete EPF (KWSP) dividend history for Malaysia, covering conventional and Syariah rates from 1983 to 2024, with analysis of trends and how dividends compound retirement savings.",
       url: PAGE_URL,
       datePublished: "2026-01-01",
       dateModified: "2026-06-22",
