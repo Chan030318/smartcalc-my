@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthorCard from "@/components/AuthorCard";
 import JsonLd from "@/components/JsonLd";
 import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
@@ -190,6 +191,7 @@ export default function HowMuchEpfAt30Page() {
             ))}
           </div>
         </section>
+        <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>
         </div>
