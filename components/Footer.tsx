@@ -29,6 +29,16 @@ const links = {
     { href: "/guides/personal-loan-vs-housing-loan-malaysia", label: "Personal vs Housing Loan" },
     { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR?" },
     { href: "/guides/how-to-calculate-bmi-malaysia", label: "BMI in Malaysia" },
+    { href: "/guides/socso-contribution-table-malaysia", label: "SOCSO Contribution Table" },
+    { href: "/guides/eis-contribution-table-malaysia", label: "EIS Contribution Table" },
+    { href: "/guides/epf-dividend-history-malaysia", label: "EPF Dividend History" },
+    { href: "/guides/how-to-check-ccris-malaysia", label: "How to Check CCRIS" },
+    { href: "/guides/how-to-improve-ctos-score-malaysia", label: "Improve CTOS Score" },
+    { href: "/guides/first-home-buyer-guide-malaysia", label: "First Home Buyer Guide" },
+    { href: "/guides/car-loan-eligibility-malaysia", label: "Car Loan Eligibility" },
+    { href: "/guides/personal-loan-guide-malaysia", label: "Personal Loan Guide" },
+    { href: "/guides/emergency-fund-malaysia", label: "Emergency Fund Guide" },
+    { href: "/guides/rm3000-salary-budget-plan-malaysia", label: "RM3,000 Budget Plan" },
   ],
   Company: [
     { href: "/about", label: "About Us" },
@@ -50,7 +60,7 @@ export default function Footer() {
               SmartCalc MY
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Free, accurate calculators and guides built for Malaysians. 7 calculators and 15 guides — no sign-up, no fees.
+              Free, accurate calculators and guides built for Malaysians. 9 calculators and 25 guides — no sign-up, no fees.
             </p>
           </div>
 

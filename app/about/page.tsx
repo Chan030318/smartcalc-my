@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Us — SmartCalc MY",
   description:
-    "SmartCalc MY provides 7 free calculators and 15 guides built specifically for Malaysians — BMI, salary, income tax, EPF, PCB, loan, and DSR calculators using Malaysian standards.",
+    "SmartCalc MY provides 9 free calculators and 25 guides built specifically for Malaysians — BMI, salary, income tax, EPF, PCB, loan, DSR, SOCSO, and EIS calculators using Malaysian standards.",
   alternates: { canonical: "/about" },
 };
 
@@ -82,6 +82,16 @@ const guides = [
   { href: "/guides/personal-loan-vs-housing-loan-malaysia", label: "Personal Loan vs Housing Loan Malaysia" },
   { href: "/guides/what-is-dsr-malaysia", label: "What Is DSR in Malaysia?" },
   { href: "/guides/how-to-calculate-bmi-malaysia", label: "How to Calculate BMI in Malaysia" },
+  { href: "/guides/socso-contribution-table-malaysia", label: "SOCSO Contribution Table Malaysia 2026" },
+  { href: "/guides/eis-contribution-table-malaysia", label: "EIS Contribution Table Malaysia 2026" },
+  { href: "/guides/epf-dividend-history-malaysia", label: "EPF Dividend History Malaysia 2026" },
+  { href: "/guides/how-to-check-ccris-malaysia", label: "How to Check Your CCRIS Report Malaysia" },
+  { href: "/guides/how-to-improve-ctos-score-malaysia", label: "How to Improve Your CTOS Score Malaysia" },
+  { href: "/guides/first-home-buyer-guide-malaysia", label: "First Home Buyer Guide Malaysia 2026" },
+  { href: "/guides/car-loan-eligibility-malaysia", label: "Car Loan Eligibility Malaysia 2026" },
+  { href: "/guides/personal-loan-guide-malaysia", label: "Personal Loan Malaysia 2026 Guide" },
+  { href: "/guides/emergency-fund-malaysia", label: "Emergency Fund Malaysia — How Much to Save" },
+  { href: "/guides/rm3000-salary-budget-plan-malaysia", label: "RM3,000 Salary Budget Plan Malaysia 2026" },
 ];
 
 const values = [
@@ -102,7 +112,7 @@ export default function AboutPage() {
             <div className="text-5xl mb-5">🧮</div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About SmartCalc MY</h1>
             <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Free, accurate, and built for Malaysians. SmartCalc MY gives you the financial and health tools you need — without sign-ups, fees, or data collection.
+              Free, accurate, and built for Malaysians. SmartCalc MY gives you 9 calculators and 25 guides — without sign-ups, fees, or data collection.
             </p>
           </div>
         </section>

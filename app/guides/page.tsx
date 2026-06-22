@@ -10,7 +10,7 @@ const PAGE_URL = `${BASE_URL}/guides`;
 export const metadata: Metadata = {
   title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
   description:
-    "15 free guides on Malaysian personal finance and health — EPF, salary, income tax, DSR, housing loans, BMI, and more. Plain English, written for Malaysians.",
+    "25 free guides on Malaysian personal finance and health — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, personal loans, emergency fund, and more. Plain English, written for Malaysians.",
   keywords: [
     "Malaysia finance guide",
     "EPF guide Malaysia",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Free Malaysian Finance & Health Guides — SmartCalc MY",
-    description: "15 free guides on EPF, salary, income tax, DSR, housing loans, and more for Malaysians.",
+    description: "25 free guides on EPF, salary, income tax, DSR, housing loans, credit scores, car loans, and more for Malaysians.",
     images: ["/og-image.png"],
   },
 };
@@ -185,6 +185,116 @@ const categories: { id: string; label: string; guides: Guide[] }[] = [
       },
     ],
   },
+  {
+    id: "social-security",
+    label: "SOCSO & EIS",
+    guides: [
+      {
+        href: "/guides/socso-contribution-table-malaysia",
+        emoji: "🛡️",
+        title: "SOCSO Contribution Table Malaysia 2026 — First & Second Category",
+        description: "Complete SOCSO (PERKESO) contribution table for 2026 with all 15 salary brackets, employee and employer rates for First and Second Category, and what your contributions cover.",
+        category: "SOCSO", categoryColor: "bg-rose-100 text-rose-700", readTime: "7 min",
+        gradient: "from-rose-50 to-pink-50", border: "border-rose-100",
+      },
+      {
+        href: "/guides/eis-contribution-table-malaysia",
+        emoji: "🛟",
+        title: "EIS Contribution Table Malaysia 2026 — Full Rate Table",
+        description: "Complete EIS (SIP) contribution table for 2026. Every wage bracket from RM300 to RM4,000, employee and employer rates, wage ceiling, and how EIS compares to SOCSO and EPF.",
+        category: "EIS", categoryColor: "bg-amber-100 text-amber-700", readTime: "6 min",
+        gradient: "from-amber-50 to-yellow-50", border: "border-amber-100",
+      },
+    ],
+  },
+  {
+    id: "retirement-advanced",
+    label: "EPF & Retirement (Advanced)",
+    guides: [
+      {
+        href: "/guides/epf-dividend-history-malaysia",
+        emoji: "📊",
+        title: "EPF Dividend History Malaysia 2026 — KWSP Rates Since 1983",
+        description: "Every EPF dividend rate from 1983 to 2024 — conventional and Syariah. Why rates change each year, how dividends compound, and what historical returns mean for retirement.",
+        category: "Retirement", categoryColor: "bg-teal-100 text-teal-700", readTime: "9 min",
+        gradient: "from-teal-50 to-cyan-50", border: "border-teal-100",
+      },
+    ],
+  },
+  {
+    id: "credit-scores",
+    label: "Credit Scores & Reports",
+    guides: [
+      {
+        href: "/guides/how-to-check-ccris-malaysia",
+        emoji: "📋",
+        title: "How to Check Your CCRIS Report Malaysia (2026 Guide)",
+        description: "Step-by-step guide to accessing your free CCRIS report via BNM eCCRIS, what each section shows, how lenders use it, and how to dispute errors.",
+        category: "Credit", categoryColor: "bg-blue-100 text-blue-700", readTime: "8 min",
+        gradient: "from-blue-50 to-sky-50", border: "border-blue-100",
+      },
+      {
+        href: "/guides/how-to-improve-ctos-score-malaysia",
+        emoji: "📈",
+        title: "How to Improve Your CTOS Score Malaysia (2026)",
+        description: "CTOS score range 300–850 explained. What factors affect your score, 8 proven strategies to improve it, and how long improvement takes before a loan application.",
+        category: "Credit", categoryColor: "bg-purple-100 text-purple-700", readTime: "9 min",
+        gradient: "from-purple-50 to-violet-50", border: "border-purple-100",
+      },
+    ],
+  },
+  {
+    id: "loans-property-advanced",
+    label: "Loans & Property (More Guides)",
+    guides: [
+      {
+        href: "/guides/first-home-buyer-guide-malaysia",
+        emoji: "🏡",
+        title: "First Home Buyer Guide Malaysia 2026 — Step-by-Step",
+        description: "Complete first-time buyer guide. PR1MA, My First Home Scheme, SJKP, stamp duty exemptions, the full 7-step buying process, and all upfront costs explained.",
+        category: "Housing", categoryColor: "bg-green-100 text-green-700", readTime: "11 min",
+        gradient: "from-green-50 to-emerald-50", border: "border-green-100",
+      },
+      {
+        href: "/guides/car-loan-eligibility-malaysia",
+        emoji: "🚗",
+        title: "Car Loan Eligibility Malaysia 2026 — Hire Purchase Guide",
+        description: "How banks assess hire purchase eligibility, what the flat interest rate really costs you, new vs used car loan differences, and how to calculate your monthly instalment.",
+        category: "Loans", categoryColor: "bg-orange-100 text-orange-700", readTime: "8 min",
+        gradient: "from-orange-50 to-amber-50", border: "border-orange-100",
+      },
+      {
+        href: "/guides/personal-loan-guide-malaysia",
+        emoji: "💳",
+        title: "Personal Loan Malaysia 2026 — Rates, Eligibility & How to Choose",
+        description: "Personal loan rates by lender type, flat rate vs EIR explained, eligibility criteria, how much you can borrow, and when a personal loan is a good financial decision.",
+        category: "Loans", categoryColor: "bg-indigo-100 text-indigo-700", readTime: "9 min",
+        gradient: "from-indigo-50 to-blue-50", border: "border-indigo-100",
+      },
+    ],
+  },
+  {
+    id: "budgeting",
+    label: "Budgeting & Savings",
+    guides: [
+      {
+        href: "/guides/emergency-fund-malaysia",
+        emoji: "🛡️",
+        title: "Emergency Fund Malaysia 2026 — How Much to Save & Where to Keep It",
+        description: "How many months of expenses you need, how to calculate your target amount, and the best places to park your emergency fund in Malaysia for liquidity and decent returns.",
+        category: "Savings", categoryColor: "bg-cyan-100 text-cyan-700", readTime: "8 min",
+        gradient: "from-cyan-50 to-teal-50", border: "border-cyan-100",
+      },
+      {
+        href: "/guides/rm3000-salary-budget-plan-malaysia",
+        emoji: "📝",
+        title: "RM3,000 Salary Budget Plan Malaysia 2026",
+        description: "Exact take-home pay after EPF, SOCSO, EIS, and PCB deductions. A realistic RM3,000 monthly budget with allocation table, 50/30/20 framework, and savings priorities.",
+        category: "Budgeting", categoryColor: "bg-violet-100 text-violet-700", readTime: "9 min",
+        gradient: "from-violet-50 to-purple-50", border: "border-violet-100",
+      },
+    ],
+  },
 ];
 
 const allGuides = categories.flatMap(c => c.guides);
@@ -193,7 +303,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Free Malaysian Finance & Health Guides",
-  description: "15 free guides on personal finance and health for Malaysians — EPF, salary, income tax, DSR, housing loans, BMI, and more.",
+  description: "25 free guides on personal finance and health for Malaysians — EPF, salary, income tax, DSR, housing loans, credit scores, car loans, emergency fund, budgeting, and more.",
   url: PAGE_URL,
   publisher: { "@type": "Organization", name: "SmartCalc MY", url: BASE_URL },
   hasPart: allGuides.map(g => ({
