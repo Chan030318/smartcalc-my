@@ -147,6 +147,7 @@ export default function ImproveLoanApprovalPage() {
             <li><Link href="/guides/what-is-dsr-malaysia">What Is DSR in Malaysia?</Link></li>
             <li><Link href="/guides/housing-loan-eligibility-malaysia">Housing Loan Eligibility Malaysia</Link></li>
             <li><Link href="/guides/what-salary-to-afford-house-malaysia">What Salary to Afford a House in Malaysia</Link></li>
+            <li><Link href="/guides/ptptn-repayment-guide-malaysia">PTPTN Repayment Guide Malaysia</Link> — PTPTN counts in your DSR; understand your monthly obligation and discount options</li>
             <li><Link href="/dsr-calculator-malaysia">DSR Calculator Malaysia</Link></li>
           </ul>
         </article>

@@ -121,7 +121,7 @@ export default function PersonalLoanGuidePage() {
             A personal loan is an unsecured credit facility — meaning no collateral is required — that you can use for virtually any purpose: home renovation, medical expenses, education, wedding, debt consolidation, travel, or any other personal need. Because it is unsecured, personal loans carry higher interest rates than secured loans like mortgages or hire purchase, where the lender has an asset to repossess if you default.
           </p>
           <p>
-            In Malaysia, personal loans are offered by licensed commercial banks, Islamic banks (as personal financing-i under Syariah principles), licensed moneylenders under the Moneylenders Act 1951, and government agencies like PTPTN (for education), MARA (for Bumiputera entrepreneurs), and Amanah Ikhtiar Malaysia (for microloans). Each category has different rates, eligibility, and consumer protections.
+            In Malaysia, personal loans are offered by licensed commercial banks, Islamic banks (as personal financing-i under Syariah principles), licensed moneylenders under the Moneylenders Act 1951, and government agencies like <Link href="/guides/ptptn-repayment-guide-malaysia">PTPTN</Link> (for education), MARA (for Bumiputera entrepreneurs), and Amanah Ikhtiar Malaysia (for microloans). Each category has different rates, eligibility, and consumer protections.
           </p>
 
           <h2>Personal Loan Interest Rates in Malaysia (2026)</h2>
@@ -202,6 +202,22 @@ export default function PersonalLoanGuidePage() {
           </div>
         </section>
 
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { href: "/guides/car-loan-interest-calculator-guide-malaysia", title: "Car Loan Interest Calculator Guide", desc: "How flat rate vs EIR works for hire purchase — key when comparing loans." },
+              { href: "/guides/motorcycle-loan-guide-malaysia", title: "Motorcycle Loan Guide Malaysia", desc: "Lower-cost financing option — HP rates from 3%–5% flat for motorcycles." },
+              { href: "/guides/what-is-dsr-malaysia", title: "What Is DSR Malaysia?", desc: "Personal loans count in your DSR — understand how banks calculate capacity." },
+              { href: "/guides/how-to-improve-loan-approval-malaysia", title: "How to Improve Loan Approval", desc: "12 steps to improve your CCRIS and DSR before applying." },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="block bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 hover:border-indigo-200 hover:bg-indigo-50 transition-colors">
+                <div className="font-semibold text-sm text-gray-800">{g.title}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{g.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>

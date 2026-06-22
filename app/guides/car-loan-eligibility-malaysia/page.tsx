@@ -167,6 +167,9 @@ export default function CarLoanEligibilityPage() {
           <p>
             Compare this to a 5-year tenure at the same rate: Monthly = (RM80,000 + RM12,000) ÷ 60 = RM1,533/month — RM381 more per month but RM4,800 less in total interest.
           </p>
+          <p>
+            For a full breakdown of flat rate vs effective interest rate and how to compare car loan offers from different banks, read our <Link href="/guides/car-loan-interest-calculator-guide-malaysia">Car Loan Interest Calculator Guide Malaysia</Link>.
+          </p>
 
           <h2>How Much Car Can I Afford?</h2>
           <p>
@@ -213,6 +216,22 @@ export default function CarLoanEligibilityPage() {
           </div>
         </section>
 
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { href: "/guides/car-loan-interest-calculator-guide-malaysia", title: "Car Loan Interest Calculator Guide", desc: "Flat rate vs EIR explained — how to compare hire purchase offers correctly." },
+              { href: "/guides/motorcycle-loan-guide-malaysia", title: "Motorcycle Loan Guide Malaysia", desc: "HP rates, eligibility, and monthly instalments for motorcycles." },
+              { href: "/guides/what-is-dsr-malaysia", title: "What Is DSR Malaysia?", desc: "How banks calculate your Debt Service Ratio for hire purchase applications." },
+              { href: "/guides/how-to-improve-loan-approval-malaysia", title: "How to Improve Loan Approval", desc: "12 steps to clean up your profile and get your car loan approved." },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="block bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 hover:border-orange-200 hover:bg-orange-50 transition-colors">
+                <div className="font-semibold text-sm text-gray-800">{g.title}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{g.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>

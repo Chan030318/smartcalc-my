@@ -178,6 +178,9 @@ export default function CcrisGuidePage() {
           <p>
             A clean CCRIS — all zeros, no special attention accounts, low number of recent applications — positions you as a low-risk borrower. This can result in faster approval, a lower interest rate, and better loan terms. Use our <Link href="/dsr-calculator-malaysia">DSR Calculator Malaysia</Link> to estimate whether your current debt level falls within a bankable range, and read <Link href="/guides/housing-loan-eligibility-malaysia">Housing Loan Eligibility — What Banks Check</Link> for the full picture.
           </p>
+          <p>
+            Your CCRIS also determines which credit cards you are eligible for. Banks use the same report when evaluating credit card applications — number of existing cards, outstanding balances, and repayment history all influence which card tier and what credit limit you receive. See our <Link href="/guides/credit-card-eligibility-malaysia">Credit Card Eligibility Malaysia guide</Link> to understand the income and credit criteria for major card categories.
+          </p>
 
           <h2>CCRIS vs CTOS: What&apos;s the Difference?</h2>
           <p>
@@ -222,6 +225,22 @@ export default function CcrisGuidePage() {
           </div>
         </section>
 
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { href: "/guides/credit-score-malaysia-explained", title: "Credit Score Malaysia Explained", desc: "How CCRIS and CTOS work together — and what banks actually see." },
+              { href: "/guides/how-to-increase-credit-score-malaysia", title: "How to Increase Your Credit Score", desc: "8 proven steps to improve your CTOS score and CCRIS record." },
+              { href: "/guides/how-to-improve-ctos-score-malaysia", title: "How to Improve Your CTOS Score", desc: "CTOS-specific strategies including resolving legal records." },
+              { href: "/guides/credit-card-eligibility-malaysia", title: "Credit Card Eligibility Malaysia", desc: "Income and credit requirements for major Malaysian credit card tiers." },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="block bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 hover:border-blue-200 hover:bg-blue-50 transition-colors">
+                <div className="font-semibold text-sm text-gray-800">{g.title}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{g.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>

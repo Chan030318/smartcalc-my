@@ -147,9 +147,9 @@ export default function WhatIsDsrPage() {
           <p>Banks include the following commitments in your DSR calculation:</p>
           <ul>
             <li>Home loan / mortgage instalments</li>
-            <li>Car loan instalments</li>
+            <li><Link href="/guides/car-loan-interest-calculator-guide-malaysia">Car loan</Link> instalments</li>
             <li>Personal loan repayments</li>
-            <li>PTPTN student loan repayments</li>
+            <li><Link href="/guides/ptptn-repayment-guide-malaysia">PTPTN student loan</Link> repayments</li>
             <li><strong>5% of each credit card&rsquo;s limit</strong> (not the outstanding balance — the limit)</li>
             <li>Hire purchase and leasing repayments</li>
           </ul>
@@ -217,11 +217,13 @@ export default function WhatIsDsrPage() {
           </div>
 
           {/* Related calculators */}
-          <h2>Related Calculators</h2>
+          <h2>Related Calculators &amp; Guides</h2>
           <ul>
             <li><Link href="/dsr-calculator-malaysia">DSR Calculator Malaysia</Link> — check your DSR and borrowing capacity</li>
             <li><Link href="/loan-calculator">Loan Calculator</Link> — estimate monthly repayments and total interest</li>
             <li><Link href="/salary-calculator-malaysia">Salary Calculator Malaysia</Link> — find your gross take-home pay</li>
+            <li><Link href="/guides/ptptn-repayment-guide-malaysia">PTPTN Repayment Guide Malaysia</Link> — PTPTN is counted in your DSR; know how much it costs monthly</li>
+            <li><Link href="/guides/car-loan-interest-calculator-guide-malaysia">Car Loan Interest Calculator Guide</Link> — understand flat rate vs EIR for hire purchase DSR calculations</li>
           </ul>
         </article>
 

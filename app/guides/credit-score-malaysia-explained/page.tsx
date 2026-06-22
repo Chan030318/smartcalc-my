@@ -73,7 +73,7 @@ export default function CreditScoreMalaysiaExplainedPage() {
 
           <h2>How Banks Actually Use Your Credit Report</h2>
           <p>When you apply for any loan or credit card in Malaysia, the bank undertakes an assessment of: (1) Your income and DSR (Debt Service Ratio) — can you afford the repayments? (2) Your CCRIS — have you been reliable with past credit? (3) Your CTOS score — what does the broader credit risk picture look like? (4) Employment stability and industry. (5) Property value and LTV for secured loans.</p>
-          <p>The weight given to each factor varies by bank and product. For home loans, income and property value matter most. For personal loans, CCRIS payment history is more decisive. For credit cards, CCRIS + CTOS score + income tier determine which card and what limit you're offered.</p>
+          <p>The weight given to each factor varies by bank and product. For home loans, income and property value matter most. For personal loans, CCRIS payment history is more decisive. For credit cards, CCRIS + CTOS score + income tier determine which card and what limit you're offered. Read our <Link href="/guides/credit-card-eligibility-malaysia">Credit Card Eligibility Malaysia guide</Link> to understand the specific income and credit thresholds banks use for each card tier.</p>
 
           <h2>Reading Your CCRIS Report</h2>
           <p>When you access your CCRIS report via eCCRIS, you will see each credit facility listed with a 12-month payment grid. The numbers in the grid represent months of arrears: 0 = paid on time, 1 = 1 month late, 2 = 2 months late, etc. A row of all zeros is ideal. Lenders are most concerned by consecutive non-zero entries — one "1" in 12 months is often overlooked; two consecutive "2"s suggests a payment pattern problem.</p>
@@ -114,6 +114,22 @@ export default function CreditScoreMalaysiaExplainedPage() {
           </div>
         </section>
 
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { href: "/guides/how-to-check-ccris-malaysia", title: "How to Check CCRIS Malaysia", desc: "Free step-by-step guide to reading your CCRIS report via BNM eCCRIS." },
+              { href: "/guides/how-to-increase-credit-score-malaysia", title: "How to Increase Your Credit Score", desc: "8 proven steps to improve your CTOS score and CCRIS record." },
+              { href: "/guides/credit-card-eligibility-malaysia", title: "Credit Card Eligibility Malaysia", desc: "Income minimums and CCRIS requirements for major card tiers." },
+              { href: "/guides/how-to-improve-ctos-score-malaysia", title: "How to Improve CTOS Score", desc: "Strategies for resolving legal records and rebuilding your CTOS score." },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="block bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 hover:border-purple-200 hover:bg-purple-50 transition-colors">
+                <div className="font-semibold text-sm text-gray-800">{g.title}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{g.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>

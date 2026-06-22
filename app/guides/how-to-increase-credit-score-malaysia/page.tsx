@@ -77,6 +77,7 @@ export default function HowToIncreaseCreditScoreMalaysiaPage() {
 
           <h2>Step 4: Reduce Credit Card Utilisation Below 30%</h2>
           <p>Credit utilisation — the percentage of your credit limit currently used — is a key scoring factor. If you have a RM10,000 credit card limit and RM7,000 outstanding, your utilisation is 70% — too high. Aim for below 30% on each individual card and across all cards combined. Pay down balances before the statement date (since CCRIS captures the balance at month-end). Requesting a credit limit increase (without spending more) also mechanically reduces utilisation.</p>
+          <p>Once your utilisation is under control and your score improves, you may qualify for a better credit card product. Read our <Link href="/guides/credit-card-eligibility-malaysia">Credit Card Eligibility Malaysia guide</Link> for the income and CCRIS criteria banks use when evaluating card applications.</p>
 
           <h2>Step 5: Dispute Any Errors on Your Reports</h2>
           <p>Credit report errors are more common than many people realise — wrong balances, payments recorded as late when they were on time, accounts belonging to someone with a similar name, or closed accounts still showing as open. Each error potentially hurts your score unfairly. Dispute errors through BNM (for CCRIS) or CTOS directly with supporting documentation. Corrections typically take 14–30 working days.</p>
@@ -105,6 +106,22 @@ export default function HowToIncreaseCreditScoreMalaysiaPage() {
           </div>
         </section>
 
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { href: "/guides/credit-score-malaysia-explained", title: "Credit Score Malaysia Explained", desc: "How CCRIS and CTOS work — what banks see when you apply for credit." },
+              { href: "/guides/how-to-check-ccris-malaysia", title: "How to Check CCRIS Malaysia", desc: "Free step-by-step guide to accessing your CCRIS report via BNM eCCRIS." },
+              { href: "/guides/credit-card-eligibility-malaysia", title: "Credit Card Eligibility Malaysia", desc: "Income and credit score requirements for Malaysian credit cards." },
+              { href: "/guides/how-to-improve-ctos-score-malaysia", title: "How to Improve CTOS Score", desc: "CTOS-specific strategies for resolving legal records and boosting your score." },
+            ].map((g) => (
+              <Link key={g.href} href={g.href} className="block bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 hover:border-indigo-200 hover:bg-indigo-50 transition-colors">
+                <div className="font-semibold text-sm text-gray-800">{g.title}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{g.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <AuthorCard />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-sm text-gray-500">
           <Link href="/guides" className="hover:text-blue-600 transition-colors">← Back to Guides</Link>

@@ -17,7 +17,7 @@ const SITE_STATS = {
   calculators: 9,
   staticPages: 8, // home, about, calculators, contact, privacy, terms, author, /_not-found
   sitemapUrls: 66,
-  lastUpdated: "2026-06-22",
+  lastUpdated: "2026-06-22 (Phase 3.1 — orphan fix)",
 };
 
 const INTEGRATIONS = [
@@ -88,12 +88,12 @@ const INTERNAL_LINK_ANALYSIS: {
   { slug: "/guides/fixed-deposit-vs-epf-malaysia", title: "Fixed Deposit vs EPF", inbound: 2, outbound: 3, risk: "low" },
   { slug: "/guides/asb-vs-epf-malaysia", title: "ASB vs EPF Malaysia", inbound: 2, outbound: 3, risk: "low" },
   { slug: "/guides/best-budgeting-apps-malaysia", title: "Best Budgeting Apps", inbound: 1, outbound: 3, risk: "low" },
-  { slug: "/guides/credit-card-eligibility-malaysia", title: "Credit Card Eligibility", inbound: 1, outbound: 2, risk: "orphan" },
-  { slug: "/guides/credit-score-malaysia-explained", title: "Credit Score Malaysia Explained", inbound: 2, outbound: 3, risk: "low" },
-  { slug: "/guides/how-to-increase-credit-score-malaysia", title: "How to Increase Credit Score", inbound: 2, outbound: 3, risk: "low" },
-  { slug: "/guides/ptptn-repayment-guide-malaysia", title: "PTPTN Repayment Guide", inbound: 1, outbound: 2, risk: "orphan" },
-  { slug: "/guides/car-loan-interest-calculator-guide-malaysia", title: "Car Loan Interest Calculator Guide", inbound: 1, outbound: 3, risk: "orphan" },
-  { slug: "/guides/motorcycle-loan-guide-malaysia", title: "Motorcycle Loan Guide", inbound: 1, outbound: 2, risk: "orphan" },
+  { slug: "/guides/credit-card-eligibility-malaysia", title: "Credit Card Eligibility", inbound: 4, outbound: 2, risk: "ok" },
+  { slug: "/guides/credit-score-malaysia-explained", title: "Credit Score Malaysia Explained", inbound: 4, outbound: 4, risk: "ok" },
+  { slug: "/guides/how-to-increase-credit-score-malaysia", title: "How to Increase Credit Score", inbound: 4, outbound: 4, risk: "ok" },
+  { slug: "/guides/ptptn-repayment-guide-malaysia", title: "PTPTN Repayment Guide", inbound: 4, outbound: 2, risk: "ok" },
+  { slug: "/guides/car-loan-interest-calculator-guide-malaysia", title: "Car Loan Interest Calculator Guide", inbound: 4, outbound: 3, risk: "ok" },
+  { slug: "/guides/motorcycle-loan-guide-malaysia", title: "Motorcycle Loan Guide", inbound: 3, outbound: 2, risk: "ok" },
   { slug: "/guides/how-much-emergency-fund-malaysia", title: "How Much Emergency Fund", inbound: 2, outbound: 3, risk: "low" },
   { slug: "/guides/salary-rm4000-budget-plan-malaysia", title: "RM4,000 Budget Plan", inbound: 2, outbound: 4, risk: "low" },
   { slug: "/guides/salary-rm5000-budget-plan-malaysia", title: "RM5,000 Budget Plan", inbound: 2, outbound: 4, risk: "low" },
@@ -109,9 +109,8 @@ const lowLinks = INTERNAL_LINK_ANALYSIS.filter(p => p.risk === "low");
 const healthy = INTERNAL_LINK_ANALYSIS.filter(p => p.risk === "ok");
 
 const SEO_OPPORTUNITIES = [
-  { priority: "High", opportunity: "Add inbound links to Phase 2 guides from Phase 1 guides", pages: ["car-loan-eligibility → car-loan-interest-calculator-guide", "how-to-check-ccris → credit-card-eligibility", "how-to-improve-ctos-score → how-to-increase-credit-score"] },
   { priority: "High", opportunity: "Submit sitemap to Google Search Console after each Vercel deploy", pages: ["https://smartcalc-my.vercel.app/sitemap.xml"] },
-  { priority: "High", opportunity: "Add PTPTN guide link from salary-deductions-explained and DSR guide", pages: ["salary-deductions-explained-malaysia", "what-is-dsr-malaysia"] },
+  { priority: "High", opportunity: "Request Google indexing for all 20 Phase 2 guides via Search Console URL Inspection", pages: ["44 guides total — prioritise Phase 2 pages added 2026-06-22"] },
   { priority: "Medium", opportunity: "Create a 'Related guides' section at the bottom of each guide", pages: ["All 44 guides — currently guides link only via inline prose"] },
   { priority: "Medium", opportunity: "Add more guides to Footer curated list (currently 12 links)", pages: ["components/Footer.tsx — update Guides section"] },
   { priority: "Medium", opportunity: "Target 'loan calculator Malaysia' long-tail from Loan Calculator page (missing guides link)", pages: ["/loan-calculator → link to car-loan-interest-calculator-guide, refinancing-guide"] },

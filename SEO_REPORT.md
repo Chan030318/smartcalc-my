@@ -187,50 +187,49 @@ Priority tiers:
 
 ## Internal Linking Report
 
-### Risk Summary
+### Risk Summary (Phase 3.1 — updated 2026-06-22)
 | Status | Count |
 |---|---|
-| ✅ Healthy (≥3 inbound links) | 24 |
-| ⚠️ Low (1–2 inbound links) | 16 |
-| 🔴 Orphan (≤1 inbound link) | 4 |
+| ✅ Healthy (≥3 inbound links) | 28 |
+| ⚠️ Low (1–2 inbound links) | 13 |
+| 🔴 Orphan (≤1 inbound link) | 0 |
 
-### Orphan / Near-Orphan Pages (action required)
-These pages receive very few inbound links from other site content and are at risk of poor crawl discovery:
+**All 4 previously orphaned pages have been fixed.** Inbound links added via contextual prose and new "Related Guides" sections added to 6 guides.
 
-| Page | Inbound Links | Action |
+### Fixed in Phase 3.1
+
+| Page | Was | Now | Links Added From |
+|---|---|---|---|
+| `/guides/credit-card-eligibility-malaysia` | 1 inbound (orphan) | 4 inbound ✅ | `how-to-check-ccris`, `credit-score-malaysia-explained`, `how-to-increase-credit-score` + Related Guides |
+| `/guides/ptptn-repayment-guide-malaysia` | 1 inbound (orphan) | 4 inbound ✅ | `what-is-dsr-malaysia` (PTPTN list item), `salary-deductions-explained`, `how-to-improve-loan-approval`, `personal-loan-guide` |
+| `/guides/car-loan-interest-calculator-guide-malaysia` | 1 inbound (orphan) | 4 inbound ✅ | `car-loan-eligibility` (prose + Related Guides), `what-is-dsr-malaysia` (car loan list item), `personal-loan-guide` (Related Guides) |
+| `/guides/motorcycle-loan-guide-malaysia` | 1 inbound (orphan) | 3 inbound ✅ | `car-loan-eligibility` (Related Guides), `personal-loan-guide` (Related Guides), `car-loan-interest-calculator-guide` (Related Guides) |
+
+### Low-Link Pages (monitor — Phase 4 opportunity)
+| Page | Inbound | Suggested action |
 |---|---|---|
-| `/guides/credit-card-eligibility-malaysia` | 1 | Link from `how-to-check-ccris-malaysia`, `how-to-increase-credit-score-malaysia` |
-| `/guides/ptptn-repayment-guide-malaysia` | 1 | Link from `salary-deductions-explained-malaysia`, `what-is-dsr-malaysia` |
-| `/guides/car-loan-interest-calculator-guide-malaysia` | 1 | Link from `car-loan-eligibility-malaysia` |
-| `/guides/motorcycle-loan-guide-malaysia` | 1 | Link from `car-loan-eligibility-malaysia`, `car-loan-interest-calculator-guide-malaysia` |
-
-### Low-Link Pages (monitor)
-Phase 2 guides that need more inbound links from existing content:
-- `/guides/epf-retirement-calculator-guide-malaysia` — add link from `how-much-epf-at-30-malaysia`
-- `/guides/fixed-deposit-vs-epf-malaysia` — add link from `epf-dividend-history-malaysia`
-- `/guides/asb-vs-epf-malaysia` — add link from `epf-retirement-calculator-guide-malaysia`
-- `/guides/salary-to-buy-rm300k-house-malaysia` — add link from `what-salary-to-afford-house-malaysia`
-- `/guides/salary-to-buy-rm500k-house-malaysia` — add link from `what-salary-to-afford-house-malaysia`
-- `/guides/best-budgeting-apps-malaysia` — add link from `rm3000-salary-budget-plan-malaysia`
-- `/guides/credit-score-malaysia-explained` — add link from `how-to-check-ccris-malaysia`
-- `/guides/how-to-increase-credit-score-malaysia` — add link from `credit-score-malaysia-explained`
-- `/guides/how-much-emergency-fund-malaysia` — add link from `emergency-fund-malaysia`
-- `/guides/salary-rm4000-budget-plan-malaysia` — add link from `rm3000-salary-budget-plan-malaysia`
-- `/guides/salary-rm5000-budget-plan-malaysia` — add link from `salary-rm4000-budget-plan-malaysia`
-- `/guides/salary-rm6000-budget-plan-malaysia` — add link from `salary-rm5000-budget-plan-malaysia`
-- `/guides/how-to-save-first-rm10000-malaysia` — add link from `best-savings-accounts-malaysia`
-- `/guides/best-savings-accounts-malaysia` — add link from `emergency-fund-malaysia`
-- `/guides/housing-loan-margin-of-finance-malaysia` — already linked from `refinancing-guide-malaysia`
-- `/guides/refinancing-guide-malaysia` — already linked from `housing-loan-margin-of-finance-malaysia`
+| `/guides/epf-retirement-calculator-guide-malaysia` | 2 | Add link from `how-much-epf-at-30-malaysia` |
+| `/guides/fixed-deposit-vs-epf-malaysia` | 2 | Add link from `epf-dividend-history-malaysia` |
+| `/guides/asb-vs-epf-malaysia` | 2 | Add link from `epf-retirement-calculator-guide-malaysia` |
+| `/guides/salary-to-buy-rm300k-house-malaysia` | 2 | Add link from `what-salary-to-afford-house-malaysia` |
+| `/guides/salary-to-buy-rm500k-house-malaysia` | 2 | Add link from `what-salary-to-afford-house-malaysia` |
+| `/guides/best-budgeting-apps-malaysia` | 1 | Add link from `rm3000-salary-budget-plan-malaysia` |
+| `/guides/how-much-emergency-fund-malaysia` | 2 | Add link from `emergency-fund-malaysia` |
+| `/guides/salary-rm4000-budget-plan-malaysia` | 2 | Add link from `rm3000-salary-budget-plan-malaysia` |
+| `/guides/salary-rm5000-budget-plan-malaysia` | 2 | Add link from `salary-rm4000-budget-plan-malaysia` |
+| `/guides/salary-rm6000-budget-plan-malaysia` | 2 | Add link from `salary-rm5000-budget-plan-malaysia` |
+| `/guides/how-to-save-first-rm10000-malaysia` | 2 | Add link from `best-savings-accounts-malaysia` |
+| `/guides/best-savings-accounts-malaysia` | 2 | Add link from `emergency-fund-malaysia` |
+| `/guides/how-to-improve-loan-approval-malaysia` | 2 | Already linked from `personal-loan-guide` Related Guides |
 
 ---
 
 ## Next SEO Opportunities
 
 ### High Priority
-1. **Fix orphan pages** — Add 4–6 inbound links across existing guides to the 4 orphan pages listed above. Simple prose edits to existing `page.tsx` files.
+1. ✅ **Orphan pages fixed (Phase 3.1)** — All 4 orphan pages now have 3+ inbound links. Related Guides sections added to 6 guides.
 2. **Submit sitemap to Search Console** — After every Vercel deploy, verify sitemap submission at `search.google.com/search-console`. Set up email alerts for crawl errors.
-3. **Request Google indexing** for all 20 new Phase 2 guides** via Search Console URL Inspection after deployment.
+3. **Request Google indexing for all 20 Phase 2 guides** via Search Console URL Inspection after deployment.
 
 ### Medium Priority
 4. **Add "Related Guides" section** at the bottom of each guide — a static 3-card grid linking to 3 thematically related guides. This increases inbound links for all guides simultaneously and keeps users on-site longer.

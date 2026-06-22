@@ -196,6 +196,7 @@ export default function SalaryDeductionsPage() {
             <li><Link href="/guides/how-to-calculate-salary-after-epf">How to Calculate Take-Home Salary After EPF</Link> — full worked example</li>
             <li><Link href="/guides/pcb-vs-income-tax-malaysia">PCB vs Income Tax Malaysia</Link></li>
             <li><Link href="/guides/how-pcb-tax-works-malaysia">How PCB Tax Works in Malaysia</Link></li>
+            <li><Link href="/guides/ptptn-repayment-guide-malaysia">PTPTN Repayment Guide Malaysia</Link> — PTPTN is not a payslip deduction but counts toward your DSR; understand your total obligations</li>
             <li><Link href="/salary-calculator-malaysia">Salary Calculator Malaysia</Link></li>
           </ul>
         </article>
