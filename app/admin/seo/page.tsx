@@ -109,7 +109,7 @@ const lowLinks = INTERNAL_LINK_ANALYSIS.filter(p => p.risk === "low");
 const healthy = INTERNAL_LINK_ANALYSIS.filter(p => p.risk === "ok");
 
 const SEO_OPPORTUNITIES = [
-  { priority: "High", opportunity: "Submit sitemap to Google Search Console after each Vercel deploy", pages: ["https://smartcalc-my.vercel.app/sitemap.xml"] },
+  { priority: "High", opportunity: "Submit sitemap to Google Search Console after each Vercel deploy", pages: ["https://smrtcalc.com/sitemap.xml"] },
   { priority: "High", opportunity: "Request Google indexing for all 20 Phase 2 guides via Search Console URL Inspection", pages: ["44 guides total — prioritise Phase 2 pages added 2026-06-22"] },
   { priority: "Medium", opportunity: "Create a 'Related guides' section at the bottom of each guide", pages: ["All 44 guides — currently guides link only via inline prose"] },
   { priority: "Medium", opportunity: "Add more guides to Footer curated list (currently 12 links)", pages: ["components/Footer.tsx — update Guides section"] },
@@ -339,7 +339,7 @@ export default function SeoDashboardPage() {
               <Link href="/robots.txt" target="_blank" className="text-xs font-semibold bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">View robots.txt →</Link>
             </div>
             <p className="text-xs text-gray-500">
-              Submit to Google Search Console: <code className="bg-gray-100 px-2 py-0.5 rounded text-xs">https://smartcalc-my.vercel.app/sitemap.xml</code>
+              Submit to Google Search Console: <code className="bg-gray-100 px-2 py-0.5 rounded text-xs">https://smrtcalc.com/sitemap.xml</code>
             </p>
             <p className="text-xs text-gray-400 mt-2">Sitemap is auto-generated from <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">app/sitemap.ts</code>. Add new pages there after each content push.</p>
           </div>

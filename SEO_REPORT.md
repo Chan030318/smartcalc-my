@@ -121,7 +121,7 @@ Generated: 2026-06-22
 All pages are in `app/sitemap.ts`. Submit to Google Search Console after every Vercel deploy:
 
 ```
-https://smartcalc-my.vercel.app/sitemap.xml
+https://smrtcalc.com/sitemap.xml
 ```
 
 Priority tiers:

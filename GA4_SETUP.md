@@ -1,4 +1,4 @@
-# GA4 Setup Guide — SmartCalc MY
+﻿# GA4 Setup Guide 鈥?SmartCalc MY
 
 ## 1. Create a GA4 Property
 
@@ -15,7 +15,7 @@
 
 1. After the property is created, choose **Web** as the platform.
 2. Enter your website URL:
-   - Production: `https://smartcalc.my` (or your Vercel URL `https://smartcalc-my.vercel.app`)
+   - Production: `https://smartcalc.my` (or your Vercel URL `https://smrtcalc.com`)
 3. Enter a stream name (e.g. `SmartCalc MY Web`).
 4. Leave **Enhanced measurement** enabled.
 5. Click **Create stream**.
@@ -31,7 +31,7 @@ Measurement ID
 G-XXXXXXXXXX
 ```
 
-Copy that value — it is your `NEXT_PUBLIC_GA_ID`.
+Copy that value 鈥?it is your `NEXT_PUBLIC_GA_ID`.
 
 **Format:** always starts with `G-` followed by exactly 10 alphanumeric characters.
 
@@ -41,7 +41,7 @@ Copy that value — it is your `NEXT_PUBLIC_GA_ID`.
 
 ### Local development
 
-Create (or edit) `.env.local` in the project root — this file is git-ignored:
+Create (or edit) `.env.local` in the project root 鈥?this file is git-ignored:
 
 ```bash
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
@@ -56,7 +56,7 @@ npm run dev
 ### Vercel (production / preview)
 
 1. Open your project in the [Vercel dashboard](https://vercel.com/dashboard).
-2. Go to **Settings → Environment Variables**.
+2. Go to **Settings 鈫?Environment Variables**.
 3. Click **Add New**.
 
 | Name | Value | Environments |
@@ -64,9 +64,9 @@ npm run dev
 | `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | Production, Preview, Development |
 
 4. Click **Save**.
-5. Trigger a new deployment (**Deployments → Redeploy**) so the variable is picked up.
+5. Trigger a new deployment (**Deployments 鈫?Redeploy**) so the variable is picked up.
 
-> **Security note:** `NEXT_PUBLIC_` variables are embedded in the client bundle and visible in the browser. This is expected and safe for a GA Measurement ID — it is not a secret.
+> **Security note:** `NEXT_PUBLIC_` variables are embedded in the client bundle and visible in the browser. This is expected and safe for a GA Measurement ID 鈥?it is not a secret.
 
 ---
 
@@ -113,14 +113,14 @@ This means analytics is off by default in local development unless you explicitl
 ### 7a. Verify page views in Realtime
 
 1. Open your site in Chrome.
-2. In a separate tab open **GA4 → Reports → Realtime**.
-3. Navigate between pages on your site (Home → BMI → Salary → Loan).
+2. In a separate tab open **GA4 鈫?Reports 鈫?Realtime**.
+3. Navigate between pages on your site (Home 鈫?BMI 鈫?Salary 鈫?Loan).
 4. You should see **Active users: 1** and page events listed under **Event count by event name**.
 
 ### 7b. Verify custom calculator events
 
 1. On your site, fill in the BMI / Salary / Loan calculator and click **Calculate**.
-2. In **GA4 → Reports → Realtime**, scroll to **Event count by event name**.
+2. In **GA4 鈫?Reports 鈫?Realtime**, scroll to **Event count by event name**.
 3. You should see `bmi_calculated`, `salary_calculated`, or `loan_calculated` appear within a few seconds.
 4. Click the event name to expand parameters and confirm the values (e.g. `bmi_value: 22.5`).
 
@@ -128,12 +128,12 @@ This means analytics is off by default in local development unless you explicitl
 
 1. Install the [**Google Analytics Debugger**](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna) Chrome extension.
 2. Enable the extension (toggle in the extension popup).
-3. Open DevTools → **Console**.
-4. Reload your site — you will see verbose GA event logs for every hit sent.
+3. Open DevTools 鈫?**Console**.
+4. Reload your site 鈥?you will see verbose GA event logs for every hit sent.
 
 ### 7d. Verify with browser DevTools (no extension needed)
 
-1. Open DevTools → **Network** tab.
+1. Open DevTools 鈫?**Network** tab.
 2. Filter by `collect` or `gtag`.
 3. Use a calculator and look for POST requests to `https://www.google-analytics.com/g/collect`.
 4. Click a request and check the **Payload** tab to see the event name and parameters.
@@ -145,6 +145,6 @@ This means analytics is off by default in local development unless you explicitl
 | Symptom | Likely cause | Fix |
 |---------|-------------|-----|
 | No events in Realtime | `NEXT_PUBLIC_GA_ID` not set | Check `.env.local` / Vercel env vars; redeploy |
-| Events appear but no data after 24 h | Data processing delay | Normal — standard reports lag by up to 48 h |
-| `window.gtag is not defined` errors | Script loaded before GA init | Should not happen with `strategy="afterInteractive"` — check for ad blockers |
+| Events appear but no data after 24 h | Data processing delay | Normal 鈥?standard reports lag by up to 48 h |
+| `window.gtag is not defined` errors | Script loaded before GA init | Should not happen with `strategy="afterInteractive"` 鈥?check for ad blockers |
 | Events fire twice | React StrictMode double-invoke | Expected in development only; will be single in production |
