@@ -57,3 +57,23 @@ export function trackSocsoCalculated(monthlySalary: number, employeeSocso: numbe
 export function trackEisCalculated(monthlySalary: number, employeeEis: number, employerEis: number) {
   event("eis_calculated", { monthly_salary: monthlySalary, employee_eis: employeeEis, employer_eis: employerEis });
 }
+
+export function trackCarLoanCalculated(loanAmount: number, years: number) {
+  event("car_loan_calculated", { loan_amount: loanAmount, loan_years: years });
+}
+
+export function trackMortgageCalculated(loanAmount: number, years: number) {
+  event("mortgage_calculated", { loan_amount: loanAmount, loan_years: years });
+}
+
+export function trackCompoundInterestCalculated(principal: number, finalBalance: number) {
+  event("compound_interest_calculated", { principal, final_balance: finalBalance });
+}
+
+export function trackSavingsCalculated(monthlyAmount: number, finalBalance: number) {
+  event("savings_calculated", { monthly_amount: monthlyAmount, final_balance: finalBalance });
+}
+
+export function trackCurrencyConverted(fromCurrency: string, toCurrency: string, amount: number) {
+  event("currency_converted", { from_currency: fromCurrency, to_currency: toCurrency, amount });
+}
