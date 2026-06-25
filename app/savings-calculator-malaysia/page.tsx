@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/siteConfig";
 import JsonLd from "@/components/JsonLd";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import SavingsCalculator from "./SavingsCalculator";
 import CalcSeoSection from "@/components/CalcSeoSection";
 import type { CalcFaq, RelatedCalc } from "@/components/CalcSeoSection";
@@ -147,7 +149,7 @@ export default function SavingsPage() {
   return (
     <>
       <JsonLd data={jsonLd} />
-
+      <Navbar />
       <div className="bg-gradient-to-br from-teal-50 to-cyan-50 border-b border-teal-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
@@ -247,6 +249,7 @@ export default function SavingsPage() {
           </ul>
         </div>
       </CalcSeoSection>
+      <Footer />
     </>
   );
 }
