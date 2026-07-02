@@ -110,11 +110,11 @@ function InputRow({ label, prefix, suffix, placeholder, value, onChange, hint, t
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1.5">{label}</label>
       <div className="relative">
-        {prefix && <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">{prefix}</span>}
+        {prefix && <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-500 font-medium pointer-events-none">{prefix}</span>}
         <input type={type} placeholder={placeholder} value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full border border-gray-200 rounded-xl py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition ${prefix ? "pl-12" : "pl-4"} ${suffix ? "pr-16" : "pr-4"}`} />
-        {suffix && <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">{suffix}</span>}
+          className={`w-full bg-white border border-gray-200 rounded-xl py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition ${prefix ? "pl-12" : "pl-4"} ${suffix ? "pr-16" : "pr-4"}`} />
+        {suffix && <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-500 font-medium pointer-events-none">{suffix}</span>}
       </div>
       {hint && <p className="text-xs text-gray-400 mt-1.5">{hint}</p>}
     </div>
