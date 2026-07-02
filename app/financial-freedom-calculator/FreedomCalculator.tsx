@@ -200,37 +200,37 @@ export default function FreedomCalculator() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
             {/* ── Form ────────────────────────────────────────────────────── */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-              <h2 className="text-white font-bold text-lg mb-5">Kira Freedom Number Kau</h2>
+            <div className="bg-white rounded-2xl p-6 shadow-xl">
+              <h2 className="text-gray-900 font-bold text-lg mb-5">Kira Freedom Number Kau</h2>
               <div className="space-y-4">
-                <InputRow label={<span className="text-gray-200 text-sm font-medium">Perbelanjaan Bulanan Kau</span> as unknown as string}
+                <InputRow label="Perbelanjaan Bulanan Kau"
                   prefix="RM" placeholder="cth: 3000"
                   value={monthlyExpenses} onChange={handleChange(setMonthlyExpenses)}
                   hint="Semua perbelanjaan hidup — sewa, makan, transport, bil" />
 
-                <InputRow label={<span className="text-gray-200 text-sm font-medium">Jumlah Simpanan / Pelaburan Sekarang</span> as unknown as string}
+                <InputRow label="Jumlah Simpanan / Pelaburan Sekarang"
                   prefix="RM" placeholder="cth: 50000"
                   value={currentAssets} onChange={handleChange(setCurrentAssets)}
                   hint="EPF + ASNB + FD + saham + simpanan — jumlahkan semua" />
 
-                <InputRow label={<span className="text-gray-200 text-sm font-medium">Simpan / Labur Setiap Bulan</span> as unknown as string}
+                <InputRow label="Simpan / Labur Setiap Bulan"
                   prefix="RM" placeholder="cth: 500"
                   value={monthlySavings} onChange={handleChange(setMonthlySavings)}
                   hint="Berapa yang kau masukkan ke dalam pelaburan setiap bulan" />
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-200 mb-1.5">
-                    Jangkaan Pulangan Tahunan: <span className="text-emerald-400 font-bold">{returnRate}%</span>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Jangkaan Pulangan Tahunan: <span className="text-emerald-600 font-bold">{returnRate}%</span>
                   </label>
                   <input type="range" min="1" max="15" step="0.5" value={returnRate}
                     onChange={(e) => { setReturnRate(e.target.value); setSubmitted(false); }}
                     className="w-full accent-emerald-500" />
-                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                  <div className="flex justify-between text-xs text-gray-400 mt-1">
                     <span>1% (FD)</span><span>4-5% (EPF/ASB)</span><span>6-7% (REITs)</span><span>10-15% (Saham)</span>
                   </div>
                 </div>
 
-                <InputRow label={<span className="text-gray-200 text-sm font-medium">Umur Sekarang (Pilihan)</span> as unknown as string}
+                <InputRow label="Umur Sekarang (Pilihan)"
                   suffix="tahun" placeholder="cth: 28"
                   value={currentAge} onChange={handleChange(setCurrentAge)}
                   hint="Untuk kira umur kau bila bebas" />
