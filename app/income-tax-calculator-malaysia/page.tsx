@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import Navbar from "@/components/Navbar";
+import ToolPageHero from "@/components/ToolPageHero";
 import Footer from "@/components/Footer";
 import IncomeTaxCalculator from "./IncomeTaxCalculator";
 import JsonLd from "@/components/JsonLd";
@@ -113,20 +114,7 @@ export default function IncomeTaxPage() {
       <JsonLd data={jsonLd} />
       <Navbar />
       <main className="flex-1 bg-gray-50">
-        <section className="bg-white border-b border-gray-100">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-            <span className="inline-flex items-center gap-1.5 bg-orange-50 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              YA 2024 · LHDN Rates · Reliefs Included
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              Income Tax Calculator Malaysia
-            </h1>
-            <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-              Enter your annual income and tax reliefs to instantly calculate your estimated income tax payable, effective rate, and monthly PCB deduction — based on LHDN YA 2024 progressive rates.
-            </p>
-          </div>
-        </section>
-
+        <ToolPageHero page="incomeTax" />
         <IncomeTaxCalculator />
         <FinancialDisclaimer />
 

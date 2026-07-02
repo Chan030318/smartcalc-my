@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import ToolPageHero from "@/components/ToolPageHero";
 import Footer from "@/components/Footer";
 import LoanCalculator from "./LoanCalculator";
 import FinancialDisclaimer from "@/components/FinancialDisclaimer";
@@ -111,19 +112,7 @@ export default function LoanCalculatorPage() {
       <JsonLd data={jsonLd} />
       <Navbar />
       <main className="flex-1 bg-gray-50">
-        <section className="bg-white border-b border-gray-100">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-            <span className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              Reducing Balance · Estimate Only
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              Loan Calculator Malaysia
-            </h1>
-            <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-              Estimate your monthly repayment, total interest cost, and year-by-year amortisation for any Malaysian loan — personal, home, or car.
-            </p>
-          </div>
-        </section>
+        <ToolPageHero page="loan" />
         <LoanCalculator />
         <FinancialDisclaimer />
 

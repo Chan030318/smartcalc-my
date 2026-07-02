@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/siteConfig";
 import JsonLd from "@/components/JsonLd";
 import Navbar from "@/components/Navbar";
+import ToolPageHero from "@/components/ToolPageHero";
 import Footer from "@/components/Footer";
 import MortgageCalculator from "./MortgageCalculator";
 import CalcSeoSection from "@/components/CalcSeoSection";
@@ -105,24 +106,7 @@ export default function MortgagePage() {
       <JsonLd data={jsonLd} />
       <Navbar />
 
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-b border-blue-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <a href="/" className="hover:text-blue-600 transition-colors">Home</a>
-            <span>/</span>
-            <a href="/calculators" className="hover:text-blue-600 transition-colors">Calculators</a>
-            <span>/</span>
-            <span className="text-gray-800 font-medium">Mortgage</span>
-          </nav>
-          <div className="text-4xl mb-4">🏠</div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Mortgage Calculator Malaysia
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl">
-            Calculate your home loan monthly repayment using the reducing balance method. Get full amortisation, total interest cost, stamp duty estimate, and income eligibility in seconds.
-          </p>
-        </div>
-      </div>
+      <ToolPageHero page="mortgage" />
 
       <MortgageCalculator />
 

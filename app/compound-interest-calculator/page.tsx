@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/siteConfig";
 import JsonLd from "@/components/JsonLd";
 import Navbar from "@/components/Navbar";
+import ToolPageHero from "@/components/ToolPageHero";
 import Footer from "@/components/Footer";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
 import CalcSeoSection from "@/components/CalcSeoSection";
@@ -105,24 +106,7 @@ export default function CompoundInterestPage() {
       <JsonLd data={jsonLd} />
       <Navbar />
 
-      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border-b border-emerald-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <a href="/" className="hover:text-emerald-600 transition-colors">Home</a>
-            <span>/</span>
-            <a href="/calculators" className="hover:text-emerald-600 transition-colors">Calculators</a>
-            <span>/</span>
-            <span className="text-gray-800 font-medium">Compound Interest</span>
-          </nav>
-          <div className="text-4xl mb-4">📈</div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Compound Interest Calculator Malaysia
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl">
-            See how your money grows over time with compound interest. Model EPF, ASB, fixed deposits and unit trust scenarios with monthly contributions and a full year-by-year breakdown.
-          </p>
-        </div>
-      </div>
+      <ToolPageHero page="compound" />
 
       <CompoundInterestCalculator />
 

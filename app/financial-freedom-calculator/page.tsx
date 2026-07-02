@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/siteConfig";
 import JsonLd from "@/components/JsonLd";
 import Navbar from "@/components/Navbar";
+import ToolPageHero from "@/components/ToolPageHero";
 import Footer from "@/components/Footer";
 import FreedomCalculator from "./FreedomCalculator";
 
@@ -96,27 +97,7 @@ export default function FinancialFreedomPage() {
       <Navbar />
 
       {/* ── Page Header ──────────────────────────────────────────────────── */}
-      <div className="bg-gradient-to-br from-gray-950 via-gray-900 to-emerald-950 border-b border-gray-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-0">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <a href="/" className="hover:text-emerald-400 transition-colors">Home</a>
-            <span>/</span>
-            <span className="text-gray-300 font-medium">Freedom Number Calculator</span>
-          </nav>
-          <div className="text-5xl mb-4">🏆</div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Berapa Lagi Kau Perlu Sebelum Boleh Berhenti Kerja?
-          </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mb-6">
-            Kira <strong className="text-emerald-400">Freedom Number</strong> kau — jumlah aset yang diperlukan supaya wang bekerja untuk kau, bukan kau bekerja untuk wang.
-          </p>
-          <div className="flex flex-wrap gap-2 mb-8">
-            <span className="bg-emerald-900/50 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-800">💡 Prinsip Rich Dad Poor Dad</span>
-            <span className="bg-gray-800 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full border border-gray-700">🇲🇾 EPF • ASB • REITs • Saham</span>
-            <span className="bg-blue-900/50 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-800">🐀 Rat Race Meter</span>
-          </div>
-        </div>
-      </div>
+      <ToolPageHero page="financialFreedom" />
 
       <FreedomCalculator />
 
