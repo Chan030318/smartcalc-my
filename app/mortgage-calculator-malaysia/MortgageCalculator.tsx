@@ -2,6 +2,21 @@
 
 import { useState, useMemo } from "react";
 import { trackMortgageCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
+
+// ─── Property Presets ─────────────────────────────────────────────────────────
+
+type PropertyPreset = { emoji: string; location: string; type: { en: string; bm: string; zh: string }; price: number; tag?: string };
+
+const PROPERTY_PRESETS: PropertyPreset[] = [
+  { emoji: "🏙️", location: "KL City Centre",     type: { en: "Condo",       bm: "Kondominium",    zh: "公寓"    }, price: 650_000, tag: "Hot" },
+  { emoji: "🌆", location: "Petaling Jaya",       type: { en: "Condo",       bm: "Kondominium",    zh: "公寓"    }, price: 550_000 },
+  { emoji: "🏖️", location: "Georgetown, Penang",  type: { en: "Condo",       bm: "Kondominium",    zh: "公寓"    }, price: 500_000 },
+  { emoji: "🏡", location: "Johor Bahru",         type: { en: "Terrace House", bm: "Rumah Teres",  zh: "排屋"    }, price: 420_000, tag: "Jimat" },
+  { emoji: "🏘️", location: "Subang Jaya",         type: { en: "Semi-D",      bm: "Semi-D",         zh: "半独立式" }, price: 750_000 },
+  { emoji: "🌐", location: "Cyberjaya",            type: { en: "Condo",       bm: "Kondominium",    zh: "公寓"    }, price: 380_000, tag: "Budget" },
+  { emoji: "🏔️", location: "Shah Alam",            type: { en: "Terrace House", bm: "Rumah Teres",  zh: "排屋"    }, price: 480_000 },
+];
 
 // ─── Formatters ───────────────────────────────────────────────────────────────
 
@@ -165,6 +180,36 @@ function Stars({ count }: { count: number }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function MortgageCalculator() {
+  const { lang } = useLang();
+
+  const tr = {
+    presetTitle:   { en: "Quick Select a Property",        bm: "Pilih Hartanah dengan Cepat",       zh: "快速选房" },
+    popularLoc:    { en: "🔥 Popular Locations in Malaysia", bm: "🔥 Lokasi Popular di Malaysia",    zh: "🔥 马来西亚热门地段" },
+    orType:        { en: "or type your own price below",    bm: "atau taip harga sendiri di bawah",  zh: "或在下方输入自定价格" },
+    formTitle:     { en: "Mortgage Details",                bm: "Butiran Gadai Janji",               zh: "房贷详情" },
+    priceLabel:    { en: "House Price",                     bm: "Harga Rumah",                       zh: "房价" },
+    dpLabel:       { en: "Down Payment",                    bm: "Wang Pendahuluan",                  zh: "首付" },
+    rateLabel:     { en: "Annual Interest Rate",            bm: "Kadar Faedah Tahunan",              zh: "年利率" },
+    rateHint:      { en: "Malaysian home loans: typically 3.5%–4.5% p.a. in 2025", bm: "Pinjaman rumah Malaysia: biasanya 3.5%–4.5% p.a. pada 2025", zh: "马来西亚房贷：2025年通常3.5%-4.5%年利率" },
+    tenureLabel:   { en: "Loan Tenure",                     bm: "Tempoh Pinjaman",                   zh: "贷款期限" },
+    personalise:   { en: "Personalise Your Dashboard",      bm: "Peribadikan Dashboard Kau",         zh: "个性化仪表板" },
+    optional:      { en: "optional",                        bm: "pilihan",                           zh: "可选" },
+    salaryLabel:   { en: "Monthly Gross Salary",            bm: "Gaji Kasar Bulanan",                zh: "月薪（税前）" },
+    debtsLabel:    { en: "Other Monthly Debt Payments",     bm: "Bayaran Hutang Bulanan Lain",       zh: "其他每月债务还款" },
+    calcBtn:       { en: "Calculate Mortgage",              bm: "Kira Gadai Janji",                  zh: "计算房贷" },
+    resetBtn:      { en: "Reset",                           bm: "Reset",                             zh: "重置" },
+  } as const;
+  const t = (k: keyof typeof tr) => tr[k][lang];
+
+  const applyPreset = (p: PropertyPreset) => {
+    setHousePrice(String(p.price));
+    setDpPct("10");
+    setRate("4.0");
+    setYears("30");
+    setSubmitted(false);
+    setShowAll(false);
+  };
+
   // Form
   const [housePrice, setHousePrice] = useState("");
   const [dpPct, setDpPct] = useState("10");
@@ -358,17 +403,43 @@ export default function MortgageCalculator() {
         </div>
       </div>
 
+      {/* ── Property Presets ─────────────────────────────────────────────────── */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{t("presetTitle")}</p>
+          <p className="text-xs font-semibold text-gray-500 mb-3">{t("popularLoc")}</p>
+          <div className="flex flex-wrap gap-2">
+            {PROPERTY_PRESETS.map((p) => (
+              <button key={p.location} onClick={() => applyPreset(p)}
+                className={`relative flex flex-col items-start px-3 py-2 rounded-xl border text-xs font-medium transition-all ${housePrice === String(p.price) ? "bg-blue-50 border-blue-400 text-blue-700 shadow-sm" : "bg-gray-50 border-gray-200 text-gray-700 hover:border-blue-300 hover:text-blue-600"}`}>
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span>{p.emoji}</span>
+                  <span className="font-bold">{p.location}</span>
+                  {p.tag && <span className="bg-blue-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{p.tag}</span>}
+                </div>
+                <div className="flex items-center gap-1.5 text-gray-400">
+                  <span>{p.type[lang]}</span>
+                  <span>·</span>
+                  <span className={`font-bold ${housePrice === String(p.price) ? "text-blue-600" : "text-gray-600"}`}>RM {(p.price / 1000).toFixed(0)}k</span>
+                </div>
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-gray-400 mt-3">— {t("orType")}</p>
+        </div>
+      </div>
+
       {/* ── Form + Results ────────────────────────────────────────────────────── */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           {/* Form */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h2 className="text-lg font-semibold text-gray-800 mb-6">Mortgage Details</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-6">{t("formTitle")}</h2>
             <div className="space-y-5">
               {/* House Price */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">House Price</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("priceLabel")}</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
                   <input type="number" min="50000" step="10000" placeholder="e.g. 500000"
@@ -381,7 +452,7 @@ export default function MortgageCalculator() {
               {/* Down Payment */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Down Payment: <span className="text-blue-600 font-semibold">{dpPct}%</span>
+                  {t("dpLabel")}: <span className="text-blue-600 font-semibold">{dpPct}%</span>
                   {price > 0 && (
                     <span className="text-gray-400 text-xs ml-2">
                       (RM {fmtInt(Math.round(price * parseFloat(dpPct || "0") / 100))})
@@ -399,7 +470,7 @@ export default function MortgageCalculator() {
 
               {/* Interest Rate */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Annual Interest Rate</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("rateLabel")}</label>
                 <div className="relative">
                   <input type="number" min="0" max="15" step="0.05" placeholder="e.g. 4.0"
                     value={rate} onChange={handleChange(setRate)}
@@ -407,12 +478,12 @@ export default function MortgageCalculator() {
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 pr-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">%</span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1.5">Malaysian home loans: typically 3.5%–4.5% p.a. in 2025</p>
+                <p className="text-xs text-gray-400 mt-1.5">{t("rateHint")}</p>
               </div>
 
               {/* Tenure */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Loan Tenure</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("tenureLabel")}</label>
                 <div className="relative">
                   <input type="number" min="1" max="40" step="1" placeholder="e.g. 30"
                     value={years} onChange={handleChange(setYears)}
@@ -432,10 +503,10 @@ export default function MortgageCalculator() {
 
               {/* Optional: Personalise Dashboard */}
               <div className="border-t border-gray-100 pt-4">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Personalise Your Dashboard <span className="font-normal normal-case text-gray-300">— optional</span></p>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">{t("personalise")} <span className="font-normal normal-case text-gray-300">— {t("optional")}</span></p>
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1">Monthly Gross Salary</label>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">{t("salaryLabel")}</label>
                     <div className="relative">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">RM</span>
                       <input type="number" min="0" step="100" placeholder="e.g. 6000"
@@ -445,7 +516,7 @@ export default function MortgageCalculator() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1">Other Monthly Debt Payments</label>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">{t("debtsLabel")}</label>
                     <div className="relative">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">RM</span>
                       <input type="number" min="0" step="50" placeholder="Car loan, personal loan…"
@@ -461,12 +532,12 @@ export default function MortgageCalculator() {
             <div className="flex gap-3 mt-7">
               <button onClick={handleCalculate} disabled={!isValid}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold py-3 rounded-xl transition-colors">
-                Calculate Mortgage
+                {t("calcBtn")}
               </button>
               {result && (
                 <button onClick={handleReset}
                   className="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium transition-colors text-sm">
-                  Reset
+                  {t("resetBtn")}
                 </button>
               )}
             </div>

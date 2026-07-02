@@ -2,6 +2,27 @@
 
 import { useState, useMemo } from "react";
 import { trackCarLoanCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
+
+// ─── Car Presets ──────────────────────────────────────────────────────────────
+
+type CarPreset = { emoji: string; name: string; price: number; cc: string; tag?: string };
+
+const POPULAR_CARS: CarPreset[] = [
+  { emoji: "🚗", name: "Perodua Axia",   price: 38_300,  cc: "1.0L", tag: "Paling Murah" },
+  { emoji: "🚗", name: "Perodua Myvi",   price: 50_700,  cc: "1.3L", tag: "No. 1 Terlaris" },
+  { emoji: "🚙", name: "Proton X50",     price: 82_700,  cc: "1.5T" },
+  { emoji: "🚙", name: "Honda City",     price: 82_900,  cc: "1.5L" },
+  { emoji: "🚙", name: "Toyota Vios",    price: 88_300,  cc: "1.5L" },
+];
+
+const LUXURY_CARS: CarPreset[] = [
+  { emoji: "🚘", name: "Audi A4",        price: 239_900, cc: "2.0T" },
+  { emoji: "🚘", name: "BMW 320i",       price: 241_800, cc: "2.0T" },
+  { emoji: "🚘", name: "Mercedes C200",  price: 259_888, cc: "1.5T", tag: "Bestseller" },
+  { emoji: "🚘", name: "Volvo XC60",     price: 299_000, cc: "2.0T" },
+  { emoji: "🏎️", name: "Porsche Cayenne", price: 618_000, cc: "3.0T", tag: "Dream Car" },
+];
 
 // ─── Formatters ───────────────────────────────────────────────────────────────
 
@@ -132,6 +153,45 @@ function CostInput({ label, placeholder, value, onChange }: {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CarLoanCalculator() {
+  const { lang } = useLang();
+
+  const tr = {
+    presetTitle:  { en: "Quick Select a Car",       bm: "Pilih Kereta dengan Cepat",    zh: "快速选车" },
+    popular:      { en: "🔥 Popular in Malaysia",   bm: "🔥 Paling Popular di Malaysia", zh: "🔥 马来西亚最热门" },
+    luxury:       { en: "💎 Luxury Cars",            bm: "💎 Kereta Mewah",              zh: "💎 豪华车" },
+    orType:       { en: "or type your own price below", bm: "atau taip harga sendiri di bawah", zh: "或在下方输入自定价格" },
+    formTitle:    { en: "Car Details",              bm: "Butiran Kereta",               zh: "汽车详情" },
+    priceLabel:   { en: "Car Price",                bm: "Harga Kereta",                 zh: "车价" },
+    dpLabel:      { en: "Down Payment",             bm: "Wang Pendahuluan",             zh: "首付" },
+    dpHint:       { en: "Minimum 10% for most Malaysian banks", bm: "Minimum 10% untuk kebanyakan bank Malaysia", zh: "大多数马来西亚银行最低10%" },
+    rateLabel:    { en: "Flat Interest Rate (% p.a.)", bm: "Kadar Faedah Rata (% p.a.)", zh: "固定利率（%年）" },
+    rateHint:     { en: "Hire purchase flat rate (typically 2.5%–3.5%)", bm: "Kadar rata hire purchase (biasanya 2.5%–3.5%)", zh: "分期付款固定利率（通常2.5%-3.5%）" },
+    tenureLabel:  { en: "Loan Tenure",              bm: "Tempoh Pinjaman",              zh: "贷款期限" },
+    calcBtn:      { en: "Calculate",                bm: "Kira",                         zh: "计算" },
+    resetBtn:     { en: "Reset",                    bm: "Reset",                        zh: "重置" },
+    personalise:  { en: "Personalise Your Dashboard", bm: "Peribadikan Dashboard Kau", zh: "个性化你的仪表板" },
+    optional:     { en: "optional",                 bm: "pilihan",                      zh: "可选" },
+    salaryLabel:  { en: "Monthly Gross Salary",     bm: "Gaji Kasar Bulanan",           zh: "月薪（税前）" },
+    debtsLabel:   { en: "Other Monthly Debts",      bm: "Hutang Bulanan Lain",          zh: "其他每月债务" },
+    costsHint:    { en: "Monthly ownership costs (estimates are fine):", bm: "Kos pemilikan bulanan (anggaran sudah cukup):", zh: "每月拥车成本（估算即可）：" },
+    fuel:         { en: "Fuel",                     bm: "Minyak",                       zh: "油费" },
+    insur:        { en: "Insurance (monthly)",      bm: "Insurans (bulanan)",           zh: "保险（每月）" },
+    maint:        { en: "Maintenance",              bm: "Servis & Penyelenggaraan",     zh: "维修保养" },
+    parking:      { en: "Parking / Toll / Other",   bm: "Parking / Tol / Lain-lain",   zh: "停车/过路/其他" },
+    costsNote:    { en: "These inputs only affect your dashboard — not the loan calculation.", bm: "Input ini hanya mempengaruhi dashboard — bukan pengiraan pinjaman.", zh: "这些输入只影响仪表板，不影响贷款计算。" },
+  } as const;
+  const t = (k: keyof typeof tr) => tr[k][lang];
+
+  // ── Apply preset ───────────────────────────────────────────────────────────
+  const applyPreset = (car: CarPreset) => {
+    setCarPrice(String(car.price));
+    setDownPayment(String(Math.round(car.price * 0.1)));
+    setRate("2.5");
+    setYears("9");
+    setSubmitted(false);
+    setShowAll(false);
+  };
+
   // Core loan inputs
   const [carPrice,    setCarPrice]    = useState("");
   const [downPayment, setDownPayment] = useState("");
@@ -370,17 +430,59 @@ export default function CarLoanCalculator() {
         </div>
       </div>
 
+      {/* ── Car Presets ───────────────────────────────────────────────────────── */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">{t("presetTitle")}</p>
+          <div className="space-y-4">
+            {/* Popular */}
+            <div>
+              <p className="text-xs font-semibold text-gray-500 mb-2">{t("popular")}</p>
+              <div className="flex flex-wrap gap-2">
+                {POPULAR_CARS.map((car) => (
+                  <button key={car.name} onClick={() => applyPreset(car)}
+                    className={`relative flex items-center gap-2 px-3 py-2 rounded-xl border text-sm font-medium transition-all ${carPrice === String(car.price) ? "bg-orange-50 border-orange-400 text-orange-700 shadow-sm" : "bg-gray-50 border-gray-200 text-gray-700 hover:border-orange-300 hover:text-orange-600"}`}>
+                    <span>{car.emoji}</span>
+                    <span>{car.name}</span>
+                    <span className="text-gray-400 text-xs">{car.cc}</span>
+                    <span className="font-bold">RM {(car.price / 1000).toFixed(0)}k</span>
+                    {car.tag && <span className="absolute -top-2 -right-1 bg-orange-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{car.tag}</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* Luxury */}
+            <div>
+              <p className="text-xs font-semibold text-gray-500 mb-2">{t("luxury")}</p>
+              <div className="flex flex-wrap gap-2">
+                {LUXURY_CARS.map((car) => (
+                  <button key={car.name} onClick={() => applyPreset(car)}
+                    className={`relative flex items-center gap-2 px-3 py-2 rounded-xl border text-sm font-medium transition-all ${carPrice === String(car.price) ? "bg-purple-50 border-purple-400 text-purple-700 shadow-sm" : "bg-gray-50 border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-600"}`}>
+                    <span>{car.emoji}</span>
+                    <span>{car.name}</span>
+                    <span className="text-gray-400 text-xs">{car.cc}</span>
+                    <span className="font-bold">RM {(car.price / 1000).toFixed(0)}k</span>
+                    {car.tag && <span className="absolute -top-2 -right-1 bg-purple-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{car.tag}</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="text-xs text-gray-400 mt-3">— {t("orType")}</p>
+        </div>
+      </div>
+
       {/* ── Form + Results ────────────────────────────────────────────────────── */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           {/* ── Input Form ────────────────────────────────────────────────────── */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h2 className="text-lg font-semibold text-gray-800 mb-6">Car Details</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-6">{t("formTitle")}</h2>
             <div className="space-y-5">
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Car Price</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("priceLabel")}</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
                   <input type="number" min="1000" step="1000" placeholder="e.g. 100000"
@@ -392,7 +494,7 @@ export default function CarLoanCalculator() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Down Payment {dpPct > 0 && <span className="text-orange-600 font-semibold">({dpPct}%)</span>}
+                  {t("dpLabel")} {dpPct > 0 && <span className="text-orange-600 font-semibold">({dpPct}%)</span>}
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -401,11 +503,11 @@ export default function CarLoanCalculator() {
                     onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" />
                 </div>
-                <p className="text-xs text-gray-400 mt-1.5">Minimum 10% for most Malaysian banks</p>
+                <p className="text-xs text-gray-400 mt-1.5">{t("dpHint")}</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Flat Interest Rate (% p.a.)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("rateLabel")}</label>
                 <div className="relative">
                   <input type="number" min="0" max="10" step="0.1" placeholder="e.g. 3.0"
                     value={rate} onChange={handleChange(setRate)}
@@ -413,11 +515,11 @@ export default function CarLoanCalculator() {
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 pr-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition" />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">%</span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1.5">Hire purchase flat rate (typically 2.5%–3.5%)</p>
+                <p className="text-xs text-gray-400 mt-1.5">{t("rateHint")}</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Loan Tenure</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{t("tenureLabel")}</label>
                 <div className="relative">
                   <input type="number" min="1" max="9" step="1" placeholder="e.g. 7"
                     value={years} onChange={handleChange(setYears)}
@@ -440,7 +542,7 @@ export default function CarLoanCalculator() {
                 <button onClick={() => setShowCosts(!showCosts)}
                   className="flex items-center justify-between w-full text-left group">
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                    Personalise Your Dashboard <span className="font-normal normal-case text-gray-300">— optional</span>
+                    {t("personalise")} <span className="font-normal normal-case text-gray-300">— {t("optional")}</span>
                   </p>
                   <svg className={`w-4 h-4 text-gray-400 transition-transform ${showCosts ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -451,7 +553,7 @@ export default function CarLoanCalculator() {
                   <div className="mt-4 space-y-3">
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">Monthly Gross Salary</label>
+                        <label className="block text-xs font-medium text-gray-600 mb-1">{t("salaryLabel")}</label>
                         <div className="relative">
                           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">RM</span>
                           <input type="number" min="0" step="100" placeholder="e.g. 5000"
@@ -460,7 +562,7 @@ export default function CarLoanCalculator() {
                         </div>
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">Other Monthly Debts</label>
+                        <label className="block text-xs font-medium text-gray-600 mb-1">{t("debtsLabel")}</label>
                         <div className="relative">
                           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">RM</span>
                           <input type="number" min="0" step="50" placeholder="Mortgage, loans…"
@@ -469,14 +571,14 @@ export default function CarLoanCalculator() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">Monthly ownership costs (estimates are fine):</p>
+                    <p className="text-xs text-gray-400 mt-1">{t("costsHint")}</p>
                     <div className="grid grid-cols-2 gap-3">
-                      <CostInput label="Fuel" placeholder="e.g. 300" value={fuel} onChange={setFuel} />
-                      <CostInput label="Insurance (monthly)" placeholder="e.g. 150" value={insurance} onChange={setInsurance} />
-                      <CostInput label="Maintenance" placeholder="e.g. 100" value={maintenance} onChange={setMaintenance} />
-                      <CostInput label="Parking / Toll / Other" placeholder="e.g. 200" value={parking} onChange={setParking} />
+                      <CostInput label={t("fuel")} placeholder="e.g. 300" value={fuel} onChange={setFuel} />
+                      <CostInput label={t("insur")} placeholder="e.g. 150" value={insurance} onChange={setInsurance} />
+                      <CostInput label={t("maint")} placeholder="e.g. 100" value={maintenance} onChange={setMaintenance} />
+                      <CostInput label={t("parking")} placeholder="e.g. 200" value={parking} onChange={setParking} />
                     </div>
-                    <p className="text-xs text-gray-300 mt-1">These inputs only affect your dashboard — not the loan calculation.</p>
+                    <p className="text-xs text-gray-300 mt-1">{t("costsNote")}</p>
                   </div>
                 )}
               </div>
@@ -485,7 +587,7 @@ export default function CarLoanCalculator() {
             <div className="flex gap-3 mt-7">
               <button onClick={handleCalculate} disabled={!isValid}
                 className="flex-1 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-semibold py-3 rounded-xl transition-colors">
-                Calculate
+                {t("calcBtn")}
               </button>
               {result && (
                 <button onClick={handleReset}
