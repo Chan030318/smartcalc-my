@@ -8,22 +8,24 @@ import CalcSeoSection from "@/components/CalcSeoSection";
 import type { CalcFaq, RelatedCalc } from "@/components/CalcSeoSection";
 
 export const metadata: Metadata = {
-  title: "Car Loan Calculator Malaysia 2025 | Hire Purchase Instalment Estimator",
+  title: "Can I Afford This Car? | Car Loan Calculator Malaysia 2025",
   description:
-    "Calculate your car hire purchase monthly instalment in Malaysia instantly. Uses the official flat rate method with full amortisation breakdown. Covers Proton, Perodua, Toyota and all brands.",
+    "Calculate your car hire purchase instalment AND find out if you can truly afford it. See true monthly ownership cost, DSR impact, affordability score, and tenure comparison. Covers all Malaysian brands.",
   keywords: [
     "car loan calculator Malaysia",
     "hire purchase calculator Malaysia",
-    "monthly instalment calculator",
+    "car affordability calculator Malaysia",
+    "monthly car installment Malaysia",
     "kereta loan calculator",
     "HP calculator Malaysia",
-    "car financing flat rate",
+    "can I afford a car Malaysia",
+    "car ownership cost Malaysia",
   ],
   alternates: { canonical: `${SITE_URL}/car-loan-calculator-malaysia` },
   openGraph: {
-    title: "Car Loan Calculator Malaysia 2025 — Hire Purchase Instalment",
+    title: "Can I Afford This Car? | Car Loan Calculator Malaysia 2025",
     description:
-      "Calculate your monthly car loan instalment using Malaysia's hire purchase flat rate method. Full amortisation, effective rate, and real cost breakdown.",
+      "Not just a loan calculator — a car buying decision assistant. See your monthly instalment, true ownership cost, DSR impact, financial health score, and whether this car fits your budget.",
     url: `${SITE_URL}/car-loan-calculator-malaysia`,
     siteName: "SmartCalc MY",
     locale: "en_MY",
@@ -31,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Car Loan Calculator Malaysia",
-    description: "Calculate hire purchase monthly instalment for any Malaysian car model. Flat rate method with full breakdown.",
+    title: "Can I Afford This Car? — Car Loan Calculator Malaysia",
+    description: "Calculate hire purchase instalment + true ownership cost + affordability score. Malaysia's most complete car buying decision tool.",
   },
 };
 
@@ -115,10 +117,10 @@ export default function CarLoanPage() {
           </nav>
           <div className="text-4xl mb-4">🚗</div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Car Loan Calculator Malaysia
+            Can I Afford This Car?
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl">
-            Calculate your monthly hire purchase instalment using Malaysia&apos;s flat rate method. Enter car price, down payment, interest rate and loan tenure for a full cost breakdown.
+            Calculate your car loan instalment, estimate your true monthly ownership cost, and understand whether this car fits your income — without hurting your financial life.
           </p>
         </div>
       </div>
