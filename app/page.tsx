@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CalculatorCards from "@/components/CalculatorCards";
 import Benefits from "@/components/Benefits";
+import BeginnerGuide from "@/components/BeginnerGuide";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
@@ -54,6 +55,7 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <CalculatorCards />
+        <BeginnerGuide />
         <Benefits />
       </main>
       <Footer />
