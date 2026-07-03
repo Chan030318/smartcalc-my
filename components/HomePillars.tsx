@@ -6,7 +6,7 @@ import { useLang } from "@/components/LangProvider";
 export default function HomePillars() {
   const { t } = useLang();
   const c = t.homePillars;
-  const itemLinks = ["#", "/mindset", "/finance", "#"];
+  const itemLinks = ["/dream-board", "/mindset", "/finance", "#"];
 
   return (
     <section className="bg-white">
