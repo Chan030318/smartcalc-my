@@ -2,6 +2,121 @@
 
 import { useState, useMemo } from "react";
 import { trackSalaryCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
+
+const tr = {
+  en: {
+    formTitle: "Enter Your Salary",
+    grossLabel: "Gross Monthly Salary",
+    grossHint: "Before any deductions (EPF, SOCSO, tax)",
+    assumptionsTitle: "Assumptions",
+    a1: "Resident individual, single status",
+    a2: "Standard RM9,000 personal relief only",
+    a3: "EPF at 11% (employee) / 12–13% (employer)",
+    a4: "SOCSO capped at RM5,000 wage ceiling",
+    a5: "EIS capped at RM4,000 wage ceiling",
+    calculate: "Calculate Take-Home",
+    reset: "Reset",
+    empty: "Enter your gross salary and tap Calculate Take-Home.",
+    takehomeLabel: "Estimated Take-Home Pay",
+    perMonth: "per month",
+    grossSalary: "Gross Salary",
+    totalDeductions: "Total Deductions",
+    takeHomeStat: "Take-Home",
+    employerEpf: "Employer EPF contribution:",
+    employerEpfNote: "not deducted from your salary — paid on top by your employer",
+    breakdownTitle: "Full Deduction Breakdown",
+    colItem: "Item", colDesc: "Description", colAmount: "Amount (RM)",
+    beforeDeductions: "Before deductions",
+    epfLabel: "EPF (Employee 11%)", epfNote: "Retirement savings",
+    socsoLabel: "SOCSO (0.5%)", socsoNote: "Social security",
+    eisLabel: "EIS (0.2%)", eisNote: "Employment insurance",
+    pcbLabel: "PCB / Income Tax (est.)", pcbNote: "Monthly tax deduction",
+    takehomePay: "Take-Home Pay",
+    employerSection: "Employer Contributions (not deducted from your salary)",
+    explainTitle: "How Malaysian Salary Deductions Work",
+    ratesTitle: "Statutory Contribution Rates (2024)",
+    ratesSub: "Current rates for private-sector employees in Malaysia.",
+    colContrib: "Contribution", colEmployee: "Employee", colEmployer: "Employer", colCeiling: "Wage Ceiling",
+    faqTitle: "Frequently Asked Questions",
+    noCeiling: "No ceiling",
+    progressive: "Progressive",
+  },
+  bm: {
+    formTitle: "Masukkan Gaji Anda",
+    grossLabel: "Gaji Kasar Bulanan",
+    grossHint: "Sebelum sebarang potongan (EPF, SOCSO, cukai)",
+    assumptionsTitle: "Andaian",
+    a1: "Individu pemastautin, status bujang",
+    a2: "Pelepasan peribadi standard RM9,000 sahaja",
+    a3: "EPF 11% (pekerja) / 12–13% (majikan)",
+    a4: "SOCSO had gaji RM5,000",
+    a5: "EIS had gaji RM4,000",
+    calculate: "Kira Gaji Bersih",
+    reset: "Reset",
+    empty: "Masukkan gaji kasar anda dan tekan Kira Gaji Bersih.",
+    takehomeLabel: "Anggaran Gaji Bersih",
+    perMonth: "sebulan",
+    grossSalary: "Gaji Kasar",
+    totalDeductions: "Jumlah Potongan",
+    takeHomeStat: "Gaji Bersih",
+    employerEpf: "Caruman EPF Majikan:",
+    employerEpfNote: "tidak dipotong dari gaji anda — dibayar tambahan oleh majikan",
+    breakdownTitle: "Pecahan Potongan Penuh",
+    colItem: "Item", colDesc: "Keterangan", colAmount: "Jumlah (RM)",
+    beforeDeductions: "Sebelum potongan",
+    epfLabel: "EPF (Pekerja 11%)", epfNote: "Simpanan persaraan",
+    socsoLabel: "SOCSO (0.5%)", socsoNote: "Keselamatan sosial",
+    eisLabel: "EIS (0.2%)", eisNote: "Insurans pekerjaan",
+    pcbLabel: "PCB / Cukai Pendapatan (angg.)", pcbNote: "Potongan cukai bulanan",
+    takehomePay: "Gaji Bersih",
+    employerSection: "Caruman Majikan (tidak dipotong dari gaji anda)",
+    explainTitle: "Cara Potongan Gaji Malaysia Berfungsi",
+    ratesTitle: "Kadar Caruman Berkanun (2024)",
+    ratesSub: "Kadar semasa untuk pekerja sektor swasta di Malaysia.",
+    colContrib: "Caruman", colEmployee: "Pekerja", colEmployer: "Majikan", colCeiling: "Had Gaji",
+    faqTitle: "Soalan Lazim",
+    noCeiling: "Tiada had",
+    progressive: "Progresif",
+  },
+  zh: {
+    formTitle: "输入你的薪水",
+    grossLabel: "税前月薪",
+    grossHint: "扣除 EPF、SOCSO、税款之前",
+    assumptionsTitle: "计算假设",
+    a1: "马来西亚居民，单身",
+    a2: "仅使用标准 RM9,000 个人减免",
+    a3: "EPF 11%（员工）/ 12–13%（雇主）",
+    a4: "SOCSO 薪资上限 RM5,000",
+    a5: "EIS 薪资上限 RM4,000",
+    calculate: "计算到手薪水",
+    reset: "重设",
+    empty: "输入税前薪水，然后点击计算到手薪水。",
+    takehomeLabel: "预计到手薪水",
+    perMonth: "每月",
+    grossSalary: "税前薪水",
+    totalDeductions: "总扣除",
+    takeHomeStat: "到手薪水",
+    employerEpf: "雇主 EPF 供款：",
+    employerEpfNote: "不从你的薪水扣除 — 由雇主另外支付",
+    breakdownTitle: "完整扣除明细",
+    colItem: "项目", colDesc: "说明", colAmount: "金额 (RM)",
+    beforeDeductions: "扣除前",
+    epfLabel: "EPF（员工 11%）", epfNote: "退休储蓄",
+    socsoLabel: "SOCSO（0.5%）", socsoNote: "社会保障",
+    eisLabel: "EIS（0.2%）", eisNote: "就业保险",
+    pcbLabel: "PCB / 所得税（估算）", pcbNote: "每月预扣税",
+    takehomePay: "到手薪水",
+    employerSection: "雇主供款（不从你的薪水扣除）",
+    explainTitle: "马来西亚薪水扣除说明",
+    ratesTitle: "法定供款率（2024）",
+    ratesSub: "适用于马来西亚私人界员工的现行税率。",
+    colContrib: "供款项目", colEmployee: "员工", colEmployer: "雇主", colCeiling: "薪资上限",
+    faqTitle: "常见问题",
+    noCeiling: "无上限",
+    progressive: "累进税率",
+  },
+} as const;
 
 // ─── Tax brackets (YA 2024, resident individual) ─────────────────────────────
 const TAX_BRACKETS = [
@@ -114,6 +229,8 @@ const faqs = [
 ];
 
 export default function SalaryCalculator() {
+  const { lang } = useLang();
+  const t = (k: keyof typeof tr.en) => tr[lang][k];
   const [grossInput, setGrossInput] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -140,10 +257,10 @@ export default function SalaryCalculator() {
 
   const deductionRows = result
     ? [
-        { label: "EPF (Employee 11%)", amount: result.epfEmployee, note: "Retirement savings" },
-        { label: "SOCSO (0.5%)", amount: result.socso, note: "Social security" },
-        { label: "EIS (0.2%)", amount: result.eis, note: "Employment insurance" },
-        { label: "PCB / Income Tax (est.)", amount: result.pcb, note: "Monthly tax deduction" },
+        { label: t("epfLabel"), amount: result.epfEmployee, note: t("epfNote") },
+        { label: t("socsoLabel"), amount: result.socso, note: t("socsoNote") },
+        { label: t("eisLabel"), amount: result.eis, note: t("eisNote") },
+        { label: t("pcbLabel"), amount: result.pcb, note: t("pcbNote") },
       ]
     : [];
 
@@ -154,12 +271,12 @@ export default function SalaryCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Input */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h2 className="text-lg font-semibold text-gray-800 mb-6">Enter Your Salary</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-6">{t("formTitle")}</h2>
 
             <div className="space-y-5">
               <div>
                 <label htmlFor="gross" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Gross Monthly Salary
+                  {t("grossLabel")}
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">
@@ -177,17 +294,17 @@ export default function SalaryCalculator() {
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                   />
                 </div>
-                <p className="text-xs text-gray-400 mt-1.5">Before any deductions (EPF, SOCSO, tax)</p>
+                <p className="text-xs text-gray-400 mt-1.5">{t("grossHint")}</p>
               </div>
 
               {/* Assumptions note */}
               <div className="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 space-y-1">
-                <p className="font-semibold text-gray-600 mb-1">Assumptions</p>
-                <p>• Resident individual, single status</p>
-                <p>• Standard RM9,000 personal relief only</p>
-                <p>• EPF at 11% (employee) / 12–13% (employer)</p>
-                <p>• SOCSO capped at RM5,000 wage ceiling</p>
-                <p>• EIS capped at RM4,000 wage ceiling</p>
+                <p className="font-semibold text-gray-600 mb-1">{t("assumptionsTitle")}</p>
+                <p>• {t("a1")}</p>
+                <p>• {t("a2")}</p>
+                <p>• {t("a3")}</p>
+                <p>• {t("a4")}</p>
+                <p>• {t("a5")}</p>
               </div>
             </div>
 
@@ -197,14 +314,14 @@ export default function SalaryCalculator() {
                 disabled={!gross || gross <= 0}
                 className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white font-semibold py-3 rounded-xl transition-colors"
               >
-                Calculate Take-Home
+                {t("calculate")}
               </button>
               {result && (
                 <button
                   onClick={handleReset}
                   className="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium transition-colors text-sm"
                 >
-                  Reset
+                  {t("reset")}
                 </button>
               )}
             </div>
@@ -216,25 +333,25 @@ export default function SalaryCalculator() {
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">💰</div>
                 <p className="text-gray-400 text-sm">
-                  Enter your gross salary and tap <strong>Calculate Take-Home</strong>.
+                  {t("empty")}
                 </p>
               </div>
             ) : (
               <>
                 <div className="text-center mb-6">
-                  <p className="text-sm text-gray-500 mb-1">Estimated Take-Home Pay</p>
+                  <p className="text-sm text-gray-500 mb-1">{t("takehomeLabel")}</p>
                   <p className="text-5xl font-bold text-green-600 mb-1">
                     RM {fmt(result.takehome)}
                   </p>
-                  <p className="text-sm text-gray-400">per month</p>
+                  <p className="text-sm text-gray-400">{t("perMonth")}</p>
                 </div>
 
                 {/* Mini summary bars */}
                 <div className="space-y-2 mb-5">
                   {[
-                    { label: "Gross Salary", value: result.gross, color: "bg-gray-200", pct: 100 },
-                    { label: "Total Deductions", value: result.totalDeductions, color: "bg-red-400", pct: (result.totalDeductions / result.gross) * 100 },
-                    { label: "Take-Home", value: result.takehome, color: "bg-green-400", pct: (result.takehome / result.gross) * 100 },
+                    { label: t("grossSalary"), value: result.gross, color: "bg-gray-200", pct: 100 },
+                    { label: t("totalDeductions"), value: result.totalDeductions, color: "bg-red-400", pct: (result.totalDeductions / result.gross) * 100 },
+                    { label: t("takeHomeStat"), value: result.takehome, color: "bg-green-400", pct: (result.takehome / result.gross) * 100 },
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex justify-between text-xs text-gray-500 mb-0.5">
@@ -252,7 +369,7 @@ export default function SalaryCalculator() {
                 </div>
 
                 <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-xs text-blue-700">
-                  <span className="font-semibold">Employer EPF contribution:</span> RM {fmt(result.epfEmployer)}/month (not deducted from your salary — paid on top by your employer)
+                  <span className="font-semibold">{t("employerEpf")}</span> RM {fmt(result.epfEmployer)}/month ({t("employerEpfNote")})
                 </div>
               </>
             )}
@@ -264,20 +381,20 @@ export default function SalaryCalculator() {
       {result && (
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Full Deduction Breakdown</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-6">{t("breakdownTitle")}</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-left border-b border-gray-100">
-                    <th className="pb-3 font-semibold text-gray-700">Item</th>
-                    <th className="pb-3 font-semibold text-gray-700 hidden sm:table-cell">Description</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right">Amount (RM)</th>
+                    <th className="pb-3 font-semibold text-gray-700">{t("colItem")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 hidden sm:table-cell">{t("colDesc")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right">{t("colAmount")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 font-semibold text-gray-800">Gross Salary</td>
-                    <td className="py-3 text-gray-500 hidden sm:table-cell">Before deductions</td>
+                    <td className="py-3 font-semibold text-gray-800">{t("grossSalary")}</td>
+                    <td className="py-3 text-gray-500 hidden sm:table-cell">{t("beforeDeductions")}</td>
                     <td className="py-3 text-right font-semibold text-gray-800">{fmt(result.gross)}</td>
                   </tr>
                   {deductionRows.map((row) => (
@@ -290,7 +407,7 @@ export default function SalaryCalculator() {
                     </tr>
                   ))}
                   <tr className="border-t-2 border-gray-200">
-                    <td className="pt-4 pb-2 font-bold text-gray-900">Take-Home Pay</td>
+                    <td className="pt-4 pb-2 font-bold text-gray-900">{t("takehomePay")}</td>
                     <td className="pt-4 pb-2 hidden sm:table-cell" />
                     <td className="pt-4 pb-2 text-right font-bold text-green-600 text-base">{fmt(result.takehome)}</td>
                   </tr>
@@ -298,7 +415,7 @@ export default function SalaryCalculator() {
               </table>
             </div>
             <div className="mt-6 pt-5 border-t border-gray-100">
-              <p className="text-xs font-semibold text-gray-500 mb-3">Employer Contributions (not deducted from your salary)</p>
+              <p className="text-xs font-semibold text-gray-500 mb-3">{t("employerSection")}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 {[
                   { label: `EPF Employer (${result.gross <= 5000 ? "13" : "12"}%)`, value: result.epfEmployer },
@@ -320,7 +437,7 @@ export default function SalaryCalculator() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">How Malaysian Salary Deductions Work</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">{t("explainTitle")}</h2>
             <p className="text-gray-600 leading-relaxed">
               Every Malaysian employee&apos;s monthly pay packet is subject to three mandatory statutory deductions before you receive your take-home pay: EPF, SOCSO, and EIS. A fourth deduction — PCB (monthly income tax) — applies once your annual income exceeds the personal relief threshold.
             </p>
@@ -362,24 +479,24 @@ export default function SalaryCalculator() {
       {/* Rates reference table */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Statutory Contribution Rates (2024)</h2>
-          <p className="text-gray-500 text-sm mb-6">Current rates for private-sector employees in Malaysia.</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">{t("ratesTitle")}</h2>
+          <p className="text-gray-500 text-sm mb-6">{t("ratesSub")}</p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left border-b border-gray-100">
-                  <th className="pb-3 font-semibold text-gray-700">Contribution</th>
-                  <th className="pb-3 font-semibold text-gray-700 text-center">Employee</th>
-                  <th className="pb-3 font-semibold text-gray-700 text-center">Employer</th>
-                  <th className="pb-3 font-semibold text-gray-700 hidden sm:table-cell">Wage Ceiling</th>
+                  <th className="pb-3 font-semibold text-gray-700">{t("colContrib")}</th>
+                  <th className="pb-3 font-semibold text-gray-700 text-center">{t("colEmployee")}</th>
+                  <th className="pb-3 font-semibold text-gray-700 text-center">{t("colEmployer")}</th>
+                  <th className="pb-3 font-semibold text-gray-700 hidden sm:table-cell">{t("colCeiling")}</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { name: "EPF", employee: "11%", employer: "12–13%", ceiling: "No ceiling" },
+                  { name: "EPF", employee: "11%", employer: "12–13%", ceiling: t("noCeiling") },
                   { name: "SOCSO", employee: "0.5%", employer: "1.75%", ceiling: "RM5,000/month" },
                   { name: "EIS", employee: "0.2%", employer: "0.2%", ceiling: "RM4,000/month" },
-                  { name: "PCB / Tax", employee: "Progressive", employer: "—", ceiling: "Based on income" },
+                  { name: "PCB / Tax", employee: t("progressive"), employer: "—", ceiling: "Based on income" },
                 ].map((row) => (
                   <tr key={row.name} className="border-b border-gray-50 last:border-0">
                     <td className="py-3 font-medium text-gray-800">{row.name}</td>
@@ -396,7 +513,7 @@ export default function SalaryCalculator() {
 
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t("faqTitle")}</h2>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">

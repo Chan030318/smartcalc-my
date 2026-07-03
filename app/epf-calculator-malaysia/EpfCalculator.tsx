@@ -3,6 +3,106 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackEpfCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
+
+const tr = {
+  en: {
+    formTitle: "Your EPF Details",
+    currentAge: "Current Age", retirementAge: "Retirement Age",
+    retireAt: "Retire at:",
+    salary: "Monthly Gross Salary",
+    balance: "Current EPF Balance", balanceHint: "check i-Akaun", balanceHint2: "Enter 0 if starting fresh or unsure",
+    increment: "Annual Salary Increment", dividend: "EPF Dividend Rate",
+    calculate: "Calculate EPF Savings", reset: "Reset",
+    disclaimer: "Projection only. Actual EPF dividends vary yearly. This calculator assumes a fixed rate — results are estimates, not guarantees.",
+    empty: "Enter your details and tap Calculate EPF Savings to see your projected retirement balance.",
+    projectedLabel: "Projected EPF Balance at Age",
+    afterYears: "year", afterYearsPlural: "years",
+    yourContrib: "Your Contributions", yourSub: "11% × years",
+    employerContrib: "Employer Contributions", employerSub: "12–13% × years",
+    dividendEarned: "Total Dividends Earned",
+    existingBal: "Existing Balance", existingSub: "starting amount",
+    composition: "Balance composition",
+    existingLegend: "Existing balance",
+    yearlyTitle: "Year-by-Year Projection",
+    yearlySub: "How your EPF balance grows from age",
+    to: "to",
+    colAge: "Age / Year", colSalary: "Monthly Salary", colEmployee: "Your Contrib.", colEmployer: "Employer Contrib.", colDividend: "Dividend", colBalance: "Balance (RM)",
+    showAll: "Show all", showLess: "Show less", years: "years",
+    howTitle: "How EPF Savings Work",
+    dividendHistoryTitle: "EPF Dividend History",
+    dividendHistorySub: "Declared annual dividend rates for Akaun Persaraan (conventional) and Akaun Sejahtera (conventional), 2016–2023.",
+    benchmarkTitle: "EPF Basic Savings Benchmarks",
+    benchmarkSub: "EPF publishes age-based Basic Savings targets. Aim to meet or exceed these thresholds for a financially secure retirement.",
+    benchmarkNote: "*RM600,000 at age 55 is EPF's recommended retirement adequacy target, providing ~RM2,500/month for 20 years. Source: KWSP.",
+    faqTitle: "Frequently Asked Questions",
+    back: "Back to all calculators",
+  },
+  bm: {
+    formTitle: "Maklumat EPF Anda",
+    currentAge: "Umur Semasa", retirementAge: "Umur Persaraan",
+    retireAt: "Bersara pada:",
+    salary: "Gaji Kasar Bulanan",
+    balance: "Baki EPF Semasa", balanceHint: "semak i-Akaun", balanceHint2: "Masukkan 0 jika baru mula atau tidak pasti",
+    increment: "Kenaikan Gaji Tahunan", dividend: "Kadar Dividen EPF",
+    calculate: "Kira Simpanan EPF", reset: "Reset",
+    disclaimer: "Unjuran sahaja. Dividen EPF berbeza setiap tahun. Kalkulator ini menggunakan kadar tetap — keputusan adalah anggaran, bukan jaminan.",
+    empty: "Masukkan maklumat anda dan tekan Kira Simpanan EPF untuk lihat unjuran baki persaraan.",
+    projectedLabel: "Unjuran Baki EPF Pada Umur",
+    afterYears: "tahun", afterYearsPlural: "tahun",
+    yourContrib: "Caruman Anda", yourSub: "11% × tahun",
+    employerContrib: "Caruman Majikan", employerSub: "12–13% × tahun",
+    dividendEarned: "Jumlah Dividen Diterima",
+    existingBal: "Baki Sedia Ada", existingSub: "jumlah permulaan",
+    composition: "Komposisi baki",
+    existingLegend: "Baki sedia ada",
+    yearlyTitle: "Unjuran Tahun demi Tahun",
+    yearlySub: "Bagaimana baki EPF anda berkembang dari umur",
+    to: "hingga",
+    colAge: "Umur / Tahun", colSalary: "Gaji Bulanan", colEmployee: "Caruman Anda", colEmployer: "Caruman Majikan", colDividend: "Dividen", colBalance: "Baki (RM)",
+    showAll: "Tunjuk semua", showLess: "Tunjuk kurang", years: "tahun",
+    howTitle: "Cara Simpanan EPF Berfungsi",
+    dividendHistoryTitle: "Sejarah Dividen EPF",
+    dividendHistorySub: "Kadar dividen tahunan Akaun Persaraan dan Akaun Sejahtera (konvensional), 2016–2023.",
+    benchmarkTitle: "Penanda Aras Simpanan Asas EPF",
+    benchmarkSub: "EPF menerbitkan sasaran Simpanan Asas mengikut umur. Cuba capai atau lebihi aras ini untuk persaraan yang selamat.",
+    benchmarkNote: "*RM600,000 pada umur 55 adalah sasaran kecukupan persaraan EPF, ~RM2,500/bulan selama 20 tahun. Sumber: KWSP.",
+    faqTitle: "Soalan Lazim",
+    back: "Kembali ke semua kalkulator",
+  },
+  zh: {
+    formTitle: "你的 EPF 资料",
+    currentAge: "现在年龄", retirementAge: "退休年龄",
+    retireAt: "退休年龄：",
+    salary: "税前月薪",
+    balance: "现有 EPF 余额", balanceHint: "查看 i-Akaun", balanceHint2: "如果刚开始或不确定，填 0",
+    increment: "年薪增幅", dividend: "EPF 股息率",
+    calculate: "计算 EPF 储蓄", reset: "重设",
+    disclaimer: "仅供预测。EPF 股息每年不同，此计算器使用固定利率 — 结果为估算，非保证。",
+    empty: "输入资料后点击计算 EPF 储蓄，查看预计退休余额。",
+    projectedLabel: "预计 EPF 余额（退休年龄）",
+    afterYears: "年后", afterYearsPlural: "年后",
+    yourContrib: "你的供款", yourSub: "11% × 年数",
+    employerContrib: "雇主供款", employerSub: "12–13% × 年数",
+    dividendEarned: "总股息收入",
+    existingBal: "现有余额", existingSub: "起始金额",
+    composition: "余额组成",
+    existingLegend: "现有余额",
+    yearlyTitle: "逐年预测",
+    yearlySub: "EPF 余额从年龄",
+    to: "到",
+    colAge: "年龄 / 年份", colSalary: "月薪", colEmployee: "你的供款", colEmployer: "雇主供款", colDividend: "股息", colBalance: "余额 (RM)",
+    showAll: "显示全部", showLess: "显示较少", years: "年",
+    howTitle: "EPF 储蓄如何运作",
+    dividendHistoryTitle: "EPF 股息历史",
+    dividendHistorySub: "Akaun Persaraan 和 Akaun Sejahtera（传统）年度股息率，2016–2023。",
+    benchmarkTitle: "EPF 基本储蓄目标",
+    benchmarkSub: "EPF 按年龄公布基本储蓄目标，尽量达到或超过这些目标以保障退休生活。",
+    benchmarkNote: "*55 岁 RM600,000 是 EPF 建议的退休充裕目标，可支持约 20 年每月 RM2,500。来源：KWSP。",
+    faqTitle: "常见问题",
+    back: "回到所有计算器",
+  },
+} as const;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface YearRow {
@@ -140,6 +240,8 @@ const dividendHistory = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function EpfCalculator() {
+  const { lang } = useLang();
+  const t = (k: keyof typeof tr.en) => tr[lang][k];
   const [currentAge, setCurrentAge] = useState("30");
   const [retirementAge, setRetirementAge] = useState("55");
   const [salary, setSalary] = useState("");
@@ -229,7 +331,7 @@ export default function EpfCalculator() {
           <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
-          <span><strong>Projection only.</strong> Actual EPF dividends vary yearly. This calculator assumes a fixed rate — results are estimates, not guarantees.</span>
+          <span>{t("disclaimer")}</span>
         </div>
       </div>
 
@@ -239,13 +341,13 @@ export default function EpfCalculator() {
 
           {/* Inputs */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-5">
-            <h2 className="text-lg font-semibold text-gray-800">Your EPF Details</h2>
+            <h2 className="text-lg font-semibold text-gray-800">{t("formTitle")}</h2>
 
             {/* Age row */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="currentAge" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Current Age
+                  {t("currentAge")}
                 </label>
                 <div className="relative">
                   <input
@@ -264,7 +366,7 @@ export default function EpfCalculator() {
               </div>
               <div>
                 <label htmlFor="retirementAge" className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Retirement Age
+                  {t("retirementAge")}
                 </label>
                 <div className="relative">
                   <input
@@ -285,7 +387,7 @@ export default function EpfCalculator() {
 
             {/* Quick retirement age buttons */}
             <div>
-              <p className="text-xs text-gray-500 mb-2">Retire at:</p>
+              <p className="text-xs text-gray-500 mb-2">{t("retireAt")}</p>
               <div className="flex gap-2">
                 {[55, 56, 60].map((a) => (
                   <button
@@ -306,7 +408,7 @@ export default function EpfCalculator() {
             {/* Monthly salary */}
             <div>
               <label htmlFor="salary" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Monthly Gross Salary
+                {t("salary")}
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -327,8 +429,8 @@ export default function EpfCalculator() {
             {/* Current EPF balance */}
             <div>
               <label htmlFor="balance" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Current EPF Balance
-                <span className="ml-1.5 text-gray-400 font-normal text-xs">(check i-Akaun)</span>
+                {t("balance")}
+                <span className="ml-1.5 text-gray-400 font-normal text-xs">({t("balanceHint")})</span>
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -344,14 +446,14 @@ export default function EpfCalculator() {
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-1.5">Enter 0 if starting fresh or unsure</p>
+              <p className="text-xs text-gray-400 mt-1.5">{t("balanceHint2")}</p>
             </div>
 
             {/* Assumptions row */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="increment" className="block text-xs font-medium text-gray-700 mb-1.5">
-                  Annual Salary Increment
+                  {t("increment")}
                 </label>
                 <div className="relative">
                   <input
@@ -370,7 +472,7 @@ export default function EpfCalculator() {
               </div>
               <div>
                 <label htmlFor="dividend" className="block text-xs font-medium text-gray-700 mb-1.5">
-                  EPF Dividend Rate
+                  {t("dividend")}
                 </label>
                 <div className="relative">
                   <input
@@ -395,14 +497,14 @@ export default function EpfCalculator() {
                 disabled={!isValid}
                 className="flex-1 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-200 text-white font-semibold py-3 rounded-xl transition-colors"
               >
-                Calculate EPF Savings
+                {t("calculate")}
               </button>
               {submitted && (
                 <button
                   onClick={handleReset}
                   className="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium transition-colors text-sm"
                 >
-                  Reset
+                  {t("reset")}
                 </button>
               )}
             </div>
@@ -414,27 +516,27 @@ export default function EpfCalculator() {
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">🏦</div>
                 <p className="text-gray-400 text-sm">
-                  Enter your details and tap <strong>Calculate EPF Savings</strong> to see your projected retirement balance.
+                  {t("empty")}
                 </p>
               </div>
             ) : (
               <>
                 {/* Primary figure */}
                 <div className="text-center mb-6">
-                  <p className="text-sm text-gray-500 mb-1">Projected EPF Balance at Age {retAge}</p>
+                  <p className="text-sm text-gray-500 mb-1">{t("projectedLabel")} {retAge}</p>
                   <p className="text-4xl sm:text-5xl font-bold text-teal-600 mb-1">
                     RM {fmtInt(Math.round(result.finalBalance))}
                   </p>
-                  <p className="text-sm text-gray-400">after {result.yearsToRetirement} year{result.yearsToRetirement !== 1 ? "s" : ""}</p>
+                  <p className="text-sm text-gray-400">{result.yearsToRetirement} {t("afterYearsPlural")}</p>
                 </div>
 
                 {/* 4 key stats */}
                 <div className="grid grid-cols-2 gap-3 mb-5">
                   {[
-                    { label: "Your Contributions", value: `RM ${fmtInt(Math.round(result.totalEmployee))}`, sub: "11% × years", color: "bg-teal-50 text-teal-700" },
-                    { label: "Employer Contributions", value: `RM ${fmtInt(Math.round(result.totalEmployer))}`, sub: "12–13% × years", color: "bg-blue-50 text-blue-700" },
-                    { label: "Total Dividends Earned", value: `RM ${fmtInt(Math.round(result.totalDividend))}`, sub: `at ${divRate}% p.a.`, color: "bg-green-50 text-green-700" },
-                    { label: "Existing Balance", value: `RM ${fmtInt(Math.round(balance))}`, sub: "starting amount", color: "bg-gray-50 text-gray-700" },
+                    { label: t("yourContrib"), value: `RM ${fmtInt(Math.round(result.totalEmployee))}`, sub: t("yourSub"), color: "bg-teal-50 text-teal-700" },
+                    { label: t("employerContrib"), value: `RM ${fmtInt(Math.round(result.totalEmployer))}`, sub: t("employerSub"), color: "bg-blue-50 text-blue-700" },
+                    { label: t("dividendEarned"), value: `RM ${fmtInt(Math.round(result.totalDividend))}`, sub: `at ${divRate}% p.a.`, color: "bg-green-50 text-green-700" },
+                    { label: t("existingBal"), value: `RM ${fmtInt(Math.round(balance))}`, sub: t("existingSub"), color: "bg-gray-50 text-gray-700" },
                   ].map((m) => (
                     <div key={m.label} className={`rounded-xl px-4 py-3 ${m.color.split(" ")[0]}`}>
                       <p className={`text-xs mb-0.5 ${m.color.split(" ")[1]}`}>{m.label}</p>
@@ -446,7 +548,7 @@ export default function EpfCalculator() {
 
                 {/* Stacked composition bar */}
                 <div>
-                  <p className="text-xs text-gray-500 mb-2">Balance composition</p>
+                  <p className="text-xs text-gray-500 mb-2">{t("composition")}</p>
                   <div className="flex rounded-full overflow-hidden h-3 mb-2">
                     {balance > 0 && (
                       <div
@@ -462,7 +564,7 @@ export default function EpfCalculator() {
                     {balance > 0 && (
                       <span className="flex items-center gap-1.5">
                         <span className="w-2.5 h-2.5 rounded-full bg-gray-300 inline-block" />
-                        Existing balance
+                        {t("existingLegend")}
                       </span>
                     )}
                     <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-teal-500 inline-block" />Your contributions ({empPct}%)</span>
@@ -482,20 +584,20 @@ export default function EpfCalculator() {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
             <div className="flex items-start justify-between mb-6 gap-4">
               <div>
-                <h2 className="text-xl font-bold text-gray-900">Year-by-Year Projection</h2>
-                <p className="text-gray-500 text-sm mt-0.5">How your EPF balance grows from age {age} to {retAge}</p>
+                <h2 className="text-xl font-bold text-gray-900">{t("yearlyTitle")}</h2>
+                <p className="text-gray-500 text-sm mt-0.5">{t("yearlySub")} {age} {t("to")} {retAge}</p>
               </div>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-left border-b border-gray-100">
-                    <th className="pb-3 font-semibold text-gray-700">Age / Year</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right hidden sm:table-cell">Monthly Salary</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right">Your Contrib.</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right hidden md:table-cell">Employer Contrib.</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right hidden sm:table-cell">Dividend</th>
-                    <th className="pb-3 font-semibold text-gray-700 text-right">Balance (RM)</th>
+                    <th className="pb-3 font-semibold text-gray-700">{t("colAge")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right hidden sm:table-cell">{t("colSalary")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right">{t("colEmployee")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right hidden md:table-cell">{t("colEmployer")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right hidden sm:table-cell">{t("colDividend")}</th>
+                    <th className="pb-3 font-semibold text-gray-700 text-right">{t("colBalance")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -533,7 +635,7 @@ export default function EpfCalculator() {
                 onClick={() => setShowFullTable(!showFullTable)}
                 className="mt-4 text-sm text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1"
               >
-                {showFullTable ? "Show less" : `Show all ${result.rows.length} years`}
+                {showFullTable ? t("showLess") : `${t("showAll")} ${result.rows.length} ${t("years")}`}
                 <svg className={`w-4 h-4 transition-transform ${showFullTable ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -547,7 +649,7 @@ export default function EpfCalculator() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">How EPF Savings Work</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">{t("howTitle")}</h2>
             <p className="text-gray-600 leading-relaxed">
               EPF (Employees Provident Fund), or KWSP (Kumpulan Wang Simpanan Pekerja), is Malaysia's mandatory retirement savings scheme. Every private-sector employee and their employer make monthly contributions, which are invested and earn an annual dividend declared by EPF. The power of EPF lies in compound dividends over decades — even moderate salary earners can accumulate significant retirement savings.
             </p>
@@ -606,10 +708,8 @@ export default function EpfCalculator() {
       {/* Dividend history */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">EPF Dividend History</h2>
-          <p className="text-gray-500 text-sm mb-6">
-            Declared annual dividend rates for Akaun Persaraan (conventional) and Akaun Sejahtera (conventional), 2016–2023.
-          </p>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">{t("dividendHistoryTitle")}</h2>
+          <p className="text-gray-500 text-sm mb-6">{t("dividendHistorySub")}</p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -647,10 +747,8 @@ export default function EpfCalculator() {
       {/* EPF Basic Savings targets */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">EPF Basic Savings Benchmarks</h2>
-          <p className="text-gray-500 text-sm mb-6">
-            EPF publishes age-based Basic Savings targets. Aim to meet or exceed these thresholds for a financially secure retirement.
-          </p>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">{t("benchmarkTitle")}</h2>
+          <p className="text-gray-500 text-sm mb-6">{t("benchmarkSub")}</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { age: 25, target: "RM6,100" },
@@ -669,14 +767,14 @@ export default function EpfCalculator() {
             ))}
           </div>
           <p className="text-xs text-gray-400 mt-4">
-            *RM600,000 at age 55 is EPF's recommended retirement adequacy target, providing ~RM2,500/month for 20 years. Basic Savings benchmarks are for Akaun Persaraan only. Source: KWSP.
+            {t("benchmarkNote")}
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t("faqTitle")}</h2>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
@@ -714,7 +812,7 @@ export default function EpfCalculator() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to all calculators
+          {t("back")}
         </Link>
       </section>
     </>

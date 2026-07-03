@@ -3,6 +3,82 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackDsrCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
+
+const tr = {
+  en: {
+    formTitle: "Your Financial Details",
+    incomeLabel: "Gross Monthly Income", incomeHint: "Before EPF and tax deductions (gross salary)",
+    existingLabel: "Existing Monthly Commitments",
+    existingHint: "Home loan, car loan, personal loan, PTPTN, credit card minimum payments",
+    newLoanLabel: "New Loan Monthly Repayment", newLoanHint: "Leave blank or 0 if checking existing DSR only",
+    calculate: "Calculate DSR", reset: "Reset",
+    empty: "Enter your income and commitments to see your DSR rating.",
+    yourDsr: "Your DSR",
+    capacityTitle: "Remaining Borrowing Capacity",
+    at60: "At 60% DSR (standard)", at70: "At 70% DSR (high income)",
+    additionalCapacity: "Additional monthly repayment",
+    maxDebt: "Max total monthly debt",
+    breakdownTitle: "DSR Breakdown",
+    colItem: "Item", colAmount: "Amount (RM)", colPct: "% of Income",
+    grossIncome: "Gross Monthly Income",
+    existingCommit: "Existing Commitments",
+    newRepayment: "New Loan Repayment",
+    totalCommit: "Total Commitments",
+    yourDsrRow: "Your DSR",
+    whatCounts: "What counts as monthly debt commitments?",
+    faqTitle: "Frequently Asked Questions",
+    back: "Back to all calculators",
+  },
+  bm: {
+    formTitle: "Maklumat Kewangan Anda",
+    incomeLabel: "Pendapatan Kasar Bulanan", incomeHint: "Sebelum potongan EPF dan cukai (gaji kasar)",
+    existingLabel: "Komitmen Bulanan Sedia Ada",
+    existingHint: "Pinjaman rumah, kereta, peribadi, PTPTN, bayaran minimum kad kredit",
+    newLoanLabel: "Bayaran Balik Pinjaman Baru", newLoanHint: "Biarkan kosong atau 0 jika hanya semak DSR sedia ada",
+    calculate: "Kira DSR", reset: "Reset",
+    empty: "Masukkan pendapatan dan komitmen anda untuk lihat penarafan DSR.",
+    yourDsr: "DSR Anda",
+    capacityTitle: "Kapasiti Pinjaman Tinggal",
+    at60: "Pada DSR 60% (standard)", at70: "Pada DSR 70% (pendapatan tinggi)",
+    additionalCapacity: "Bayaran balik bulanan tambahan",
+    maxDebt: "Jumlah maksimum hutang bulanan",
+    breakdownTitle: "Pecahan DSR",
+    colItem: "Item", colAmount: "Jumlah (RM)", colPct: "% Pendapatan",
+    grossIncome: "Pendapatan Kasar Bulanan",
+    existingCommit: "Komitmen Sedia Ada",
+    newRepayment: "Bayaran Pinjaman Baru",
+    totalCommit: "Jumlah Komitmen",
+    yourDsrRow: "DSR Anda",
+    whatCounts: "Apa yang dikira sebagai komitmen hutang bulanan?",
+    faqTitle: "Soalan Lazim",
+    back: "Kembali ke semua kalkulator",
+  },
+  zh: {
+    formTitle: "你的财务资料",
+    incomeLabel: "税前月收入", incomeHint: "EPF 和税款扣除之前（税前薪水）",
+    existingLabel: "现有每月债务承诺",
+    existingHint: "房贷、车贷、个人贷款、PTPTN、信用卡最低还款",
+    newLoanLabel: "新贷款每月还款", newLoanHint: "如果只检查现有 DSR，可以留空或填 0",
+    calculate: "计算 DSR", reset: "重设",
+    empty: "输入收入和债务承诺，查看你的 DSR 评级。",
+    yourDsr: "你的 DSR",
+    capacityTitle: "剩余借贷能力",
+    at60: "DSR 60%（标准）", at70: "DSR 70%（高收入）",
+    additionalCapacity: "额外每月还款能力",
+    maxDebt: "最高每月总债务",
+    breakdownTitle: "DSR 明细",
+    colItem: "项目", colAmount: "金额 (RM)", colPct: "占收入 %",
+    grossIncome: "税前月收入",
+    existingCommit: "现有债务承诺",
+    newRepayment: "新贷款还款",
+    totalCommit: "总债务承诺",
+    yourDsrRow: "你的 DSR",
+    whatCounts: "哪些项目算作每月债务承诺？",
+    faqTitle: "常见问题",
+    back: "回到所有计算器",
+  },
+} as const;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type DsrCategory = "excellent" | "good" | "moderate" | "high-risk";
@@ -162,6 +238,8 @@ const commitmentExamples = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function DsrCalculator() {
+  const { lang } = useLang();
+  const t = (k: keyof typeof tr.en) => tr[lang][k];
   const [incomeInput, setIncomeInput] = useState("");
   const [existingInput, setExistingInput] = useState("");
   const [newLoanInput, setNewLoanInput] = useState("");
@@ -207,12 +285,12 @@ export default function DsrCalculator() {
 
           {/* Inputs */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6">
-            <h2 className="text-lg font-semibold text-gray-800">Your Financial Details</h2>
+            <h2 className="text-lg font-semibold text-gray-800">{t("formTitle")}</h2>
 
             {/* Monthly income */}
             <div>
               <label htmlFor="income" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Gross Monthly Income
+                {t("incomeLabel")}
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -228,13 +306,13 @@ export default function DsrCalculator() {
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-1.5">Before EPF and tax deductions (gross salary)</p>
+              <p className="text-xs text-gray-400 mt-1.5">{t("incomeHint")}</p>
             </div>
 
             {/* Existing commitments */}
             <div>
               <label htmlFor="existing" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Existing Monthly Commitments
+                {t("existingLabel")}
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -250,13 +328,13 @@ export default function DsrCalculator() {
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-1.5">Total of all current loan repayments (car, home, personal, PTPTN, credit cards)</p>
+              <p className="text-xs text-gray-400 mt-1.5">{t("existingHint")}</p>
             </div>
 
             {/* New loan repayment */}
             <div>
               <label htmlFor="newloan" className="block text-sm font-medium text-gray-700 mb-1.5">
-                New Loan Monthly Repayment
+                {t("newLoanLabel")}
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">RM</span>
@@ -286,14 +364,14 @@ export default function DsrCalculator() {
                 disabled={!isValid}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-200 text-white font-semibold py-3 rounded-xl transition-colors"
               >
-                Calculate DSR
+                {t("calculate")}
               </button>
               {submitted && (
                 <button
                   onClick={handleReset}
                   className="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium transition-colors text-sm"
                 >
-                  Reset
+                  {t("reset")}
                 </button>
               )}
             </div>
@@ -305,7 +383,7 @@ export default function DsrCalculator() {
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">🏦</div>
                 <p className="text-gray-400 text-sm">
-                  Enter your income and commitments, then tap <strong>Calculate DSR</strong>.
+                  {t("empty")}
                 </p>
                 <p className="text-xs text-gray-400 mt-3">
                   Not sure what your new repayment would be?{" "}
@@ -318,7 +396,7 @@ export default function DsrCalculator() {
               <>
                 {/* DSR hero */}
                 <div className="text-center mb-6">
-                  <p className="text-sm text-gray-500 mb-1">Your Debt Service Ratio</p>
+                  <p className="text-sm text-gray-500 mb-1">{t("yourDsr")}</p>
                   <p className={`text-6xl font-bold mb-2 ${cfg.color}`}>
                     {result.dsr}%
                   </p>
@@ -361,9 +439,9 @@ export default function DsrCalculator() {
                 {/* 3-stat strip */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { label: "Existing Debt", value: `RM ${fmt(result.existingCommitments)}`, sub: "/month" },
-                    { label: "New Repayment", value: `RM ${fmt(result.newRepayment)}`, sub: "/month" },
-                    { label: "Total Commitments", value: `RM ${fmt(result.totalCommitments)}`, sub: "/month" },
+                    { label: t("existingCommit"), value: `RM ${fmt(result.existingCommitments)}`, sub: "/month" },
+                    { label: t("newRepayment"), value: `RM ${fmt(result.newRepayment)}`, sub: "/month" },
+                    { label: t("totalCommit"), value: `RM ${fmt(result.totalCommitments)}`, sub: "/month" },
                   ].map((s) => (
                     <div key={s.label} className="bg-gray-50 rounded-xl p-3 text-center">
                       <p className="text-xs text-gray-500 mb-0.5">{s.label}</p>
@@ -448,7 +526,7 @@ export default function DsrCalculator() {
 
             {/* Borrowing capacity */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-gray-900 mb-5">Remaining Borrowing Capacity</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-5">{t("capacityTitle")}</h2>
               <p className="text-xs text-gray-500 mb-4">
                 How much additional monthly repayment you can afford based on standard bank thresholds, after your existing commitments.
               </p>
@@ -645,7 +723,7 @@ export default function DsrCalculator() {
 
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">{t("faqTitle")}</h2>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
@@ -681,7 +759,7 @@ export default function DsrCalculator() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to all calculators
+          {t("back")}
         </Link>
       </section>
     </>
