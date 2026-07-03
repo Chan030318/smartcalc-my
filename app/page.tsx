@@ -5,6 +5,7 @@ import HomeWhy from "@/components/HomeWhy";
 import HomePillars from "@/components/HomePillars";
 import Vision from "@/components/Vision";
 import CalculatorCards from "@/components/CalculatorCards";
+import BeginnerGuide from "@/components/BeginnerGuide";
 import Benefits from "@/components/Benefits";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -60,6 +61,7 @@ export default function HomePage() {
         <HomePillars />
         <Vision />
         <CalculatorCards />
+        <BeginnerGuide />
         <Benefits />
       </main>
       <Footer />
