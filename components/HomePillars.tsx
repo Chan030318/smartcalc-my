@@ -6,6 +6,7 @@ import { useLang } from "@/components/LangProvider";
 export default function HomePillars() {
   const { t } = useLang();
   const c = t.homePillars;
+  const itemLinks = ["#", "/mindset", "/finance", "#"];
 
   return (
     <section className="bg-white">
@@ -21,29 +22,36 @@ export default function HomePillars() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {c.items.map((item) => (
+          {c.items.map((item, index) => {
+            const href = itemLinks[index] ?? "#";
+            const isComingSoon = href === "#";
+
+            return (
             <Link
               key={item.title}
-              href="#"
-              aria-disabled="true"
+              href={href}
+              aria-disabled={isComingSoon}
               className="group flex min-h-[220px] flex-col rounded-2xl border border-gray-200 bg-gray-50 p-5 transition-colors hover:border-amber-200 hover:bg-amber-50/40"
             >
               <div className="mb-5 flex items-center justify-between">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-gray-200 bg-white text-xl font-black text-gray-900">
                   {item.icon}
                 </span>
-                <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-gray-500 ring-1 ring-gray-200">
-                  {c.soon}
-                </span>
+                {isComingSoon && (
+                  <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-gray-500 ring-1 ring-gray-200">
+                    {c.soon}
+                  </span>
+                )}
               </div>
               <h3 className="text-lg font-black text-gray-950">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-gray-600">{item.desc}</p>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-7 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-center">
-          <Link href="#" aria-disabled="true" className="text-sm font-black text-amber-800 hover:text-amber-700">
+          <Link href="/getting-started" className="text-sm font-black text-amber-800 hover:text-amber-700">
             {c.starterLabel} <span aria-hidden="true">-&gt;</span>
           </Link>
         </div>
