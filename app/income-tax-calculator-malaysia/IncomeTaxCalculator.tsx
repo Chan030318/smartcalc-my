@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackIncomeTaxCalculated } from "@/lib/gtag";
+import { useLang } from "@/components/LangProvider";
 
 // ─── Tax brackets YA 2024, resident individual ────────────────────────────────
 const BRACKETS = [
@@ -87,6 +88,172 @@ function capRelief(val: string, cap: number): number {
 
 const PERSONAL_RELIEF = 9_000;
 
+const RICH_DAD_COPY = {
+  en: {
+    formTitle: "Enter Your Income & Reliefs",
+    annualIncome: "Annual Income",
+    annualHint: "Gross annual salary, rental income, freelance income, or total income for the year",
+    reliefs: "Tax Reliefs",
+    optional: "optional",
+    epf: "EPF Contributions / Life Insurance",
+    medical: "Medical & Dental",
+    education: "Education Fees",
+    spouse: "Spouse Relief",
+    spouseAmount: "RM4,000",
+    children: "Children under 18",
+    child: "child",
+    childrenPlural: "children",
+    calculate: "Calculate Tax",
+    reset: "Reset",
+    empty: "Enter your annual income and tap Calculate Tax to see your estimated tax payable.",
+    taxPayable: "Estimated Tax Payable",
+    perYear: "per year",
+    monthlyPcb: "Monthly PCB",
+    monthlyPcbSub: "est. monthly deduction",
+    effectiveRate: "Effective Rate",
+    effectiveRateSub: "of annual income",
+    chargeableIncome: "Chargeable Income",
+    chargeableIncomeSub: "after all reliefs",
+    totalReliefs: "Total Reliefs",
+    totalReliefsSub: "deducted from income",
+    annualIncomeMetric: "Annual Income",
+    reliefsMetric: "Reliefs",
+    taxMetric: "Tax Payable",
+    rebate: "RM400 rebate applied",
+    rebateNote: "chargeable income is below RM35,000.",
+    ratRaceTitle: "Rat Race Insight",
+    taxedCashFlow: "After tax, the strongest move is not just earning more. It is turning leftover cash flow into assets that can pay you back.",
+    richDadLesson: "Rich Dad lesson: high income alone does not create freedom. Assets create cash flow; liabilities consume cash flow.",
+    assetAction: "Next move: decide how much of your after-tax income can go into EPF top-ups, ASB, REITs, dividend stocks, or an emergency fund before lifestyle spending expands.",
+    activeIncome: "Active income taxed",
+    assetIncome: "Cash flow to build assets",
+    freedomLink: "Calculate freedom number",
+    reliefBreakdown: "Relief Breakdown",
+    taxByBracket: "Tax by Bracket",
+    noTax: "No tax payable - chargeable income is zero.",
+    bracket: "Bracket",
+    rate: "Rate",
+    howTitle: "How to Read This Like Rich Dad",
+    howBody: "Income tax tells you how much active income leaks out before it reaches your pocket. The important question is what you do with the cash flow that remains.",
+    step1: "Earn active income",
+    step1Body: "Salary and business income are useful starting points, but they stop when you stop working.",
+    step2: "Protect cash flow",
+    step2Body: "Use legal reliefs, avoid bad debt, and keep enough emergency cash so one setback does not push you deeper into the Rat Race.",
+    step3: "Buy or build assets",
+    step3Body: "Move part of after-tax income into assets that can produce passive income over time.",
+    back: "Back to all calculators",
+  },
+  bm: {
+    formTitle: "Masukkan Pendapatan & Pelepasan",
+    annualIncome: "Pendapatan Tahunan",
+    annualHint: "Gaji kasar tahunan, sewa, freelance, atau jumlah pendapatan setahun",
+    reliefs: "Pelepasan Cukai",
+    optional: "pilihan",
+    epf: "Caruman EPF / Insurans Hayat",
+    medical: "Perubatan & Pergigian",
+    education: "Yuran Pendidikan",
+    spouse: "Pelepasan Pasangan",
+    spouseAmount: "RM4,000",
+    children: "Anak bawah 18",
+    child: "anak",
+    childrenPlural: "anak",
+    calculate: "Kira Cukai",
+    reset: "Reset",
+    empty: "Masukkan pendapatan tahunan dan tekan Kira Cukai untuk lihat anggaran cukai.",
+    taxPayable: "Anggaran Cukai Perlu Dibayar",
+    perYear: "setahun",
+    monthlyPcb: "PCB Bulanan",
+    monthlyPcbSub: "anggaran potongan bulanan",
+    effectiveRate: "Kadar Efektif",
+    effectiveRateSub: "daripada pendapatan tahunan",
+    chargeableIncome: "Pendapatan Bercukai",
+    chargeableIncomeSub: "selepas semua pelepasan",
+    totalReliefs: "Jumlah Pelepasan",
+    totalReliefsSub: "ditolak daripada pendapatan",
+    annualIncomeMetric: "Pendapatan Tahunan",
+    reliefsMetric: "Pelepasan",
+    taxMetric: "Cukai",
+    rebate: "Rebat RM400 digunakan",
+    rebateNote: "pendapatan bercukai bawah RM35,000.",
+    ratRaceTitle: "Pandangan Rat Race",
+    taxedCashFlow: "Selepas cukai, langkah paling kuat bukan sekadar tambah gaji. Ia ialah menukar lebihan cash flow kepada aset yang boleh membayar anda semula.",
+    richDadLesson: "Pelajaran Rich Dad: pendapatan tinggi sahaja tidak mencipta kebebasan. Aset mencipta cash flow; liabiliti makan cash flow.",
+    assetAction: "Langkah seterusnya: tentukan berapa daripada pendapatan selepas cukai boleh masuk ke EPF top-up, ASB, REITs, saham dividen, atau dana kecemasan sebelum gaya hidup membesar.",
+    activeIncome: "Pendapatan aktif dikenakan cukai",
+    assetIncome: "Cash flow untuk bina aset",
+    freedomLink: "Kira freedom number",
+    reliefBreakdown: "Pecahan Pelepasan",
+    taxByBracket: "Cukai Mengikut Bracket",
+    noTax: "Tiada cukai perlu dibayar - pendapatan bercukai adalah sifar.",
+    bracket: "Bracket",
+    rate: "Kadar",
+    howTitle: "Cara Baca Ini Seperti Rich Dad",
+    howBody: "Cukai pendapatan menunjukkan berapa banyak pendapatan aktif keluar sebelum masuk poket. Soalan penting ialah apa anda buat dengan cash flow yang tinggal.",
+    step1: "Jana pendapatan aktif",
+    step1Body: "Gaji dan pendapatan bisnes ialah permulaan yang berguna, tetapi ia berhenti bila anda berhenti kerja.",
+    step2: "Lindungi cash flow",
+    step2Body: "Gunakan pelepasan sah, elak hutang jahat, dan simpan dana kecemasan supaya satu masalah tidak menolak anda lebih dalam ke Rat Race.",
+    step3: "Beli atau bina aset",
+    step3Body: "Alihkan sebahagian pendapatan selepas cukai ke aset yang boleh menjana pendapatan pasif dari masa ke masa.",
+    back: "Kembali ke semua kalkulator",
+  },
+  zh: {
+    formTitle: "输入收入与税务减免",
+    annualIncome: "年度收入",
+    annualHint: "全年税前薪水、租金、兼职收入，或一整年的总收入",
+    reliefs: "税务减免",
+    optional: "可选",
+    epf: "EPF 供款 / 人寿保险",
+    medical: "医疗与牙科",
+    education: "教育费用",
+    spouse: "配偶减免",
+    spouseAmount: "RM4,000",
+    children: "18 岁以下孩子",
+    child: "个孩子",
+    childrenPlural: "个孩子",
+    calculate: "计算税额",
+    reset: "重设",
+    empty: "输入年度收入，然后点击计算税额，就能看到预计应缴税。",
+    taxPayable: "预计应缴税",
+    perYear: "每年",
+    monthlyPcb: "每月 PCB",
+    monthlyPcbSub: "预计每月扣税",
+    effectiveRate: "有效税率",
+    effectiveRateSub: "占年度收入",
+    chargeableIncome: "应课税收入",
+    chargeableIncomeSub: "扣除所有减免后",
+    totalReliefs: "总减免",
+    totalReliefsSub: "从收入中扣除",
+    annualIncomeMetric: "年度收入",
+    reliefsMetric: "税务减免",
+    taxMetric: "应缴税",
+    rebate: "已应用 RM400 回扣",
+    rebateNote: "应课税收入低于 RM35,000。",
+    ratRaceTitle: "老鼠圈提醒",
+    taxedCashFlow: "扣税之后，最重要的不只是赚更多，而是把剩下的现金流变成会付钱给你的资产。",
+    richDadLesson: "富爸爸方法：高收入不等于财务自由。资产创造现金流，负债消耗现金流。",
+    assetAction: "下一步：决定税后收入中有多少要先进入 EPF top-up、ASB、REITs、股息股票或紧急备用金，而不是马上提高生活开销。",
+    activeIncome: "主动收入被征税",
+    assetIncome: "用现金流建立资产",
+    freedomLink: "计算自由数字",
+    reliefBreakdown: "减免明细",
+    taxByBracket: "分层税额",
+    noTax: "无需缴税 - 应课税收入为零。",
+    bracket: "税率层级",
+    rate: "税率",
+    howTitle: "用富爸爸的方法看这份税表",
+    howBody: "所得税让你看到主动收入在进到口袋前流失了多少。真正重要的问题是：剩下的现金流你拿去消费，还是拿去买资产？",
+    step1: "赚取主动收入",
+    step1Body: "薪水和生意收入是起点，但你停止工作时，它们也会停止。",
+    step2: "保护现金流",
+    step2Body: "合法使用税务减免，避开坏债，准备紧急备用金，避免一次意外把你推回老鼠圈。",
+    step3: "购买或建立资产",
+    step3Body: "把一部分税后收入转进长期能产生被动收入的资产。",
+    back: "回到所有计算器",
+  },
+} as const;
+
+
 const faqs = [
   {
     q: "Who needs to file income tax in Malaysia?",
@@ -119,6 +286,8 @@ const faqs = [
 ];
 
 export default function IncomeTaxCalculator() {
+  const { lang } = useLang();
+  const copy = RICH_DAD_COPY[lang];
   const [incomeInput, setIncomeInput] = useState("");
   const [epfInput, setEpfInput] = useState("");
   const [medicalInput, setMedicalInput] = useState("");
@@ -205,11 +374,11 @@ export default function IncomeTaxCalculator() {
           amount: capRelief(educationInput, 7_000),
           note: "Capped at RM7,000",
         },
-        ...(spouseRelief ? [{ label: "Spouse Relief", amount: 4_000, note: "Non-working spouse" }] : []),
+        ...(spouseRelief ? [{ label: copy.spouse, amount: 4_000, note: "Non-working spouse" }] : []),
         ...((parseInt(childrenUnder18) || 0) > 0
           ? [
               {
-                label: `Children Under 18 (×${childrenUnder18})`,
+                label: `${copy.children} (x${childrenUnder18})`,
                 amount: (parseInt(childrenUnder18) || 0) * 2_000,
                 note: "RM2,000 each",
               },
@@ -225,12 +394,12 @@ export default function IncomeTaxCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* ── Inputs ── */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6">
-            <h2 className="text-lg font-semibold text-gray-800">Enter Your Income & Reliefs</h2>
+            <h2 className="text-lg font-semibold text-gray-800">{copy.formTitle}</h2>
 
             {/* Annual income */}
             <div>
               <label htmlFor="income" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Annual Income (before reliefs)
+                {copy.annualIncome}
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium pointer-events-none">
@@ -248,17 +417,17 @@ export default function IncomeTaxCalculator() {
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-1.5">Gross annual salary, rental income, or total income for the year</p>
+              <p className="text-xs text-gray-400 mt-1.5">{copy.annualHint}</p>
             </div>
 
             {/* Reliefs */}
             <div className="space-y-4">
-              <p className="text-sm font-semibold text-gray-700">Tax Reliefs (optional)</p>
+              <p className="text-sm font-semibold text-gray-700">{copy.reliefs} <span className="font-normal text-gray-400">({copy.optional})</span></p>
 
               {/* EPF */}
               <div>
                 <label htmlFor="epf" className="block text-xs font-medium text-gray-600 mb-1">
-                  EPF Contributions / Life Insurance
+                  {copy.epf}
                   <span className="ml-1.5 text-gray-400 font-normal">max RM7,000</span>
                 </label>
                 <div className="relative">
@@ -279,7 +448,7 @@ export default function IncomeTaxCalculator() {
               {/* Medical */}
               <div>
                 <label htmlFor="medical" className="block text-xs font-medium text-gray-600 mb-1">
-                  Medical & Dental (self / spouse / child)
+                  {copy.medical}
                   <span className="ml-1.5 text-gray-400 font-normal">max RM10,000</span>
                 </label>
                 <div className="relative">
@@ -300,7 +469,7 @@ export default function IncomeTaxCalculator() {
               {/* Education */}
               <div>
                 <label htmlFor="education" className="block text-xs font-medium text-gray-600 mb-1">
-                  Education Fees (self)
+                  {copy.education}
                   <span className="ml-1.5 text-gray-400 font-normal">max RM7,000</span>
                 </label>
                 <div className="relative">
@@ -328,7 +497,7 @@ export default function IncomeTaxCalculator() {
                     className="mt-0.5 accent-orange-500"
                   />
                   <span className="text-xs text-gray-700 leading-snug">
-                    <span className="font-medium">Spouse Relief</span>
+                    <span className="font-medium">{copy.spouse}</span>
                     <br />
                     <span className="text-gray-400">RM4,000</span>
                   </span>
@@ -336,7 +505,7 @@ export default function IncomeTaxCalculator() {
 
                 <div className="bg-gray-50 rounded-xl p-3 border border-gray-100">
                   <label htmlFor="children" className="text-xs font-medium text-gray-700 block mb-1.5">
-                    Children under 18
+                    {copy.children}
                   </label>
                   <select
                     id="children"
@@ -345,7 +514,7 @@ export default function IncomeTaxCalculator() {
                     className="w-full text-sm bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   >
                     {[0, 1, 2, 3, 4, 5].map((n) => (
-                      <option key={n} value={n}>{n} {n === 1 ? "child" : "children"}</option>
+                      <option key={n} value={n}>{n} {n === 1 ? copy.child : copy.childrenPlural}</option>
                     ))}
                   </select>
                 </div>
@@ -358,14 +527,14 @@ export default function IncomeTaxCalculator() {
                 disabled={!annualIncome || annualIncome <= 0}
                 className="flex-1 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-200 text-white font-semibold py-3 rounded-xl transition-colors"
               >
-                Calculate Tax
+                {copy.calculate}
               </button>
               {submitted && (
                 <button
                   onClick={handleReset}
                   className="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium transition-colors text-sm"
                 >
-                  Reset
+                  {copy.reset}
                 </button>
               )}
             </div>
@@ -377,27 +546,27 @@ export default function IncomeTaxCalculator() {
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">🧾</div>
                 <p className="text-gray-400 text-sm">
-                  Enter your annual income and tap <strong>Calculate Tax</strong> to see your estimated tax payable.
+                  {copy.empty}
                 </p>
               </div>
             ) : (
               <>
                 {/* Primary figure */}
                 <div className="text-center mb-6">
-                  <p className="text-sm text-gray-500 mb-1">Estimated Tax Payable (YA 2024)</p>
+                  <p className="text-sm text-gray-500 mb-1">{copy.taxPayable}</p>
                   <p className="text-5xl font-bold text-orange-500 mb-1">
                     RM {fmtDec(result.taxPayable)}
                   </p>
-                  <p className="text-sm text-gray-400">per year</p>
+                  <p className="text-sm text-gray-400">{copy.perYear}</p>
                 </div>
 
                 {/* Key metrics */}
                 <div className="grid grid-cols-2 gap-3 mb-5">
                   {[
-                    { label: "Monthly PCB", value: `RM ${fmtDec(result.monthlyPcb)}`, sub: "est. monthly deduction" },
-                    { label: "Effective Rate", value: `${result.effectiveRate}%`, sub: "of annual income" },
-                    { label: "Chargeable Income", value: `RM ${fmt(result.chargeableIncome)}`, sub: "after all reliefs" },
-                    { label: "Total Reliefs", value: `RM ${fmt(result.totalRelief)}`, sub: "deducted from income" },
+                    { label: copy.monthlyPcb, value: `RM ${fmtDec(result.monthlyPcb)}`, sub: copy.monthlyPcbSub },
+                    { label: copy.effectiveRate, value: `${result.effectiveRate}%`, sub: copy.effectiveRateSub },
+                    { label: copy.chargeableIncome, value: `RM ${fmt(result.chargeableIncome)}`, sub: copy.chargeableIncomeSub },
+                    { label: copy.totalReliefs, value: `RM ${fmt(result.totalRelief)}`, sub: copy.totalReliefsSub },
                   ].map((m) => (
                     <div key={m.label} className="bg-orange-50 rounded-xl px-4 py-3 text-center">
                       <p className="text-xs text-orange-600 mb-0.5">{m.label}</p>
@@ -410,9 +579,9 @@ export default function IncomeTaxCalculator() {
                 {/* Visual bar */}
                 <div className="space-y-2">
                   {[
-                    { label: "Annual Income", value: result.annualIncome, color: "bg-gray-300", pct: 100 },
-                    { label: "Reliefs", value: result.totalRelief, color: "bg-green-400", pct: (result.totalRelief / result.annualIncome) * 100 },
-                    { label: "Tax Payable", value: result.taxPayable, color: "bg-orange-400", pct: (result.taxPayable / result.annualIncome) * 100 },
+                    { label: copy.annualIncomeMetric, value: result.annualIncome, color: "bg-gray-300", pct: 100 },
+                    { label: copy.reliefsMetric, value: result.totalRelief, color: "bg-green-400", pct: (result.totalRelief / result.annualIncome) * 100 },
+                    { label: copy.taxMetric, value: result.taxPayable, color: "bg-orange-400", pct: (result.taxPayable / result.annualIncome) * 100 },
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex justify-between text-xs text-gray-500 mb-0.5">
@@ -431,9 +600,29 @@ export default function IncomeTaxCalculator() {
 
                 {result.chargeableIncome <= 35_000 && result.taxPayable > 0 && (
                   <div className="mt-4 bg-green-50 border border-green-100 rounded-xl px-4 py-3 text-xs text-green-700">
-                    <span className="font-semibold">RM400 rebate applied</span> — chargeable income is below RM35,000.
+                    <span className="font-semibold">{copy.rebate}</span> - {copy.rebateNote}
                   </div>
                 )}
+
+                <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-left">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-700">{copy.ratRaceTitle}</p>
+                  <p className="mt-3 text-sm leading-6 text-amber-950">{copy.taxedCashFlow}</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-xl bg-white/70 p-3">
+                      <p className="text-xs font-bold text-gray-500">{copy.activeIncome}</p>
+                      <p className="mt-1 text-lg font-black text-orange-600">RM {fmtDec(result.taxPayable)}</p>
+                    </div>
+                    <div className="rounded-xl bg-white/70 p-3">
+                      <p className="text-xs font-bold text-gray-500">{copy.assetIncome}</p>
+                      <p className="mt-1 text-lg font-black text-emerald-700">RM {fmtDec(Math.max(0, result.annualIncome - result.taxPayable))}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-gray-700">{copy.richDadLesson}</p>
+                  <p className="mt-2 text-sm leading-6 text-gray-700">{copy.assetAction}</p>
+                  <Link href="/financial-freedom-calculator" className="mt-4 inline-flex text-sm font-bold text-amber-800 hover:text-amber-700">
+                    {copy.freedomLink} <span aria-hidden="true" className="ml-1">-&gt;</span>
+                  </Link>
+                </div>
               </>
             )}
           </div>
@@ -446,7 +635,7 @@ export default function IncomeTaxCalculator() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Relief breakdown */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-gray-900 mb-5">Relief Breakdown</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-5">{copy.reliefBreakdown}</h2>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm py-2 border-b border-gray-100">
                   <span className="font-semibold text-gray-800">Annual Income</span>
@@ -471,16 +660,16 @@ export default function IncomeTaxCalculator() {
 
             {/* Tax bracket breakdown */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-gray-900 mb-5">Tax by Bracket</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-5">{copy.taxByBracket}</h2>
               {result.bracketRows.length === 0 ? (
-                <p className="text-sm text-gray-400">No tax payable — chargeable income is zero.</p>
+                <p className="text-sm text-gray-400">{copy.noTax}</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="border-b border-gray-100 text-left">
-                        <th className="pb-2 font-semibold text-gray-600">Bracket</th>
-                        <th className="pb-2 font-semibold text-gray-600 text-center">Rate</th>
+                        <th className="pb-2 font-semibold text-gray-600">{copy.bracket}</th>
+                        <th className="pb-2 font-semibold text-gray-600 text-center">{copy.rate}</th>
                         <th className="pb-2 font-semibold text-gray-600 text-right">Tax (RM)</th>
                       </tr>
                     </thead>
@@ -509,16 +698,16 @@ export default function IncomeTaxCalculator() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">How Malaysia Income Tax Works</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">{copy.howTitle}</h2>
             <p className="text-gray-600 leading-relaxed">
-              Malaysia uses a progressive income tax system for resident individuals. You only pay the higher rate on the portion of income that falls within each bracket — not on your entire income. Reliefs reduce your chargeable income before the rates are applied.
+              {copy.howBody}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { step: "1", title: "Total Income", body: "Add up all income sources: employment, rental, freelance, dividends. Exclude exempt income such as Zakat, scholarship grants, and exempt dividends.", color: "bg-orange-50 border-orange-100" },
-              { step: "2", title: "Deduct Reliefs", body: "Subtract all eligible tax reliefs — personal, EPF, medical, education, spouse, and child reliefs. The remainder is your chargeable income.", color: "bg-yellow-50 border-yellow-100" },
-              { step: "3", title: "Apply Brackets", body: "Apply the progressive rates to each portion of your chargeable income. Sum them up to get your tax payable, then subtract any applicable rebates.", color: "bg-green-50 border-green-100" },
+              { step: "1", title: copy.step1, body: copy.step1Body, color: "bg-orange-50 border-orange-100" },
+              { step: "2", title: copy.step2, body: copy.step2Body, color: "bg-yellow-50 border-yellow-100" },
+              { step: "3", title: copy.step3, body: copy.step3Body, color: "bg-green-50 border-green-100" },
             ].map((c) => (
               <div key={c.step} className={`rounded-xl border p-5 ${c.color}`}>
                 <div className="w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-bold text-gray-600 mb-3">{c.step}</div>
@@ -610,7 +799,7 @@ export default function IncomeTaxCalculator() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to all calculators
+          {copy.back}
         </Link>
       </section>
     </>
