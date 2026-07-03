@@ -714,7 +714,7 @@ export default function EpfCalculator() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left border-b border-gray-100">
-                  <th className="pb-3 font-semibold text-gray-700">Year</th>
+                  <th className="pb-3 font-semibold text-gray-700">{t("colAge").split(" / ")[1] ?? t("colAge")}</th>
                   <th className="pb-3 font-semibold text-gray-700 text-center">Akaun Persaraan</th>
                   <th className="pb-3 font-semibold text-gray-700 text-center">Akaun Sejahtera</th>
                 </tr>
