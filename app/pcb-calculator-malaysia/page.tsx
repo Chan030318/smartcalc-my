@@ -10,9 +10,9 @@ import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 const PAGE_URL = `${BASE_URL}/pcb-calculator-malaysia`;
 
 export const metadata: Metadata = {
-  title: "PCB Calculator Malaysia 2024 — Monthly Tax Deduction (MTD) Estimator",
+  title: { absolute: "PCB Calculator Malaysia 2026 | SmartCalc MY" },
   description:
-    "Free PCB / MTD calculator for Malaysia. Enter your monthly salary, marital status, children, and TP1 declarations to estimate your monthly Potongan Cukai Berjadual. Includes Zakat rebate, resident and non-resident rates.",
+    "Free PCB / MTD calculator for Malaysia. Enter your monthly salary, marital status, children, and TP1 declarations to estimate your monthly Potongan Cukai Berjadual. Includes Zakat rebate, resident and non-resident rates. Updated for YA 2026.",
   keywords: [
     "PCB calculator Malaysia",
     "MTD calculator Malaysia",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/pcb-calculator-malaysia" },
   openGraph: {
-    title: "PCB Calculator Malaysia 2024 — Monthly Tax Deduction (MTD) Estimator",
+    title: "PCB Calculator Malaysia 2026 | SmartCalc MY",
     description:
       "Estimate your monthly PCB / MTD deduction instantly. Enter salary, reliefs, Zakat, and TP1 declarations. YA 2024 rates.",
     url: PAGE_URL,

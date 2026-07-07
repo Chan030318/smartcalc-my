@@ -11,9 +11,9 @@ import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 const PAGE_URL = `${BASE_URL}/income-tax-calculator-malaysia`;
 
 export const metadata: Metadata = {
-  title: "Income Tax Calculator Malaysia 2024 — LHDN Tax Estimator",
+  title: { absolute: "Income Tax Calculator Malaysia 2026 | SmartCalc MY" },
   description:
-    "Free Malaysia income tax calculator for YA 2024. Enter your annual income and reliefs (EPF, medical, education, spouse, children) to instantly estimate your tax payable, effective rate, and monthly PCB deduction.",
+    "Free Malaysia income tax calculator for YA 2024. Enter your annual income and reliefs (EPF, medical, education, spouse, children) to instantly estimate your tax payable, effective rate, and monthly PCB deduction. Updated for YA 2026.",
   keywords: [
     "income tax calculator Malaysia",
     "Malaysia tax calculator 2024",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/income-tax-calculator-malaysia" },
   openGraph: {
-    title: "Income Tax Calculator Malaysia 2024 — LHDN Tax Estimator",
+    title: "Income Tax Calculator Malaysia 2026 | SmartCalc MY",
     description:
       "Estimate your Malaysia income tax instantly. Enter annual income + reliefs and get your tax payable, effective rate, and monthly PCB deduction. YA 2024 rates.",
     url: PAGE_URL,

@@ -11,9 +11,9 @@ import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 const PAGE_URL = `${BASE_URL}/epf-calculator-malaysia`;
 
 export const metadata: Metadata = {
-  title: "EPF Calculator Malaysia 2024 — KWSP Retirement Savings Projection",
+  title: { absolute: "EPF Calculator Malaysia 2026 | SmartCalc MY" },
   description:
-    "Free EPF / KWSP calculator for Malaysia. Project your retirement savings with year-by-year contributions, employer matching, and dividend growth. Based on 2024 EPF rates.",
+    "Free EPF / KWSP calculator for Malaysia. Project your retirement savings with year-by-year contributions, employer matching, and dividend growth. Based on 2024 EPF rates. Updated for YA 2026.",
   keywords: [
     "EPF calculator Malaysia",
     "KWSP calculator",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/epf-calculator-malaysia" },
   openGraph: {
-    title: "EPF Calculator Malaysia 2024 — KWSP Retirement Savings Projection",
+    title: "EPF Calculator Malaysia 2026 | SmartCalc MY",
     description:
       "Project your EPF / KWSP retirement savings with employer contributions and dividend compounding. Free, instant, year-by-year breakdown.",
     url: PAGE_URL,
