@@ -5,6 +5,7 @@ export type DreamCard = {
   title: string;
   category: DreamCategory;
   targetDate?: string;
+  progress?: number;
   imageUrl?: string;
   note?: string;
   createdAt: string;
@@ -14,6 +15,7 @@ export type DreamCardInput = {
   title: string;
   category: DreamCategory;
   targetDate?: string;
+  progress?: number;
   imageUrl?: string;
   note?: string;
 };
@@ -71,9 +73,18 @@ function normalizeInput(input: DreamCardInput): DreamCardInput {
     title: input.title.trim(),
     category: input.category,
     targetDate: input.targetDate?.trim() || undefined,
+    progress: normalizeProgress(input.progress),
     imageUrl: input.imageUrl?.trim() || undefined,
     note: input.note?.trim() || undefined,
   };
+}
+
+function normalizeProgress(value: number | undefined): number {
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return 0;
+  }
+
+  return Math.min(100, Math.max(0, Math.round(value)));
 }
 
 function isDreamCard(value: unknown): value is DreamCard {

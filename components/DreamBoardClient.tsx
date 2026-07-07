@@ -40,12 +40,14 @@ const COPY = {
     titleLabel: "Title",
     categoryLabel: "Category",
     targetDateLabel: "Target date",
+    progressLabel: "Progress",
     imageUrlLabel: "Image URL",
     noteLabel: "Note",
     titlePlaceholder: "Example: First RM100,000 investment portfolio",
     imagePlaceholder: "https://example.com/dream.jpg",
     notePlaceholder: "Why this matters, or the next small action.",
     target: "Target",
+    progress: "Progress",
     noDate: "No target date yet",
     imageFallback: "Vision image",
     categories: {
@@ -72,12 +74,14 @@ const COPY = {
     titleLabel: "Tajuk",
     categoryLabel: "Kategori",
     targetDateLabel: "Tarikh sasaran",
+    progressLabel: "Kemajuan",
     imageUrlLabel: "URL gambar",
     noteLabel: "Nota",
     titlePlaceholder: "Contoh: Portfolio pelaburan RM100,000 pertama",
     imagePlaceholder: "https://example.com/dream.jpg",
     notePlaceholder: "Kenapa ini penting, atau tindakan kecil seterusnya.",
     target: "Sasaran",
+    progress: "Kemajuan",
     noDate: "Belum ada tarikh sasaran",
     imageFallback: "Gambar visi",
     categories: {
@@ -104,12 +108,14 @@ const COPY = {
     titleLabel: "标题",
     categoryLabel: "分类",
     targetDateLabel: "目标日期",
+    progressLabel: "进度 Progress",
     imageUrlLabel: "图片网址",
     noteLabel: "备注",
     titlePlaceholder: "例：第一个 RM100,000 投资组合",
     imagePlaceholder: "https://example.com/dream.jpg",
     notePlaceholder: "为什么重要，或下一步可以做什么。",
     target: "目标",
+    progress: "进度",
     noDate: "还没有目标日期",
     imageFallback: "愿景图片",
     categories: {
@@ -126,6 +132,7 @@ const EMPTY_FORM: DreamCardInput = {
   title: "",
   category: "finance",
   targetDate: "",
+  progress: 0,
   imageUrl: "",
   note: "",
 };
@@ -174,6 +181,7 @@ export default function DreamBoardClient() {
       title: card.title,
       category: card.category,
       targetDate: card.targetDate ?? "",
+      progress: card.progress ?? 0,
       imageUrl: card.imageUrl ?? "",
       note: card.note ?? "",
     });
@@ -257,6 +265,22 @@ export default function DreamBoardClient() {
                 />
               </Field>
 
+              <Field label={`${copy.progressLabel}: ${form.progress ?? 0}%`}>
+                <input
+                  name="progress"
+                  data-testid="dream-progress"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value={form.progress ?? 0}
+                  onChange={(event) =>
+                    setForm((current) => ({ ...current, progress: Number(event.target.value) }))
+                  }
+                  className="w-full accent-green-500"
+                />
+              </Field>
+
               <Field label={copy.imageUrlLabel}>
                 <input
                   name="imageUrl"
@@ -317,8 +341,36 @@ export default function DreamBoardClient() {
         ) : (
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {sortedCards.map((card) => (
-              <article
+              <DreamCardArticle
                 key={card.id}
+                card={card}
+                copy={copy}
+                onEdit={startEdit}
+                onDelete={handleDelete}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
+  );
+}
+
+function DreamCardArticle({
+  card,
+  copy,
+  onEdit,
+  onDelete,
+}: {
+  card: DreamCard;
+  copy: (typeof COPY)[keyof typeof COPY];
+  onEdit: (card: DreamCard) => void;
+  onDelete: (id: string) => void;
+}) {
+  const progress = card.progress ?? 0;
+
+  return (
+              <article
                 data-testid="dream-card"
                 className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
               >
@@ -342,11 +394,23 @@ export default function DreamBoardClient() {
                   </div>
                   <h2 className="mt-4 text-xl font-black leading-tight text-gray-950">{card.title}</h2>
                   {card.note && <p className="mt-3 text-sm leading-7 text-gray-600">{card.note}</p>}
+                  <div className="mt-5">
+                    <div className="mb-2 flex items-center justify-between text-xs font-black uppercase tracking-[0.12em] text-gray-500">
+                      <span>{copy.progress}</span>
+                      <span>{progress}%</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-gray-200">
+                      <div
+                        className="h-2 rounded-full bg-green-500 transition-all"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                  </div>
                   <div className="mt-5 flex gap-2">
                     <button
                       type="button"
                       data-testid="dream-edit"
-                      onClick={() => startEdit(card)}
+                      onClick={() => onEdit(card)}
                       className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-black text-gray-700 transition-colors hover:bg-gray-50"
                     >
                       {copy.edit}
@@ -354,7 +418,7 @@ export default function DreamBoardClient() {
                     <button
                       type="button"
                       data-testid="dream-delete"
-                      onClick={() => handleDelete(card.id)}
+                      onClick={() => onDelete(card.id)}
                       className="flex-1 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-black text-rose-700 transition-colors hover:bg-rose-100"
                     >
                       {copy.delete}
@@ -362,11 +426,6 @@ export default function DreamBoardClient() {
                   </div>
                 </div>
               </article>
-            ))}
-          </div>
-        )}
-      </section>
-    </main>
   );
 }
 
