@@ -29,25 +29,34 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "SmartCalc MY",
-  url: BASE_URL,
-  description:
-    "Free online calculators for Malaysians — BMI, Salary (EPF/PCB), and Loan calculators.",
-  publisher: {
-    "@type": "Organization",
-    name: "SmartCalc MY",
-    url: BASE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: `${BASE_URL}/icon-192.png`,
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      name: "SmartCalc MY",
+      url: BASE_URL,
+      description:
+        "Free online calculators for Malaysians — BMI, Salary (EPF/PCB), and Loan calculators.",
+      publisher: { "@id": `${BASE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/?q={search_term_string}` },
+        "query-input": "required name=search_term_string",
+      },
     },
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/?q={search_term_string}` },
-    "query-input": "required name=search_term_string",
-  },
+    {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "SmartCalc MY",
+      url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/icon-192.png`,
+        width: 192,
+        height: 192,
+      },
+    },
+  ],
 };
 
 export default function HomePage() {

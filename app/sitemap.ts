@@ -1,8 +1,16 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
+import { articles } from "@/content/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({
+    url: `${BASE_URL}/${a.category}/${a.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   return [
     {
@@ -271,6 +279,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/guides/best-savings-accounts-malaysia`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${BASE_URL}/guides/housing-loan-margin-of-finance-malaysia`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${BASE_URL}/guides/refinancing-guide-malaysia`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    // ── Content hubs ─────────────────────────────────────────────────────────
+    { url: `${BASE_URL}/mindset`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
+    { url: `${BASE_URL}/finance`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
+    { url: `${BASE_URL}/labor-law`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
+    { url: `${BASE_URL}/getting-started`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
+    // ── Articles (dynamic) ───────────────────────────────────────────────────
+    ...articleUrls,
+    // ── Additional calculators ───────────────────────────────────────────────
+    { url: `${BASE_URL}/financial-freedom-calculator`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/spend-billionaire-money`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
+    // ── Static pages ─────────────────────────────────────────────────────────
     {
       url: `${BASE_URL}/author/alvin-chan`,
       lastModified: now,
