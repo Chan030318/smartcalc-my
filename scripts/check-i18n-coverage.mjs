@@ -12,6 +12,11 @@ const frameworkCopyFiles = [
   { path: join(root, "components", "FinancialDisclaimer.tsx"), label: "FinancialDisclaimer", marker: "DISCLAIMER_COPY" },
   { path: join(root, "components", "Benefits.tsx"), label: "Benefits", marker: "BENEFITS_COPY" },
   { path: join(root, "components", "CalculatorsIndexClient.tsx"), label: "Calculators index", marker: "PAGE_COPY" },
+  { path: join(root, "components", "AboutPageClient.tsx"), label: "About page", marker: "ABOUT_COPY" },
+  { path: join(root, "components", "ContactPageClient.tsx"), label: "Contact page", marker: "CONTACT_COPY" },
+  { path: join(root, "components", "PrivacyPolicyClient.tsx"), label: "Privacy policy page", marker: "PRIVACY_COPY" },
+  { path: join(root, "components", "TermsPageClient.tsx"), label: "Terms page", marker: "TERMS_COPY" },
+  { path: join(root, "components", "BeginnerGuide.tsx"), label: "Getting started page", marker: "HEADING" },
 ];
 
 const requiredPages = [
