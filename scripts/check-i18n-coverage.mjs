@@ -7,6 +7,12 @@ const heroPath = join(root, "components", "ToolPageHero.tsx");
 const heroSource = readFileSync(heroPath, "utf8");
 const articlePath = join(root, "content", "articles.ts");
 const articleSource = readFileSync(articlePath, "utf8");
+const frameworkCopyFiles = [
+  { path: join(root, "components", "Footer.tsx"), label: "Footer", marker: "FOOTER_COPY" },
+  { path: join(root, "components", "FinancialDisclaimer.tsx"), label: "FinancialDisclaimer", marker: "DISCLAIMER_COPY" },
+  { path: join(root, "components", "Benefits.tsx"), label: "Benefits", marker: "BENEFITS_COPY" },
+  { path: join(root, "components", "CalculatorsIndexClient.tsx"), label: "Calculators index", marker: "PAGE_COPY" },
+];
 
 const requiredPages = [
   "financialFreedom",
@@ -83,6 +89,22 @@ if (!articlesExpression) {
   }
 }
 
+for (const file of frameworkCopyFiles) {
+  const source = readFileSync(file.path, "utf8");
+
+  if (!source.includes(file.marker)) {
+    missing.push(`${file.label} missing ${file.marker}`);
+    continue;
+  }
+
+  for (const lang of requiredLangs) {
+    const langPattern = new RegExp(`\\b${lang}\\s*:`);
+    if (!langPattern.test(source)) {
+      missing.push(`${file.label} missing ${lang} copy block`);
+    }
+  }
+}
+
 if (missing.length) {
   console.error(missing.join("\n"));
   process.exit(1);
@@ -90,6 +112,7 @@ if (missing.length) {
 
 console.log(`i18n hero coverage ok: ${requiredPages.length} pages x ${requiredLangs.length} languages`);
 console.log(`i18n article coverage ok: ${expressionToValue(articlesExpression).length} articles x ${requiredLangs.length} languages`);
+console.log(`i18n framework coverage ok: ${frameworkCopyFiles.length} files x ${requiredLangs.length} languages`);
 
 function findExportedConstInitializer(sourceFile, name) {
   let initializer;
