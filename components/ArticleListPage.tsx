@@ -19,8 +19,15 @@ const LIST_TEXT = {
   },
 } as const;
 
-export default function ArticleListPage({ category }: { category: ArticleCategory }) {
-  const { lang } = useLang();
+export default function ArticleListPage({
+  category,
+  forceLang,
+}: {
+  category: ArticleCategory;
+  forceLang?: "en" | "bm" | "zh";
+}) {
+  const { lang: hookLang } = useLang();
+  const lang = forceLang ?? hookLang;
   const config = categoryConfig[category];
   const articles = getArticlesByCategory(category);
   const listText = LIST_TEXT[lang];
@@ -51,7 +58,7 @@ export default function ArticleListPage({ category }: { category: ArticleCategor
             {articles.map((article) => (
               <Link
                 key={article.slug}
-                href={`${config.href}/${article.slug}`}
+                href={`${forceLang === "zh" ? "/zh" : ""}${config.href}/${article.slug}`}
                 className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-amber-200 hover:bg-amber-50/30"
               >
                 <h2 className="text-xl font-black text-gray-950 group-hover:text-amber-700">

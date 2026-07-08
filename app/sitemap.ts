@@ -283,6 +283,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/mindset`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
     { url: `${BASE_URL}/finance`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
     { url: `${BASE_URL}/labor-law`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.85 },
+    { url: `${BASE_URL}/zh/mindset`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/zh/finance`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/zh/labor-law`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE_URL}/getting-started`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
     // ── Articles (dynamic) ───────────────────────────────────────────────────
     ...articleUrls,
