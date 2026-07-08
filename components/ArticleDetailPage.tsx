@@ -56,8 +56,15 @@ const DISCLAIMERS = {
   },
 } as const;
 
-export default function ArticleDetailPage({ article }: { article: Article }) {
-  const { lang } = useLang();
+export default function ArticleDetailPage({
+  article,
+  forceLang,
+}: {
+  article: Article;
+  forceLang?: "en" | "bm" | "zh";
+}) {
+  const { lang: hookLang } = useLang();
+  const lang = forceLang ?? hookLang;
   const labels = SECTION_LABELS[lang];
   const config = categoryConfig[article.category];
   const disclaimer =

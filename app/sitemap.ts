@@ -286,6 +286,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/getting-started`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
     // ── Articles (dynamic) ───────────────────────────────────────────────────
     ...articleUrls,
+    ...articles.map((a) => ({
+      url: `${BASE_URL}/zh/${a.category}/${a.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
     // ── Additional calculators ───────────────────────────────────────────────
     { url: `${BASE_URL}/financial-freedom-calculator`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${BASE_URL}/spend-billionaire-money`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
