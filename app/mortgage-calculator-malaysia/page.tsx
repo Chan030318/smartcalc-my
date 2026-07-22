@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import MortgageCalculator from "./MortgageCalculator";
 import CalcSeoSection from "@/components/CalcSeoSection";
 import type { CalcFaq, RelatedCalc } from "@/components/CalcSeoSection";
+import AffiliateBanner from "@/components/AffiliateBanner";
 
 export const metadata: Metadata = {
   title: "Mortgage Calculator Malaysia 2025 | Home Loan Monthly Repayment",
@@ -109,6 +110,9 @@ export default function MortgagePage() {
       <ToolPageHero page="mortgage" />
 
       <MortgageCalculator />
+        <div className="max-w-3xl mx-auto px-4 pb-6">
+          <AffiliateBanner type="loan" />
+        </div>
 
       <CalcSeoSection faqs={faqs} relatedCalcs={relatedCalcs}>
         {/* EEAT Author Box */}

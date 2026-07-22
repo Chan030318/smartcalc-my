@@ -6,6 +6,7 @@ import LoanCalculator from "./LoanCalculator";
 import FinancialDisclaimer from "@/components/FinancialDisclaimer";
 import JsonLd from "@/components/JsonLd";
 import CalcSeoSection, { type CalcFaq, type RelatedCalc } from "@/components/CalcSeoSection";
+import AffiliateBanner from "@/components/AffiliateBanner";
 import { SITE_URL as BASE_URL } from "@/lib/siteConfig";
 
 const PAGE_URL = `${BASE_URL}/loan-calculator`;
@@ -114,6 +115,9 @@ export default function LoanCalculatorPage() {
       <main className="flex-1 bg-gray-50">
         <ToolPageHero page="loan" />
         <LoanCalculator />
+        <div className="max-w-3xl mx-auto px-4 pb-6">
+          <AffiliateBanner type="loan" />
+        </div>
         <FinancialDisclaimer />
 
         <CalcSeoSection faqs={faqs} relatedCalcs={relatedCalcs}>
