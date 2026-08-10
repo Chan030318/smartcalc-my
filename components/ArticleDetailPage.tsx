@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { categoryConfig, type Article } from "@/content/articles";
+import { articles, categoryConfig, type Article } from "@/content/articles";
 import { useLang } from "@/components/LangProvider";
 
 const SECTION_LABELS = {
@@ -71,6 +71,10 @@ export default function ArticleDetailPage({
     article.category === "finance" || article.category === "labor-law"
       ? DISCLAIMERS[article.category][lang]
       : "";
+  const related =
+    article.relatedSlugs
+      ?.map((slug) => articles.find((candidate) => candidate.slug === slug))
+      .filter((candidate): candidate is Article => Boolean(candidate)) ?? [];
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -125,6 +129,26 @@ export default function ArticleDetailPage({
           </section>
 
           <TextBlock title={labels.story} body={article.story[lang]} />
+
+          {related.length > 0 && (
+            <section className="border-t border-gray-100 pt-8">
+              <h2 className="mb-4 text-lg font-bold text-gray-900">
+                {lang === "zh" ? "相关文章" : lang === "bm" ? "Artikel Berkaitan" : "Related Articles"}
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {related.map((relatedArticle) => (
+                  <Link
+                    key={relatedArticle.slug}
+                    href={lang === "zh" ? `/zh/${relatedArticle.category}/${relatedArticle.slug}` : `/${relatedArticle.category}/${relatedArticle.slug}`}
+                    className="block rounded-xl border border-gray-200 p-4 transition-all hover:border-blue-300 hover:shadow-sm"
+                  >
+                    <p className="text-sm font-semibold text-gray-900">{relatedArticle.title[lang]}</p>
+                    <p className="mt-1 line-clamp-2 text-xs text-gray-500">{relatedArticle.summary[lang]}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-gray-950">{labels.source}</h2>

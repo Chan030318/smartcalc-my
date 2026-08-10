@@ -12,6 +12,7 @@ export type ComparisonRow = {
 export type Article = {
   slug: string;
   category: ArticleCategory;
+  relatedSlugs?: string[];
   title: LocalizedText;
   summary: LocalizedText;
   why: LocalizedText;
@@ -91,6 +92,7 @@ export const categoryConfig: Record<
 export const articles: Article[] = [
   {
     slug: "active-vs-passive-income",
+    relatedSlugs: ["what-is-rat-race", "how-to-escape-rat-race"],
     category: "mindset",
     title: {
       en: "Active income vs passive income",
@@ -168,6 +170,7 @@ export const articles: Article[] = [
   },
   {
     slug: "what-is-rat-race",
+    relatedSlugs: ["how-to-escape-rat-race", "rich-dad-poor-dad-lessons"],
     category: "mindset",
     title: {
       en: "What is the Rat Race?",
@@ -245,6 +248,7 @@ export const articles: Article[] = [
   },
   {
     slug: "good-debt-vs-bad-debt",
+    relatedSlugs: ["banks-loans-tool-or-trap", "how-to-start-investing-malaysia"],
     category: "finance",
     title: {
       en: "Good debt vs bad debt",
@@ -322,6 +326,7 @@ export const articles: Article[] = [
   },
   {
     slug: "banks-loans-tool-or-trap",
+    relatedSlugs: ["good-debt-vs-bad-debt", "fixed-deposit-vs-unit-trust-malaysia"],
     category: "finance",
     title: {
       en: "Banks and loans: tool or trap?",
@@ -399,6 +404,7 @@ export const articles: Article[] = [
   },
   {
     slug: "probation-rights-malaysia",
+    relatedSlugs: ["overtime-pay-rights-malaysia", "annual-leave-entitlement-malaysia"],
     category: "labor-law",
     title: {
       en: "Probation rights Malaysian workers should know",
@@ -476,6 +482,7 @@ export const articles: Article[] = [
   },
   {
     slug: "overtime-pay-rights-malaysia",
+    relatedSlugs: ["probation-rights-malaysia", "minimum-wage-malaysia"],
     category: "labor-law",
     title: {
       en: "Overtime pay: how it works and what to check",
@@ -553,6 +560,7 @@ export const articles: Article[] = [
   },
   {
     slug: "annual-leave-entitlement-malaysia",
+    relatedSlugs: ["probation-rights-malaysia", "retrenchment-compensation-malaysia"],
     category: "labor-law",
     title: {
       en: "Annual leave entitlement in Malaysia",
@@ -630,6 +638,7 @@ export const articles: Article[] = [
   },
   {
     slug: "retrenchment-compensation-malaysia",
+    relatedSlugs: ["annual-leave-entitlement-malaysia", "minimum-wage-malaysia"],
     category: "labor-law",
     title: {
       en: "Retrenchment compensation in Malaysia",
@@ -708,6 +717,7 @@ export const articles: Article[] = [
   },
   {
     slug: "minimum-wage-malaysia",
+    relatedSlugs: ["retrenchment-compensation-malaysia", "overtime-pay-rights-malaysia"],
     category: "labor-law",
     title: {
       en: "Minimum wage in Malaysia — what every worker needs to know",
@@ -786,6 +796,7 @@ export const articles: Article[] = [
   },
   {
     slug: "how-to-escape-rat-race",
+    relatedSlugs: ["what-is-compound-interest", "50-30-20-budgeting-rule"],
     category: "mindset",
     title: {
       en: "How to escape the rat race",
@@ -864,6 +875,7 @@ export const articles: Article[] = [
   },
   {
     slug: "what-is-compound-interest",
+    relatedSlugs: ["50-30-20-budgeting-rule", "how-to-escape-rat-race"],
     category: "mindset",
     title: {
       en: "What is compound interest — and why it matters more than your salary",
@@ -941,6 +953,7 @@ export const articles: Article[] = [
   },
   {
     slug: "50-30-20-budgeting-rule",
+    relatedSlugs: ["what-is-compound-interest", "atomic-habits-lessons-malaysia"],
     category: "mindset",
     title: {
       en: "The 50/30/20 budgeting rule — a simple system for Malaysians",
@@ -1018,6 +1031,7 @@ export const articles: Article[] = [
   },
   {
     slug: "fixed-deposit-vs-unit-trust-malaysia",
+    relatedSlugs: ["how-to-start-investing-malaysia", "banks-loans-tool-or-trap"],
     category: "finance",
     title: {
       en: "Fixed deposit vs unit trust in Malaysia — which is right for you",
@@ -1064,6 +1078,7 @@ export const articles: Article[] = [
   },
   {
     slug: "how-to-start-investing-malaysia",
+    relatedSlugs: ["fixed-deposit-vs-unit-trust-malaysia", "good-debt-vs-bad-debt"],
     category: "finance",
     title: { en: "How to start investing in Malaysia — a beginner's guide", bm: "Cara memulakan pelaburan di Malaysia — panduan pemula", zh: "怎样开始投资马来西亚——新手完整指南" },
     summary: { en: "Starting to invest in Malaysia does not require a large sum or financial expertise. The key is choosing the right account for your situation and starting small and consistently.", bm: "Memulakan pelaburan di Malaysia tidak memerlukan jumlah yang besar atau kepakaran kewangan. Kuncinya adalah memilih akaun yang betul untuk situasi anda dan bermula dengan kecil secara konsisten.", zh: "在马来西亚开始投资不需要大笔资金或专业知识。关键是选择适合自己情况的账户，然后小额持续投入。" },
@@ -1084,6 +1099,7 @@ export const articles: Article[] = [
   },
   {
     slug: "how-to-use-credit-card-wisely-malaysia",
+    relatedSlugs: ["good-debt-vs-bad-debt", "how-to-start-investing-malaysia"],
     category: "finance",
     title: { en: "How to use a credit card wisely in Malaysia", bm: "Cara menggunakan kad kredit dengan bijak di Malaysia", zh: "信用卡怎么用才不亏——马来西亚打工族实用指南" },
     summary: { en: "A credit card is a free short-term loan and a rewards tool if you pay the full balance every month. It becomes a debt trap the moment you pay only the minimum — at 18% annual interest, balances grow faster than most people realise.", bm: "Kad kredit adalah pinjaman jangka pendek percuma dan alat ganjaran jika anda membayar baki penuh setiap bulan. Ia menjadi perangkap hutang apabila anda hanya membayar minimum — pada faedah tahunan 18%, baki berkembang lebih cepat daripada yang disedari oleh kebanyakan orang.", zh: "如果你每月全额还款，信用卡是一个免费的短期贷款工具和奖励系统。但一旦你只还最低还款额，它就变成了债务陷阱——以年利率 18% 复利，余额增长速度比大多数人意识到的快得多。" },
@@ -1104,6 +1120,7 @@ export const articles: Article[] = [
   },
   {
     slug: "7-habits-highly-effective-people",
+    relatedSlugs: ["atomic-habits-lessons-malaysia", "almanack-naval-ravikant"],
     category: "mindset",
     title: { en: "The 7 Habits of Highly Effective People — key lessons for Malaysians", bm: "7 Tabiat Orang Yang Sangat Berkesan — pengajaran utama untuk rakyat Malaysia", zh: "高效人士的7个习惯——对马来西亚人最有用的核心启示" },
     summary: { en: "Stephen Covey's 7 Habits teaches that effectiveness starts from character, not technique. The habits move from personal independence to productive interdependence — a shift most people never make.", bm: "7 Tabiat Stephen Covey mengajar bahawa keberkesanan bermula dari karakter, bukan teknik. Tabiat-tabiat ini bergerak dari kebebasan peribadi kepada saling kebergantungan yang produktif — peralihan yang kebanyakan orang tidak pernah buat.", zh: "史蒂芬·柯维的《7个习惯》教导我们：高效能来自品格，不是技巧。这7个习惯从个人独立走向高效协作——这是大多数人从未完成的转变。" },
@@ -1124,6 +1141,7 @@ export const articles: Article[] = [
   },
   {
     slug: "rich-dad-poor-dad-lessons",
+    relatedSlugs: ["how-to-escape-rat-race", "what-is-compound-interest"],
     category: "mindset",
     title: { en: "Rich Dad Poor Dad — the core lessons and what they mean for Malaysians", bm: "Ayah Kaya Ayah Miskin — pengajaran teras dan maknanya untuk rakyat Malaysia", zh: "穷爸爸富爸爸——核心启示与对马来西亚人的意义" },
     summary: { en: "Robert Kiyosaki's Rich Dad Poor Dad teaches one central idea: the rich buy assets, while the poor and middle class often buy liabilities they think are assets.", bm: "Rich Dad Poor Dad Robert Kiyosaki mengajar satu idea utama: orang kaya membeli aset, manakala orang miskin dan kelas pertengahan sering membeli liabiliti yang mereka sangka aset.", zh: "罗伯特·清崎的《穷爸爸富爸爸》教导一个核心理念：富人购买资产，穷人和中产阶级常购买他们以为是资产的负债。" },
@@ -1144,6 +1162,7 @@ export const articles: Article[] = [
   },
   {
     slug: "atomic-habits-lessons-malaysia",
+    relatedSlugs: ["7-habits-highly-effective-people", "50-30-20-budgeting-rule"],
     category: "mindset",
     title: { en: "Atomic Habits — how tiny changes produce remarkable results", bm: "Tabiat Atom — bagaimana perubahan kecil menghasilkan keputusan yang luar biasa", zh: "原子习惯——微小改变如何产生非凡结果" },
     summary: { en: "James Clear's Atomic Habits argues that lasting change comes from designing your environment and identity, not relying on motivation or willpower.", bm: "Atomic Habits James Clear berhujah bahawa perubahan kekal datang daripada mereka bentuk persekitaran dan identiti, bukan bergantung pada motivasi atau kehendak.", zh: "詹姆斯·克利尔的《原子习惯》认为，持久改变来自设计环境和身份认同，而不是依赖动力或意志力。" },
@@ -1164,6 +1183,7 @@ export const articles: Article[] = [
   },
   {
     slug: "almanack-naval-ravikant",
+    relatedSlugs: ["poor-charlies-almanack-lessons", "rich-dad-poor-dad-lessons"],
     category: "mindset",
     title: { en: "The Almanack of Naval Ravikant — wealth, happiness, and specific knowledge", bm: "Almanac Naval Ravikant — kekayaan, kebahagiaan, dan pengetahuan spesifik", zh: "纳瓦尔宝典——财富、幸福与专属知识" },
     summary: { en: "Naval Ravikant's collected wisdom teaches that wealth comes from specific knowledge, accountability, and leverage — not simply trading time for money.", bm: "Kebijaksanaan terkumpul Naval Ravikant mengajar bahawa kekayaan datang daripada pengetahuan spesifik, akauntabiliti, dan leverage — bukan sekadar menukar masa dengan wang.", zh: "纳瓦尔·拉维坎特的智慧集锦教导：财富来自专属知识、承担责任和杠杆，而不是单纯用时间换钱。" },
@@ -1184,6 +1204,7 @@ export const articles: Article[] = [
   },
   {
     slug: "poor-charlies-almanack-lessons",
+    relatedSlugs: ["almanack-naval-ravikant", "7-habits-highly-effective-people"],
     category: "mindset",
     title: { en: "Poor Charlie's Almanack — mental models for better decisions", bm: "Almanac Charlie yang Miskin — model mental untuk keputusan yang lebih baik", zh: "穷查理宝典——做出更好决策的心智模型" },
     summary: { en: "Charlie Munger's wisdom teaches that better decisions come from multiple mental models, inversion, and avoiding the biases behind many financial and life mistakes.", bm: "Kebijaksanaan Charlie Munger mengajar bahawa keputusan lebih baik datang daripada pelbagai model mental, penyongsangan, dan mengelakkan berat sebelah di sebalik banyak kesilapan kewangan dan hidup.", zh: "查理·芒格的智慧教导：更好的决策来自多种心智模型、逆向思考，以及避免造成众多财务与生活错误的偏见。" },
