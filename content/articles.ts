@@ -551,6 +551,239 @@ export const articles: Article[] = [
     ],
     disclaimer: true,
   },
+  {
+    slug: "annual-leave-entitlement-malaysia",
+    category: "labor-law",
+    title: {
+      en: "Annual leave entitlement in Malaysia",
+      bm: "Kelayakan cuti tahunan di Malaysia",
+      zh: "马来西亚年假几天",
+    },
+    summary: {
+      en: "Your annual leave entitlement in Malaysia depends on how long you have worked. Under the Employment Act 1955, employees get 8, 12, or 16 days per year based on years of service.",
+      bm: "Kelayakan cuti tahunan anda di Malaysia bergantung pada tempoh perkhidmatan. Di bawah Akta Pekerjaan 1955, pekerja mendapat 8, 12, atau 16 hari setahun.",
+      zh: "马来西亚的年假天数取决于你的服务年限。根据 1955 年雇佣法令，员工可获得 8 天、12 天或 16 天年假。",
+    },
+    why: {
+      en: "Many Malaysian employees take less leave than they are entitled to — either because they do not know the law, or because workplace culture discourages it. Knowing your exact entitlement means you can plan rest, protect your wellbeing, and exercise a legal right without guilt.",
+      bm: "Ramai pekerja Malaysia mengambil cuti kurang daripada hak mereka — sama ada kerana tidak tahu undang-undang, atau kerana budaya tempat kerja tidak menggalakkannya. Mengetahui hak anda bermaksud anda boleh merancang rehat dan menggunakan hak undang-undang tanpa rasa bersalah.",
+      zh: "很多马来西亚员工用的假期比法律规定的少——原因是不了解法令，或者职场文化让他们不敢请假。知道自己确切的年假权利，才能放心规划休息，无愧地行使法定权益。",
+    },
+    what: {
+      en: "Under the Employment Act 1955 (EA), employees covered by the Act — those earning RM4,000 or below per month, or manual workers regardless of salary — are entitled to: 8 days per year for service under 2 years; 12 days per year for service of 2 to 5 years; 16 days per year for service exceeding 5 years. Leave must be taken in the year it is earned. Unused leave can only be carried forward if the employer agrees. If employment ends, unused leave is paid out as salary.",
+      bm: "Di bawah Akta Pekerjaan 1955, pekerja yang dilindungi Akta — mereka yang berpendapatan RM4,000 atau ke bawah sebulan, atau pekerja manual tanpa mengira gaji — berhak kepada: 8 hari setahun untuk perkhidmatan bawah 2 tahun; 12 hari setahun untuk perkhidmatan 2 hingga 5 tahun; 16 hari setahun untuk perkhidmatan melebihi 5 tahun. Cuti mesti diambil dalam tahun ia diperoleh. Cuti yang tidak digunakan hanya boleh dibawa ke tahun berikutnya jika majikan bersetuju. Jika pekerjaan tamat, cuti yang tidak digunakan dibayar sebagai gaji.",
+      zh: "根据 1955 年雇佣法令（EA），受法令保护的员工（月薪 RM4,000 及以下，或无论薪水多少的体力劳动者）享有：服务不足 2 年：8 天年假；服务 2 至 5 年：12 天年假；服务超过 5 年：16 天年假。年假必须在当年使用，未用假期只有在雇主同意的情况下才能结转。若雇用关系终止，未用假期须以薪资形式支付。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "I am afraid to use all my leave in case the boss thinks I am not committed.",
+          bm: "Saya takut guna semua cuti takut bos ingat saya tidak berdedikasi.",
+          zh: "我不敢把假请完，怕老板觉得我不敬业。",
+        },
+        successful: {
+          en: "Annual leave is a legal entitlement, not a favour. I plan my rest and use it fully.",
+          bm: "Cuti tahunan adalah hak undang-undang, bukan kemurahan hati. Saya rancang rehat saya dan gunakannya sepenuhnya.",
+          zh: "年假是法定权利，不是老板的施舍。我会规划好休息，把年假用完。",
+        },
+      },
+      {
+        ordinary: {
+          en: "I have been here 3 years and I only get 8 days.",
+          bm: "Saya dah 3 tahun di sini dan saya hanya dapat 8 hari.",
+          zh: "我做了 3 年，老板只给我 8 天假。",
+        },
+        successful: {
+          en: "After 2 years of service, the law entitles me to 12 days. I will check my contract and raise this with HR.",
+          bm: "Selepas 2 tahun berkhidmat, undang-undang memberi saya hak 12 hari. Saya akan semak kontrak dan bincang dengan HR.",
+          zh: "服务满 2 年后，法令规定我有权享有 12 天年假。我会查合同，然后和人力资源部反映。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Check your contract: find the annual leave clause and compare it against the EA table.",
+        bm: "Semak kontrak anda: cari klausa cuti tahunan dan bandingkan dengan jadual EA.",
+        zh: "查看你的合同：找到年假条款，与法令的规定对照。",
+      },
+      {
+        en: "Track your service date: your entitlement upgrades on your 2nd and 5th work anniversary.",
+        bm: "Pantau tarikh perkhidmatan anda: kelayakan anda meningkat pada ulang tahun kerja ke-2 dan ke-5.",
+        zh: "记住你的入职日期：在满 2 年和满 5 年时，你的年假天数会自动升级。",
+      },
+      {
+        en: "Use your leave: unused leave that your employer refuses to carry forward and refuses to pay out is a violation of the EA. You can file a complaint with the Labour Department (JTK).",
+        bm: "Gunakan cuti anda: cuti yang tidak digunakan yang majikan enggan bawa ke hadapan dan enggan bayar adalah pelanggaran EA. Anda boleh failkan aduan kepada Jabatan Tenaga Kerja (JTK).",
+        zh: "把假请出来：如果雇主既不允许结转、又拒绝支付未用年假，这是违反法令的行为，你可以向劳工局（JTK）投诉。",
+      },
+    ],
+    story: {
+      en: "Amirah worked at a logistics company for 3 years. Her contract said 8 days leave per year. When she asked HR about an increase, she was told the company policy was fixed. She checked the Employment Act, confirmed she was covered, and raised it formally. HR corrected the record and backdated 4 extra days she had been shorted the previous year.",
+      bm: "Amirah bekerja di syarikat logistik selama 3 tahun. Kontraknya menyatakan 8 hari cuti setahun. Apabila dia bertanya kepada HR tentang peningkatan, dia diberitahu polisi syarikat adalah tetap. Dia semak Akta Pekerjaan, sahkan dia dilindungi, dan bangkitkan secara formal. HR betulkan rekod dan backdated 4 hari tambahan yang dia kehilangan tahun sebelumnya.",
+      zh: "Amirah 在一家物流公司做了 3 年。合同写的是每年 8 天假。她问 HR 能不能调整，HR 说公司政策固定不变。她查了雇佣法令，确认自己受法令保护，正式提出要求。HR 最终更正了记录，并补回了她前一年少给的 4 天假期。",
+    },
+    source: [
+      "Employment Act 1955, Section 60E",
+      "Labour Department Malaysia (JTK) — jabatan.jtk.gov.my",
+    ],
+    disclaimer: true,
+  },
+  {
+    slug: "retrenchment-compensation-malaysia",
+    category: "labor-law",
+    title: {
+      en: "Retrenchment compensation in Malaysia",
+      bm: "Pampasan redundansi di Malaysia",
+      zh: "马来西亚被炒鱿鱼有什么赔偿",
+    },
+    summary: {
+      en: "If you are retrenched in Malaysia, you are entitled to termination benefits based on your years of service — unless you are still on probation or your contract has expired.",
+      bm: "Jika anda diberhentikan di Malaysia, anda berhak mendapat faedah penamatan berdasarkan tahun perkhidmatan — melainkan anda masih dalam tempoh percubaan atau kontrak anda telah tamat.",
+      zh: "在马来西亚被裁员，你有权根据服务年限获得遣散费——除非你仍在试用期或合同已到期。",
+    },
+    why: {
+      en: "Losing a job is stressful. Not knowing what you are owed makes it worse. Many Malaysian workers accept lower payouts or nothing at all because they do not know the law. Understanding your retrenchment rights before it happens means you can negotiate from a position of knowledge, not panic.",
+      bm: "Kehilangan pekerjaan adalah tekanan. Tidak tahu apa yang anda berhak terima menjadikannya lebih teruk. Ramai pekerja Malaysia menerima bayaran yang lebih rendah atau tiada sama sekali kerana mereka tidak tahu undang-undang. Memahami hak penamatan anda sebelum ia berlaku bermaksud anda boleh berunding dari posisi ilmu, bukan panik.",
+      zh: "失业本来已经很难受，不知道自己该拿多少赔偿只会更糟。很多马来西亚员工因为不了解法律，接受了低于应得的赔偿，甚至什么都没拿到。提前了解自己的裁员权益，才能在谈判时有底气，而不是慌乱中签字。",
+    },
+    what: {
+      en: "Under the Employment (Termination and Lay-Off Benefits) Regulations 1980, employees covered by the Employment Act who are retrenched are entitled to: 10 days wages per year of service for the first 2 years; 15 days wages per year for years 3 to 5; 20 days wages per year for each year beyond 5 years. Part years are calculated pro-rata. You must have worked for the employer for at least 12 months to qualify. Employees earning above RM4,000 per month may also have contractual entitlements — check your employment contract.",
+      bm: "Di bawah Peraturan Pekerjaan (Faedah Penamatan dan Renti Kerja) 1980, pekerja yang dilindungi Akta Pekerjaan yang diberhentikan berhak kepada: 10 hari gaji bagi setiap tahun perkhidmatan untuk 2 tahun pertama; 15 hari gaji bagi setiap tahun untuk tahun 3 hingga 5; 20 hari gaji bagi setiap tahun melebihi 5 tahun. Tahun separa dikira secara pro-rata. Anda mesti bekerja untuk majikan sekurang-kurangnya 12 bulan untuk layak. Pekerja yang memperoleh lebih daripada RM4,000 sebulan mungkin juga mempunyai hak kontrak — semak kontrak pekerjaan anda.",
+      zh: "根据《1980 年雇佣（终止及临时解雇福利）条例》，受雇佣法令保护的员工在被裁员时有权获得：头 2 年每年服务 10 天薪资；第 3 至 5 年每年 15 天薪资；超过 5 年每年 20 天薪资。不足一年按比例计算。须为该雇主服务至少 12 个月才符合资格。月薪超过 RM4,000 的员工可能还有合同上的额外权益——请查阅你的雇佣合同。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "My company said they only need to give me one month notice and nothing else.",
+          bm: "Syarikat saya kata mereka hanya perlu bagi satu bulan notis dan tiada lagi.",
+          zh: "公司说只需要给我一个月通知期，其他什么都不用给。",
+        },
+        successful: {
+          en: "Notice and retrenchment benefits are separate. I am entitled to both under the law if I qualify.",
+          bm: "Notis dan faedah penamatan adalah berbeza. Saya berhak kepada kedua-duanya di bawah undang-undang jika saya layak.",
+          zh: "通知期和遣散费是两回事。只要我符合条件，法律规定两样我都有权拿到。",
+        },
+      },
+      {
+        ordinary: {
+          en: "I was on probation so I have no rights.",
+          bm: "Saya dalam tempoh percubaan jadi saya tiada hak.",
+          zh: "我还在试用期，所以什么权益都没有。",
+        },
+        successful: {
+          en: "Probation employees still have rights under the EA — unpaid wages, notice period, and rest day pay still apply. Only retrenchment benefits require 12 months of service.",
+          bm: "Pekerja dalam percubaan masih mempunyai hak di bawah EA — gaji yang belum dibayar, tempoh notis, dan bayaran hari rehat masih terpakai. Hanya faedah penamatan memerlukan 12 bulan perkhidmatan.",
+          zh: "试用期员工在雇佣法令下仍有基本权益——欠薪、通知期和休息日薪酬仍然适用。只有遣散费需要服务满 12 个月才能申领。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Calculate what you are owed: multiply your daily wage by the applicable days per year, then by your years of service.",
+        bm: "Kira apa yang anda berhak terima: darab gaji harian anda dengan bilangan hari yang berkenaan setiap tahun, kemudian dengan tahun perkhidmatan anda.",
+        zh: "自己算清楚应得的赔偿：日薪 × 对应年限的天数 × 服务年数。",
+      },
+      {
+        en: "Get everything in writing: ask your employer for a formal retrenchment letter and a breakdown of the termination payment.",
+        bm: "Dapatkan semua secara bertulis: minta majikan anda surat pemberhentian rasmi dan pecahan bayaran penamatan.",
+        zh: "要求书面文件：向雇主索取正式的裁员通知书和遣散费明细。",
+      },
+      {
+        en: "If you are underpaid or denied benefits: file a complaint at the nearest Labour Department (Jabatan Tenaga Kerja) office within 60 days of termination.",
+        bm: "Jika anda dibayar kurang atau dinafikan faedah: failkan aduan di pejabat Jabatan Tenaga Kerja terdekat dalam masa 60 hari selepas penamatan.",
+        zh: "如果赔偿不足或被拒绝：在终止雇佣后 60 天内向最近的劳工局（Jabatan Tenaga Kerja）投诉。",
+      },
+    ],
+    story: {
+      en: "Daniel worked at a retail company for 4 years before the company downsized. HR offered him two months salary as a full settlement. He checked the regulations, calculated his entitlement at 15 days per year for years 3 and 4, and presented the figure to HR. The final payout was 40% higher than the initial offer.",
+      bm: "Daniel bekerja di syarikat runcit selama 4 tahun sebelum syarikat mengurangkan kakitangan. HR menawarkan dua bulan gaji sebagai penyelesaian penuh. Dia semak peraturan, kira kelayakannya pada 15 hari setahun untuk tahun 3 dan 4, dan kemukakan angka itu kepada HR. Bayaran akhir adalah 40% lebih tinggi daripada tawaran awal.",
+      zh: "Daniel 在一家零售公司做了 4 年后遭遇裁员。HR 提出以两个月薪资作为全额结算。他查了法规，按照第 3 和第 4 年各 15 天的标准计算出应得金额，并向 HR 提出。最终拿到的赔偿比最初的出价高出 40%。",
+    },
+    source: [
+      "Employment (Termination and Lay-Off Benefits) Regulations 1980",
+      "Employment Act 1955, Section 12–14",
+      "Labour Department Malaysia (JTK) — jabatan.jtk.gov.my",
+    ],
+    disclaimer: true,
+  },
+  {
+    slug: "minimum-wage-malaysia",
+    category: "labor-law",
+    title: {
+      en: "Minimum wage in Malaysia — what every worker needs to know",
+      bm: "Gaji minimum di Malaysia — apa yang setiap pekerja perlu tahu",
+      zh: "马来西亚最低薪资——每个打工族必须知道的事",
+    },
+    summary: {
+      en: "Malaysia's minimum wage is RM1,700 per month as of February 2025 for employers with 5 or more employees. Workers earning below this rate can file a complaint with the Labour Department.",
+      bm: "Gaji minimum Malaysia ialah RM1,700 sebulan mulai Februari 2025 untuk majikan dengan 5 pekerja atau lebih. Pekerja yang mendapat gaji di bawah kadar ini boleh failkan aduan kepada Jabatan Tenaga Kerja.",
+      zh: "马来西亚最低薪资自 2025 年 2 月起为每月 RM1,700，适用于雇用 5 名或以上员工的雇主。薪资低于此标准的员工可向劳工局投诉。",
+    },
+    why: {
+      en: "Minimum wage is the legal floor for any job in Malaysia. Knowing the current rate protects you from being underpaid, helps you evaluate job offers, and tells you when an employer is breaking the law. It also tells you whether your salary is above or below the starting baseline — and how far you have grown.",
+      bm: "Gaji minimum adalah lantai undang-undang untuk mana-mana pekerjaan di Malaysia. Mengetahui kadar semasa melindungi anda daripada dibayar terlalu rendah, membantu anda menilai tawaran kerja, dan memberitahu anda bila majikan melanggar undang-undang. Ia juga memberitahu anda sama ada gaji anda berada di atas atau di bawah garis asas permulaan.",
+      zh: "最低薪资是马来西亚任何工作的法律底线。了解最新标准能保护你不被低薪剥削，帮助你判断工作邀约是否合理，也让你知道雇主是否违法。同时也能让你看清自己的薪资水平距离起点有多远。",
+    },
+    what: {
+      en: "Effective 1 February 2025, the national minimum wage is RM1,700 per month (or RM8.17 per hour based on 26 working days). This applies to all private sector employees regardless of nationality. Employers with fewer than 5 employees are exempted until a separate implementation date. Domestic workers (maids) are not covered under this order. The minimum wage is reviewed periodically by the National Wages Consultative Council. Previous rates: RM1,500 (May 2022), RM1,200 (February 2020).",
+      bm: "Berkuat kuasa 1 Februari 2025, gaji minimum nasional ialah RM1,700 sebulan (atau RM8.17 sejam berdasarkan 26 hari bekerja). Ini terpakai kepada semua pekerja sektor swasta tanpa mengira kewarganegaraan. Majikan dengan kurang daripada 5 pekerja dikecualikan sehingga tarikh pelaksanaan berasingan. Pekerja rumah (pembantu rumah) tidak diliputi di bawah perintah ini. Gaji minimum disemak secara berkala oleh Majlis Perundingan Gaji Negara.",
+      zh: "自 2025 年 2 月 1 日起，全国最低薪资为每月 RM1,700（以 26 个工作日计算，时薪约 RM8.17）。适用于私人领域所有员工，无论国籍。雇用少于 5 名员工的雇主有另行豁免期。家庭佣工（女佣）不在此令涵盖范围内。最低薪资由全国薪资咨询理事会定期检讨。历史记录：RM1,500（2022 年 5 月）、RM1,200（2020 年 2 月）。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "My employer pays me RM1,500. I do not know if I can ask for more.",
+          bm: "Majikan saya membayar RM1,500. Saya tidak tahu sama ada saya boleh minta lebih.",
+          zh: "老板给我 RM1,500，我不知道能不能要求更多。",
+        },
+        successful: {
+          en: "RM1,500 is below the 2025 minimum wage. I have a legal right to RM1,700. I will raise this with my employer and file a complaint if they refuse.",
+          bm: "RM1,500 adalah di bawah gaji minimum 2025. Saya mempunyai hak undang-undang untuk mendapat RM1,700. Saya akan bincangkan dengan majikan dan failkan aduan jika mereka enggan.",
+          zh: "RM1,500 低于 2025 年的最低薪资标准。我有法律权利要求 RM1,700。我会和雇主提出，若被拒绝则向劳工局投诉。",
+        },
+      },
+      {
+        ordinary: {
+          en: "Minimum wage only applies to Malaysian workers.",
+          bm: "Gaji minimum hanya terpakai untuk pekerja Malaysia.",
+          zh: "最低薪资只适用于马来西亚人。",
+        },
+        successful: {
+          en: "Minimum wage applies to all private sector employees in Malaysia, regardless of nationality — including foreign workers with valid work permits.",
+          bm: "Gaji minimum terpakai kepada semua pekerja sektor swasta di Malaysia, tanpa mengira kewarganegaraan — termasuk pekerja asing dengan permit kerja yang sah.",
+          zh: "最低薪资适用于马来西亚私人领域所有员工，无论国籍，包括持有合法工作许可证的外籍劳工。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Check your payslip: confirm your monthly gross salary meets RM1,700. If you work part-time, confirm your hourly rate meets RM8.17.",
+        bm: "Semak slip gaji anda: sahkan gaji kasar bulanan anda mencapai RM1,700. Jika anda bekerja separuh masa, sahkan kadar jam anda mencapai RM8.17.",
+        zh: "查看你的薪资单：确认月薪毛额达到 RM1,700。若是兼职，确认时薪不低于 RM8.17。",
+      },
+      {
+        en: "If you are underpaid: raise it with your employer in writing first. If unresolved within 7 days, file a complaint at the Labour Department (JTK).",
+        bm: "Jika anda dibayar terlalu rendah: bangkitkan secara bertulis dengan majikan anda terlebih dahulu. Jika tidak diselesaikan dalam 7 hari, failkan aduan di Jabatan Tenaga Kerja (JTK).",
+        zh: "如果薪资不达标：先以书面方式向雇主提出。若 7 天内未解决，向劳工局（JTK）投诉。",
+      },
+      {
+        en: "Stay updated: the minimum wage is reviewed periodically. Follow the Human Resources Ministry (KSM) announcements for any future increases.",
+        bm: "Kekal dikemaskini: gaji minimum disemak secara berkala. Ikuti pengumuman Kementerian Sumber Manusia (KSM) untuk sebarang kenaikan akan datang.",
+        zh: "保持关注：最低薪资会定期检讨。关注人力资源部（KSM）的公告，了解未来的调涨情况。",
+      },
+    ],
+    story: {
+      en: "Rajan started a new job in March 2025 at RM1,500 per month. A colleague mentioned the minimum wage had just been raised to RM1,700. Rajan checked the official gazette, confirmed the rate applied to his employer, and sent a formal email to HR. His salary was corrected to RM1,700 from the following month, with two months of back pay.",
+      bm: "Rajan memulakan kerja baru pada Mac 2025 dengan gaji RM1,500 sebulan. Seorang rakan sekerja menyebut gaji minimum baru sahaja dinaikkan kepada RM1,700. Rajan semak warta kerajaan rasmi, sahkan kadar itu terpakai kepada majikannya, dan hantar e-mel rasmi kepada HR. Gajinya dibetulkan kepada RM1,700 dari bulan berikutnya, dengan dua bulan gaji tunggakan.",
+      zh: "Rajan 在 2025 年 3 月以每月 RM1,500 开始一份新工作。同事提到最低薪资刚调升到 RM1,700。Rajan 查阅了官方宪报，确认新标准适用于他的雇主，并向 HR 发送了正式邮件。他的薪资从下个月起更正为 RM1,700，并补发了两个月的差额。",
+    },
+    source: [
+      "Minimum Wages Order 2022 (as amended 2024)",
+      "National Wages Consultative Council Act 2011",
+      "Human Resources Ministry Malaysia (KSM) — ksm.gov.my",
+    ],
+    disclaimer: true,
+  },
 ];
 
 export function getArticlesByCategory(category: ArticleCategory) {
