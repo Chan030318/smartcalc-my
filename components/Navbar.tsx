@@ -93,36 +93,47 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-1">
-          <button
-            onClick={() => {
-              setToolsOpen(!toolsOpen);
-              setLearningOpen(false);
-            }}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
-          >
-            🧮 {t.nav.toolLabel}
+          <div className="flex items-center rounded-xl text-sm font-semibold text-gray-700 hover:bg-emerald-50">
+            <Link href="/calculators" className="flex items-center gap-1.5 rounded-l-xl px-4 py-2 hover:text-emerald-600 transition-colors">
+              🧮 {t.nav.toolLabel}
+            </Link>
+            <button
+              onClick={() => {
+                setToolsOpen(!toolsOpen);
+                setLearningOpen(false);
+              }}
+              aria-label={`${t.nav.toolLabel} menu`}
+              aria-expanded={toolsOpen}
+              className="rounded-r-xl py-2 pr-3 pl-1 hover:text-emerald-600 transition-colors"
+            >
             <svg className={`w-4 h-4 transition-transform ${toolsOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
+            </button>
+          </div>
 
           <Link href="/financial-freedom-calculator" className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
             🏆 {t.nav.freedom}
           </Link>
 
-          <button
-            onClick={() => {
-              setLearningOpen(!learningOpen);
-              setToolsOpen(false);
-            }}
-            aria-expanded={learningOpen}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
-          >
-            📚 {t.nav.learning}
+          <div className="flex items-center rounded-xl text-sm font-semibold text-gray-700 hover:bg-emerald-50">
+            <Link href="/mindset" className="flex items-center gap-1.5 rounded-l-xl px-4 py-2 hover:text-emerald-600 transition-colors">
+              📚 {t.nav.learning}
+            </Link>
+            <button
+              onClick={() => {
+                setLearningOpen(!learningOpen);
+                setToolsOpen(false);
+              }}
+              aria-label={`${t.nav.learning} menu`}
+              aria-expanded={learningOpen}
+              className="rounded-r-xl py-2 pr-3 pl-1 hover:text-emerald-600 transition-colors"
+            >
             <svg className={`w-4 h-4 transition-transform ${learningOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
+            </button>
+          </div>
 
           <Link href="/guides" className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
             📚 {t.nav.guides}
