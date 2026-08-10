@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { trackLoanCalculated } from "@/lib/gtag";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 
 function fmt(n: number) {
   return n.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -309,6 +310,11 @@ export default function LoanCalculator() {
                     <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block" />Principal {principalPct}%</span>
                     <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-red-400 inline-block" />Interest {interestPct}%</span>
                   </div>
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <WhatsAppShareButton
+                    message={`我算了一下，RM${principal.toLocaleString()} 的贷款，年利率 ${annualRate}%，${tenure} 年还清，每月要还 RM${result.monthly.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 📊 算算你的：https://smrtcalc.com/loan-calculator`}
+                  />
                 </div>
               </>
             )}

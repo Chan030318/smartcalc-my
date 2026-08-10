@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { trackBmiCalculated } from "@/lib/gtag";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 
 type BMICategory = {
   label: string;
@@ -233,6 +234,11 @@ export default function BMICalculator() {
                   <p className="text-gray-600 leading-relaxed">
                     {category!.description}
                   </p>
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <WhatsAppShareButton
+                    message={`我的 BMI 是 ${bmi.toFixed(1)}（${category!.label}）⚖️ 你的是多少？测一下：https://smrtcalc.com/bmi-calculator`}
+                  />
                 </div>
               </>
             )}

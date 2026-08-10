@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { trackSalaryCalculated } from "@/lib/gtag";
 import { useLang } from "@/components/LangProvider";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 
 const tr = {
   en: {
@@ -370,6 +371,11 @@ export default function SalaryCalculator() {
 
                 <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-xs text-blue-700">
                   <span className="font-semibold">{t("employerEpf")}</span> RM {fmt(result.epfEmployer)}/month ({t("employerEpfNote")})
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <WhatsAppShareButton
+                    message={`我用 SmartCalc MY 算到我的月薪 RM${gross.toLocaleString()} 税后实收 RM${result.takehome.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 💰 你的呢？算一下：https://smrtcalc.com/salary-calculator-malaysia`}
+                  />
                 </div>
               </>
             )}

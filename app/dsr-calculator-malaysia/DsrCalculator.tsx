@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackDsrCalculated } from "@/lib/gtag";
 import { useLang } from "@/components/LangProvider";
+import WhatsAppShareButton from "@/components/WhatsAppShareButton";
 
 const tr = {
   en: {
@@ -510,6 +511,11 @@ export default function DsrCalculator() {
                       <p className="text-xs text-gray-400">{s.sub}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <WhatsAppShareButton
+                    message={`我的 DSR 是 ${result.dsr.toFixed(1)}%（${cfg.label}），这是银行审批贷款最重要的指标 🏦 算算你的：https://smrtcalc.com/dsr-calculator-malaysia`}
+                  />
                 </div>
               </>
             )}
