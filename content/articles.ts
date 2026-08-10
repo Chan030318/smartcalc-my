@@ -784,6 +784,238 @@ export const articles: Article[] = [
     ],
     disclaimer: true,
   },
+  {
+    slug: "how-to-escape-rat-race",
+    category: "mindset",
+    title: {
+      en: "How to escape the rat race",
+      bm: "Bagaimana untuk keluar dari perangkap tikus",
+      zh: "怎样脱离老鼠圈",
+    },
+    summary: {
+      en: "Escaping the rat race is not about earning more — it is about building assets that generate income without your constant time. The exit requires a plan, not luck.",
+      bm: "Keluar dari perangkap tikus bukan tentang memperoleh lebih banyak — ia tentang membina aset yang menjana pendapatan tanpa masa anda yang berterusan. Jalan keluar memerlukan rancangan, bukan nasib.",
+      zh: "脱离老鼠圈不是靠赚更多——而是建立能在你不持续付出时间的情况下产生收入的资产。出口需要计划，不是运气。",
+    },
+    why: {
+      en: "Most people know they are in the rat race but feel stuck because they do not know the exit. The exit is not a lottery win or a viral business. It is a gradual shift in where your money comes from — less from your time, more from assets you have built. Understanding the steps makes the goal feel achievable instead of abstract.",
+      bm: "Kebanyakan orang tahu mereka berada dalam perangkap tikus tetapi berasa terperangkap kerana tidak tahu jalan keluarnya. Jalan keluar bukan kemenangan loteri atau perniagaan viral. Ia adalah peralihan beransur-ansur dalam sumber wang anda — kurang dari masa anda, lebih dari aset yang anda bina. Memahami langkah-langkahnya menjadikan matlamat itu terasa boleh dicapai dan bukannya abstrak.",
+      zh: "大多数人知道自己在老鼠圈里，却感到动弹不得，因为不知道出口在哪。出口不是中彩票，也不是一夜爆红的生意。它是一个渐进的转变：你的钱越来越少来自你的时间，越来越多来自你建立的资产。理解这些步骤，才能让目标从抽象变成可执行的事。",
+    },
+    what: {
+      en: "The rat race exit has four stages. Stage one: stop the bleed — spend less than you earn and eliminate high-interest debt. Stage two: build a buffer — accumulate 3 to 6 months of expenses in emergency savings before investing. Stage three: build income-generating assets — EPF, unit trusts, REITs, dividend stocks, rental property, or a side business with systems. Stage four: reach the crossover point — when your passive income covers your monthly expenses, you are out. Most Malaysians can reach Stage two within one year and Stage three within three to five years if they start with intention.",
+      bm: "Jalan keluar dari perangkap tikus mempunyai empat peringkat. Peringkat satu: hentikan pendarahan — belanja kurang daripada pendapatan dan hapuskan hutang faedah tinggi. Peringkat dua: bina penampan — kumpul 3 hingga 6 bulan perbelanjaan dalam simpanan kecemasan sebelum melabur. Peringkat tiga: bina aset penjana pendapatan — EPF, amanah saham, REITs, saham dividen, hartanah sewa, atau perniagaan sampingan dengan sistem. Peringkat empat: capai titik persilangan — apabila pendapatan pasif anda menampung perbelanjaan bulanan anda, anda telah keluar. Kebanyakan rakyat Malaysia boleh mencapai Peringkat dua dalam setahun dan Peringkat tiga dalam tiga hingga lima tahun jika bermula dengan niat.",
+      zh: "脱离老鼠圈有四个阶段。第一阶段：止血——支出少于收入，消除高息债务。第二阶段：建立缓冲——在投资前先积累 3 至 6 个月的紧急备用金。第三阶段：建立产生收入的资产——EPF、单位信托、REITs、股息股票、出租房产，或有系统的副业。第四阶段：到达交叉点——当你的被动收入能够覆盖月支出时，你就出圈了。大多数马来西亚人如果认真开始，一年内可以完成第二阶段，三至五年内可以进入第三阶段。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "I will start saving and investing when I earn more.",
+          bm: "Saya akan mula menabung dan melabur apabila saya menjana lebih banyak.",
+          zh: "等我赚多一点再开始储蓄和投资。",
+        },
+        successful: {
+          en: "I start with whatever I earn now. The habit and the asset both grow with time.",
+          bm: "Saya mulakan dengan apa yang saya peroleh sekarang. Tabiat dan aset kedua-duanya berkembang dengan masa.",
+          zh: "我从现在的收入开始。习惯和资产都会随着时间成长。",
+        },
+      },
+      {
+        ordinary: {
+          en: "Escaping the rat race means I need to quit my job and start a business.",
+          bm: "Keluar dari perangkap tikus bermaksud saya perlu berhenti kerja dan mulakan perniagaan.",
+          zh: "脱离老鼠圈就是辞职创业。",
+        },
+        successful: {
+          en: "I can keep my job and build assets on the side. The goal is income sources, not a dramatic exit.",
+          bm: "Saya boleh kekal dalam pekerjaan saya dan bina aset di sampingan. Matlamatnya adalah sumber pendapatan, bukan keluar secara dramatik.",
+          zh: "我可以保留工作，同时在旁边建立资产。目标是多元收入来源，不是戏剧性地辞职。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Calculate your crossover number: what is your total monthly expense? That is the passive income target you are working toward.",
+        bm: "Kira nombor persilangan anda: berapakah jumlah perbelanjaan bulanan anda? Itulah sasaran pendapatan pasif yang anda usahakan.",
+        zh: "计算你的交叉点目标：你每月总支出是多少？那就是你的被动收入目标数字。",
+      },
+      {
+        en: "List your current assets and their monthly income: EPF balance, savings, any side income. That is your starting point.",
+        bm: "Senaraikan aset semasa anda dan pendapatan bulanan mereka: baki EPF, simpanan, sebarang pendapatan sampingan. Itulah titik permulaan anda.",
+        zh: "列出你现有的资产和每月收入：EPF 余额、储蓄、任何副业收入。那就是你的起点。",
+      },
+      {
+        en: "Pick one asset to build this year: it does not need to be big. One unit trust account, one dividend stock, one skill that earns freelance income.",
+        bm: "Pilih satu aset untuk dibina tahun ini: ia tidak perlu besar. Satu akaun amanah saham, satu saham dividen, satu kemahiran yang menjana pendapatan bebas.",
+        zh: "今年选一个资产开始建立：不需要很大。一个单位信托账户、一只股息股票，或一项能接案赚钱的技能。",
+      },
+    ],
+    story: {
+      en: "Hafiz earned RM3,200 a month and felt stuck in the same cycle for three years. He started by tracking every expense and cutting RM400 a month in subscriptions and dining. He put RM300 a month into a unit trust and RM100 into EPF top-up. Three years later, his investments generated RM280 a month in returns — not enough to quit, but enough to prove the system worked. He kept building.",
+      bm: "Hafiz memperoleh RM3,200 sebulan dan berasa terperangkap dalam kitaran yang sama selama tiga tahun. Dia mula dengan menjejak setiap perbelanjaan dan memotong RM400 sebulan dalam langganan dan makan. Dia meletakkan RM300 sebulan ke dalam amanah saham dan RM100 ke dalam tambahan EPF. Tiga tahun kemudian, pelaburannya menjana RM280 sebulan dalam pulangan — tidak cukup untuk berhenti kerja, tetapi cukup untuk membuktikan sistem itu berjaya. Dia terus membina.",
+      zh: "Hafiz 每月收入 RM3,200，在同样的循环里困了三年。他从追踪每一笔开销开始，每月削减了 RM400 的订阅和餐饮费用。每月拿 RM300 投入单位信托，RM100 追加 EPF。三年后，他的投资每月产生 RM280 的回报——还不够辞职，但足以证明这个系统有效。他继续建立。",
+    },
+    source: [
+      "Robert Kiyosaki, Rich Dad Poor Dad (1997)",
+      "Securities Commission Malaysia — sc.com.my",
+      "Employees Provident Fund Malaysia — kwsp.gov.my",
+    ],
+    disclaimer: false,
+  },
+  {
+    slug: "what-is-compound-interest",
+    category: "mindset",
+    title: {
+      en: "What is compound interest — and why it matters more than your salary",
+      bm: "Apa itu faedah kompaun — dan mengapa ia lebih penting daripada gaji anda",
+      zh: "复利是什么——为什么它比你的薪水更重要",
+    },
+    summary: {
+      en: "Compound interest is earning returns on your returns. Over time, it turns small consistent contributions into large amounts — and it works against you just as powerfully in debt.",
+      bm: "Faedah kompaun ialah memperoleh pulangan atas pulangan anda. Dari masa ke masa, ia mengubah sumbangan kecil yang konsisten menjadi jumlah yang besar — dan ia bekerja menentang anda dengan sama kuatnya dalam hutang.",
+      zh: "复利是在你的回报上再产生回报。随着时间推移，它能把小额稳定的投入变成大笔财富——而在债务中，它同样强力地对你不利。",
+    },
+    why: {
+      en: "Most people understand saving but underestimate time. Compound interest is the reason why starting at 22 is dramatically better than starting at 32, even if you invest less total. It is also why credit card debt and high-interest loans are so destructive — the same compounding that builds wealth destroys it when the rate works against you.",
+      bm: "Kebanyakan orang faham tentang menabung tetapi meremehkan masa. Faedah kompaun adalah sebab mengapa bermula pada usia 22 adalah jauh lebih baik daripada bermula pada usia 32, walaupun anda melabur lebih sedikit secara keseluruhan. Ia juga sebab hutang kad kredit dan pinjaman faedah tinggi sangat merosakkan — pengkompaunan yang sama yang membina kekayaan menghancurkannya apabila kadar itu bekerja menentang anda.",
+      zh: "大多数人理解储蓄，却低估了时间的力量。复利是为什么 22 岁开始投资比 32 岁开始好得多的原因，即使你总共投入的金额更少。这也是为什么信用卡债务和高息贷款如此危险——同样的复利效应，当利率对你不利时，它会以同等的力量摧毁财富。",
+    },
+    what: {
+      en: "Compound interest means your investment earns returns, and those returns are added to your principal, so future returns are calculated on a larger base. The formula is: A = P × (1 + r)^n, where P is principal, r is the annual rate, and n is years. Example: RM10,000 invested at 6% per year — after 10 years: RM17,908; after 20 years: RM32,071; after 30 years: RM57,435. EPF has paid between 5.2% and 6.9% annual dividend for the past decade, making it one of the most reliable compound growth tools available to Malaysians.",
+      bm: "Faedah kompaun bermaksud pelaburan anda memperoleh pulangan, dan pulangan tersebut ditambah kepada prinsipal anda, jadi pulangan masa depan dikira berdasarkan asas yang lebih besar. Formulanya ialah: A = P × (1 + r)^n, di mana P ialah prinsipal, r ialah kadar tahunan, dan n ialah tahun. Contoh: RM10,000 dilaburkan pada 6% setahun — selepas 10 tahun: RM17,908; selepas 20 tahun: RM32,071; selepas 30 tahun: RM57,435. EPF telah membayar dividen tahunan antara 5.2% hingga 6.9% dalam dekad lalu, menjadikannya salah satu alat pertumbuhan kompaun yang paling boleh dipercayai untuk rakyat Malaysia.",
+      zh: "复利意味着你的投资产生回报，这些回报再加入本金，未来的回报就在更大的基础上计算。公式为：A = P × (1 + r)^n，其中 P 是本金，r 是年利率，n 是年数。例子：RM10,000 以年利率 6% 投资——10 年后：RM17,908；20 年后：RM32,071；30 年后：RM57,435。EPF 过去十年派发的年度股息介于 5.2% 至 6.9%，是马来西亚人可使用的最可靠复利增长工具之一。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "I will invest a large amount later when I have more money.",
+          bm: "Saya akan melabur jumlah yang besar kemudian apabila saya ada lebih banyak wang.",
+          zh: "我等有更多钱的时候再一次性大笔投入。",
+        },
+        successful: {
+          en: "Small amounts invested consistently for longer produce more than large amounts invested late. Time is the main ingredient.",
+          bm: "Jumlah kecil yang dilaburkan secara konsisten untuk tempoh yang lebih lama menghasilkan lebih daripada jumlah besar yang dilaburkan lewat. Masa adalah bahan utama.",
+          zh: "长期持续投入小额，比晚期一次性大额投入产生更多。时间才是最关键的原料。",
+        },
+      },
+      {
+        ordinary: {
+          en: "My savings account at 2% is basically the same as investing.",
+          bm: "Akaun simpanan saya pada 2% pada dasarnya sama dengan melabur.",
+          zh: "我的储蓄账户有 2% 利息，跟投资差不多。",
+        },
+        successful: {
+          en: "At 2%, RM10,000 becomes RM14,869 in 20 years. At 6%, it becomes RM32,071. The rate difference compounds into a massive gap over time.",
+          bm: "Pada 2%, RM10,000 menjadi RM14,869 dalam 20 tahun. Pada 6%, ia menjadi RM32,071. Perbezaan kadar bergabung menjadi jurang yang besar dari masa ke masa.",
+          zh: "2% 利率下，RM10,000 在 20 年后变成 RM14,869。6% 利率下变成 RM32,071。利率差距会随时间复利成巨大的差异。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Use the compound interest calculator on this site to see what your current savings will grow to at different rates and time horizons.",
+        bm: "Gunakan kalkulator faedah kompaun di laman ini untuk melihat pertumbuhan simpanan semasa anda pada kadar dan tempoh masa yang berbeza.",
+        zh: "使用本站的复利计算器，看看你现有的储蓄在不同利率和时间下能增长多少。",
+      },
+      {
+        en: "Check your EPF balance and projected amount at retirement age. EPF is compound growth that is already happening for you — most Malaysians do not realise how large the number can get.",
+        bm: "Semak baki EPF anda dan jumlah unjuran pada usia persaraan. EPF adalah pertumbuhan kompaun yang sudah berlaku untuk anda — kebanyakan rakyat Malaysia tidak sedar betapa besarnya jumlah itu boleh jadi.",
+        zh: "查看你的 EPF 余额和退休时的预计金额。EPF 已经在为你复利增长——大多数马来西亚人不知道这个数字可以有多大。",
+      },
+      {
+        en: "Eliminate high-interest debt first: any debt above 6% per year is compounding against you faster than most investments can grow. Pay it off before investing outside of EPF.",
+        bm: "Hapuskan hutang faedah tinggi dahulu: mana-mana hutang melebihi 6% setahun sedang bergabung menentang anda lebih cepat daripada kebanyakan pelaburan boleh berkembang. Bayar ia sebelum melabur di luar EPF.",
+        zh: "优先清除高息债务：任何超过 6% 年利率的债务正在以快于大多数投资增长的速度对你复利。在 EPF 以外投资之前，先把这些债务还清。",
+      },
+    ],
+    story: {
+      en: "Two cousins, both 25. Mei invested RM200 per month for 10 years then stopped — total invested: RM24,000. Jess waited 10 years then invested RM200 per month for 30 years — total invested: RM72,000. At age 65 with 6% annual return: Mei had RM130,000. Jess had RM200,000. Mei invested one third the amount and still came close — because she started earlier.",
+      bm: "Dua sepupu, kedua-duanya berumur 25 tahun. Mei melabur RM200 sebulan selama 10 tahun kemudian berhenti — jumlah dilaburkan: RM24,000. Jess menunggu 10 tahun kemudian melabur RM200 sebulan selama 30 tahun — jumlah dilaburkan: RM72,000. Pada usia 65 dengan pulangan 6% setahun: Mei mempunyai RM130,000. Jess mempunyai RM200,000. Mei melabur satu pertiga jumlah dan masih hampir sama — kerana dia bermula lebih awal.",
+      zh: "两个表姐妹，都是 25 岁。Mei 每月投入 RM200，投了 10 年后停止——共投入 RM24,000。Jess 等了 10 年再开始，每月 RM200 投了 30 年——共投入 RM72,000。在年利率 6% 的情况下，到 65 岁时：Mei 有 RM130,000，Jess 有 RM200,000。Mei 投入了三分之一的金额，结果却相差不远——因为她更早开始。",
+    },
+    source: [
+      "Employees Provident Fund Malaysia — EPF Annual Report 2023",
+      "Securities Commission Malaysia — sc.com.my",
+    ],
+    disclaimer: false,
+  },
+  {
+    slug: "50-30-20-budgeting-rule",
+    category: "mindset",
+    title: {
+      en: "The 50/30/20 budgeting rule — a simple system for Malaysians",
+      bm: "Peraturan belanjawan 50/30/20 — sistem mudah untuk rakyat Malaysia",
+      zh: "50/30/20 预算法——马来西亚打工族的简单理财系统",
+    },
+    summary: {
+      en: "The 50/30/20 rule splits your take-home pay into three buckets: 50% for needs, 30% for wants, and 20% for savings and debt repayment. It is the simplest budgeting system that actually works long-term.",
+      bm: "Peraturan 50/30/20 membahagikan gaji bersih anda kepada tiga bahagian: 50% untuk keperluan, 30% untuk kehendak, dan 20% untuk simpanan dan pembayaran hutang. Ia adalah sistem belanjawan paling mudah yang benar-benar berfungsi jangka panjang.",
+      zh: "50/30/20 法则将你的实收薪资分成三个部分：50% 用于必需品，30% 用于想要的东西，20% 用于储蓄和还债。这是最简单且真正能长期执行的预算系统。",
+    },
+    why: {
+      en: "Most Malaysians either have no budget at all, or create a very detailed one that they abandon within a month. The 50/30/20 rule works because it is simple enough to remember, flexible enough to adapt to any income level, and structured enough to ensure savings happen automatically before discretionary spending.",
+      bm: "Kebanyakan rakyat Malaysia sama ada tidak mempunyai belanjawan langsung, atau mencipta belanjawan yang sangat terperinci yang mereka tinggalkan dalam sebulan. Peraturan 50/30/20 berfungsi kerana ia cukup mudah untuk diingati, cukup fleksibel untuk disesuaikan dengan mana-mana tahap pendapatan, dan cukup berstruktur untuk memastikan simpanan berlaku secara automatik sebelum perbelanjaan mengikut budi bicara.",
+      zh: "大多数马来西亚人要么根本没有预算，要么制定了一个非常详细的预算，却在一个月内放弃。50/30/20 法则之所以有效，是因为它简单到能记住，灵活到能适应任何收入水平，同时又足够有结构，确保储蓄在可支配消费之前自动发生。",
+    },
+    what: {
+      en: "Apply the rule to your take-home pay — the amount after EPF, SOCSO, EIS, and PCB deductions. Needs (50%): rent or mortgage, groceries, utilities, transport, minimum debt repayments, insurance premiums. Wants (30%): dining out, entertainment, shopping, travel, subscriptions, hobbies. Savings and debt (20%): emergency fund, EPF voluntary top-up, investments, extra loan repayments. For a take-home salary of RM2,500: RM1,250 for needs, RM750 for wants, RM500 for savings. If your needs exceed 50%, adjust by reducing wants first — not savings.",
+      bm: "Gunakan peraturan ini pada gaji bersih anda — jumlah selepas potongan EPF, SOCSO, EIS, dan PCB. Keperluan (50%): sewa atau gadai janji, bahan makanan, utiliti, pengangkutan, pembayaran hutang minimum, premium insurans. Kehendak (30%): makan di luar, hiburan, membeli-belah, pelancongan, langganan, hobi. Simpanan dan hutang (20%): tabung kecemasan, tambahan sukarela EPF, pelaburan, pembayaran pinjaman tambahan. Untuk gaji bersih RM2,500: RM1,250 untuk keperluan, RM750 untuk kehendak, RM500 untuk simpanan. Jika keperluan anda melebihi 50%, laraskan dengan mengurangkan kehendak dahulu — bukan simpanan.",
+      zh: "将此法则应用于你的实收薪资——即扣除 EPF、SOCSO、EIS 和 PCB 后的金额。必需品（50%）：租金或房贷、食品杂货、水电费、交通、最低还款额、保险费。想要的（30%）：外食、娱乐、购物、旅游、订阅服务、兴趣爱好。储蓄和还债（20%）：紧急备用金、EPF 自愿追缴、投资、额外还贷。以实收薪资 RM2,500 为例：必需品 RM1,250，想要的 RM750，储蓄 RM500。如果必需品超过 50%，先从「想要的」那部分削减——不要动储蓄。",
+    },
+    comparison: [
+      {
+        ordinary: {
+          en: "I save whatever is left at the end of the month.",
+          bm: "Saya simpan apa yang berbaki pada akhir bulan.",
+          zh: "我每个月剩下多少就存多少。",
+        },
+        successful: {
+          en: "I save and invest first, then spend what remains. The 20% moves out before I see it.",
+          bm: "Saya simpan dan labur dahulu, kemudian belanjakan apa yang tinggal. 20% itu bergerak keluar sebelum saya melihatnya.",
+          zh: "我先储蓄和投资，再花剩下的。那 20% 在我看到它之前就已经转出去了。",
+        },
+      },
+      {
+        ordinary: {
+          en: "I cannot do 50/30/20 because my rent alone takes up 60% of my income.",
+          bm: "Saya tidak boleh buat 50/30/20 kerana sewa saya sahaja mengambil 60% pendapatan saya.",
+          zh: "我做不到 50/30/20，因为光是租金就占了我收入的 60%。",
+        },
+        successful: {
+          en: "The rule is a guide, not a law. If needs are 60%, I adjust wants to 20% and protect the 20% savings. Or I find ways to reduce needs — housemates, transport choices, cooking at home.",
+          bm: "Peraturan itu adalah panduan, bukan undang-undang. Jika keperluan adalah 60%, saya laraskan kehendak kepada 20% dan lindungi simpanan 20%. Atau saya cari cara untuk mengurangkan keperluan — rakan sebilik, pilihan pengangkutan, memasak di rumah.",
+          zh: "这个法则是指引，不是铁律。如果必需品占 60%，我就把「想要的」压到 20%，同时保住 20% 的储蓄。或者想办法压低必需品——找室友、换交通方式、自己煮饭。",
+        },
+      },
+    ],
+    action: [
+      {
+        en: "Find your take-home pay: use the Salary Calculator on this site to get your exact net pay after all deductions.",
+        bm: "Cari gaji bersih anda: gunakan Kalkulator Gaji di laman ini untuk mendapatkan gaji bersih tepat anda selepas semua potongan.",
+        zh: "找出你的实收薪资：使用本站的薪资计算器，算出扣除所有款项后的准确净薪。",
+      },
+      {
+        en: "Categorise last month's spending: go through your bank statement and label each transaction as Need, Want, or Saving. See where you actually stand.",
+        bm: "Kategorikan perbelanjaan bulan lalu: semak penyata bank anda dan label setiap transaksi sebagai Keperluan, Kehendak, atau Simpanan. Lihat di mana anda sebenarnya berada.",
+        zh: "对上个月的消费进行分类：查看你的银行对账单，把每笔消费标记为「必需」「想要」或「储蓄」。看看你真实的状况。",
+      },
+      {
+        en: "Automate the 20%: set up a standing instruction to transfer your savings amount on payday — before you spend anything. Treat it like a fixed bill.",
+        bm: "Automatikkan 20%: sediakan arahan tetap untuk memindahkan jumlah simpanan anda pada hari gaji — sebelum anda membelanjakan apa-apa. Anggapnya seperti bil tetap.",
+        zh: "自动化那 20%：在发薪日设置自动转账，在你花任何钱之前先把储蓄金额转出去。把它当作一笔固定账单来对待。",
+      },
+    ],
+    story: {
+      en: "Syazwan earned RM2,800 take-home and had no idea where his money went each month. He did one exercise: categorised three months of bank statements. Result: needs were at 48%, wants at 44%, savings at 8%. He moved three subscriptions and weekly tapau orders to the wants column and set a wants budget of RM700. The remaining RM560 went into a separate savings account automatically on the 1st of every month. Six months later he had RM3,360 saved — more than he had saved in the previous two years combined.",
+      bm: "Syazwan memperoleh RM2,800 gaji bersih dan tidak tahu ke mana wang dia pergi setiap bulan. Dia melakukan satu latihan: mengkategorikan tiga bulan penyata bank. Hasilnya: keperluan pada 48%, kehendak pada 44%, simpanan pada 8%. Dia memindahkan tiga langganan dan pesanan tapau mingguan ke kolum kehendak dan menetapkan belanjawan kehendak RM700. Baki RM560 masuk ke akaun simpanan berasingan secara automatik pada 1hb setiap bulan. Enam bulan kemudian dia telah menyimpan RM3,360 — lebih daripada yang dia simpan dalam dua tahun sebelumnya.",
+      zh: "Syazwan 实收 RM2,800，每个月不知道钱去哪了。他做了一个练习：把三个月的银行对账单逐笔分类。结果：必需品占 48%，想要的占 44%，储蓄只有 8%。他把三个订阅服务和每周打包餐归入「想要的」类别，给这部分设定了 RM700 的上限。剩余的 RM560 每月 1 号自动转入另一个储蓄账户。六个月后他存了 RM3,360——比他过去两年加起来存的还要多。",
+    },
+    source: [
+      "Elizabeth Warren & Amelia Warren Tyagi, All Your Worth (2005)",
+      "Bank Negara Malaysia — Financial Education Network (FEN)",
+    ],
+    disclaimer: false,
+  },
 ];
 
 export function getArticlesByCategory(category: ArticleCategory) {
