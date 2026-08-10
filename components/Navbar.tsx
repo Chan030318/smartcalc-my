@@ -14,7 +14,29 @@ const LANGS: { code: Lang; label: string }[] = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [learningOpen, setLearningOpen] = useState(false);
   const { lang, setLang, t } = useLang();
+
+  const learningLinks = [
+    {
+      href: "/mindset",
+      label: t.nav.mindset,
+      description: lang === "zh" ? "建立长期自由的思维模型" : lang === "en" ? "Build habits and long-term freedom" : "Bina tabiat dan kebebasan jangka panjang",
+      emoji: "🧠",
+    },
+    {
+      href: "/finance",
+      label: t.nav.finance,
+      description: lang === "zh" ? "看懂金钱、债务与现金流" : lang === "en" ? "Understand money, debt, and cash flow" : "Fahami wang, hutang, dan aliran tunai",
+      emoji: "💡",
+    },
+    {
+      href: "/labor-law",
+      label: t.nav.laborLaw,
+      description: lang === "zh" ? "看懂职场里的基本权益" : lang === "en" ? "Know your rights at work" : "Fahami hak asas di tempat kerja",
+      emoji: "⚖️",
+    },
+  ];
 
   const toolGroups = [
     {
@@ -59,7 +81,10 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center gap-1">
           <button
-            onClick={() => setToolsOpen(!toolsOpen)}
+            onClick={() => {
+              setToolsOpen(!toolsOpen);
+              setLearningOpen(false);
+            }}
             onBlur={() => setTimeout(() => setToolsOpen(false), 150)}
             className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
           >
@@ -72,6 +97,21 @@ export default function Navbar() {
           <Link href="/financial-freedom-calculator" className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
             🏆 {t.nav.freedom}
           </Link>
+
+          <button
+            onClick={() => {
+              setLearningOpen(!learningOpen);
+              setToolsOpen(false);
+            }}
+            onBlur={() => setTimeout(() => setLearningOpen(false), 150)}
+            aria-expanded={learningOpen}
+            className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
+          >
+            📚 {t.nav.learning}
+            <svg className={`w-4 h-4 transition-transform ${learningOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
           <Link href="/guides" className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
             📚 {t.nav.guides}
@@ -138,6 +178,27 @@ export default function Navbar() {
         </div>
       )}
 
+      {learningOpen && (
+        <div className="hidden lg:block absolute top-16 left-0 right-0 bg-white border-b border-gray-100 shadow-xl z-40">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-3 gap-3">
+            {learningLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setLearningOpen(false)}
+                className="flex items-start gap-3 p-4 rounded-lg border border-gray-100 text-gray-700 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
+              >
+                <span className="text-xl leading-none" aria-hidden="true">{link.emoji}</span>
+                <span>
+                  <span className="block text-sm font-bold">{link.label}</span>
+                  <span className="block mt-1 text-xs leading-5 text-gray-500">{link.description}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {open && (
         <div className="lg:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-4">
           {toolGroups.map((group) => (
@@ -158,6 +219,22 @@ export default function Navbar() {
               </div>
             </div>
           ))}
+          <div>
+            <p className="text-xs font-black text-gray-400 uppercase tracking-wider mb-2 px-2">{t.nav.learning}</p>
+            <div className="space-y-0.5">
+              {learningLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                >
+                  <span aria-hidden="true">{link.emoji}</span>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           <div className="pt-2 border-t border-gray-100">
             <Link href="/spend-billionaire-money" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-amber-700 hover:bg-amber-50 transition-colors">
               💸 {t.nav.game}

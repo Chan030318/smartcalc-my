@@ -11,6 +11,10 @@ export const translations = {
       guides: "Guides",
       game: "Billionaire Game",
       toolLabel: "Tools",
+      learning: "Learn",
+      mindset: "Mindset",
+      finance: "Financial Literacy",
+      laborLaw: "Labor Rights",
     },
     hero: {
       badge: "Dream Big. Build Slowly.",
@@ -90,6 +94,10 @@ export const translations = {
       guides: "Panduan",
       game: "Permainan Bilionair",
       toolLabel: "Alat",
+      learning: "Belajar",
+      mindset: "Mindset Berjaya",
+      finance: "Ilmu Kewangan",
+      laborLaw: "Hak Pekerja",
     },
     hero: {
       badge: "Impian Besar. Bina Perlahan.",
@@ -169,6 +177,10 @@ export const translations = {
       guides: "指南",
       game: "富豪花钱游戏",
       toolLabel: "工具",
+      learning: "学习中心",
+      mindset: "成功者思维",
+      finance: "青年财商",
+      laborLaw: "劳动法保护",
     },
     hero: {
       badge: "梦想要大，行动要稳",
