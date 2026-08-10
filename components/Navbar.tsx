@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/components/LangProvider";
 import type { Lang } from "@/lib/i18n";
 
@@ -15,7 +15,20 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [learningOpen, setLearningOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const { lang, setLang, t } = useLang();
+
+  useEffect(() => {
+    const closeMenusOutsideHeader = (event: PointerEvent) => {
+      if (headerRef.current?.contains(event.target as Node)) return;
+
+      setToolsOpen(false);
+      setLearningOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeMenusOutsideHeader);
+    return () => document.removeEventListener("pointerdown", closeMenusOutsideHeader);
+  }, []);
 
   const learningLinks = [
     {
@@ -69,7 +82,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header ref={headerRef} className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <span className="text-2xl">💡</span>
@@ -85,7 +98,6 @@ export default function Navbar() {
               setToolsOpen(!toolsOpen);
               setLearningOpen(false);
             }}
-            onBlur={() => setTimeout(() => setToolsOpen(false), 150)}
             className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
           >
             🧮 {t.nav.toolLabel}
@@ -103,7 +115,6 @@ export default function Navbar() {
               setLearningOpen(!learningOpen);
               setToolsOpen(false);
             }}
-            onBlur={() => setTimeout(() => setLearningOpen(false), 150)}
             aria-expanded={learningOpen}
             className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
           >
